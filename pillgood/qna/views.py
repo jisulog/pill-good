@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from pillgood.qna.models import Qna
-from pillgood.qna.serializers import QnaSerializer
+from .models import Qna
+from .serializers import QnaSerializer
 
 
 @api_view(['GET'])

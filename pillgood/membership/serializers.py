@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pillgood.membership.models import Membership, Pay
+from .models import Membership, Pay
 
 
 class MembershipSerializer(serializers.HyperlinkedModelSerializer):

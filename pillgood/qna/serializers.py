@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pillgood.qna.models import Qna
+from .models import Qna
 
 
 class QnaSerializer(serializers.HyperlinkedModelSerializer):
