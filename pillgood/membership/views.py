@@ -1,10 +1,12 @@
+from django.shortcuts import render
+from django.http import HttpResponse
 # Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Membership
-from .serializers import MembershipSerializer
-from .serializers import PaySerializer
+from serializers import PaySerializer
+from pillgood.membership.models import Membership
+from pillgood.membership.serializers import MembershipSerializer
 
 
 @api_view(['GET'])

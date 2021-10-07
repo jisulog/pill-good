@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('', views.membership_index, name='membership_index'),
     path('pay/', views.membership_pay, name='membership_pay')
+
 ]

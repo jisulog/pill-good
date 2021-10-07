@@ -19,9 +19,9 @@ from . import views
 
 urlpatterns = [
     path('', views.qna_index, name='qna_index'),
-    path('<int:pk>/', views.qna_detail, name='qna_detail'),
+    path('<int:pk>', views.qna_detail, name='qna_detail'),
     path('create/', views.qna_create, name='qna_create'),
-    path('update/<int:pk>/', views.qna_update, name='qna_update'),
-    path('delete/<int:pk>/', views.qna_delete, name='qna_delete'),
-    path('answer/<int:pk>/', views.qna_answer, name='qna_answer'),
+    path('update/<int:pk>', views.qna_update, name='qna_update'),
+    path('delete/<int:pk>', views.qna_delete, name='qna_delete'),
+    path('answer/<int:pk>', views.qna_answer, name='qna_answer'),
 ]
