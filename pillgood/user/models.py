@@ -1,29 +1,7 @@
-# from django.db import models
-# from django.utils import timezone
-#
-#
-# class User(models.Model):
-#     email = models.CharField(max_length=30, primary_key=True)
-#     password = models.CharField(max_length=255)
-#     name = models.CharField(max_length=10)
-#     phone = models.CharField(max_length=13)
-#     intro = models.TextField(null=True)
-#     type = models.IntegerField()
-#     image = models.CharField(max_length=200, null=True)
-#     join_date = models.DateTimeField(default=timezone.now)
-#     last_date = models.DateTimeField(default=timezone.now)
-#
-#     def __str__(self):
-#         return self.name
-
-
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
 from django.utils import timezone
 
-
-# from django.contrib.auth.models import PermissionsMixin
-# from django.utils.translation import ugettext_lazy as _
 
 # 유저 생성을 위한 헬퍼 클래스
 class UserManager(BaseUserManager):
@@ -37,11 +15,12 @@ class UserManager(BaseUserManager):
             raise ValueError('Email을 정확히 입력해주세요.')
         if not name:
             raise ValueError('이름을 입력해주세요.')
+
         user = self.model(
             email=self.normalize_email(email),
             name=name,
             phone=phone,
-            type=type,
+            type=type
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -62,20 +41,22 @@ class UserManager(BaseUserManager):
         )
         # 관리자 superuser 권한부여(admin으로 변경가능)
         user.is_admin = True
+        user.is_superuser = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
 
 # 실제 모델을 상속받아 생성하는 클래스
 class User(AbstractBaseUser):
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(unique=True, max_length=255)
     name = models.CharField(max_length=10)
     phone = models.CharField(max_length=13)
     intro = models.TextField(null=True, default='')
     type = models.IntegerField()
     image = models.CharField(max_length=200, null=True, default='')
     join_date = models.DateTimeField(default=timezone.now)
-    last_date = models.DateTimeField(default=timezone.now)
+    last_login = models.DateTimeField('last login', null=True)
 
     # 헬퍼 클래스 사용
     objects = UserManager()
