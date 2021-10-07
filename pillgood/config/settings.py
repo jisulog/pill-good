@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +75,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PillGood',
+        'NAME': 'pill_good',
         'USER': 'root',
         'PASSWORD': '1234',
         'HOST': '13.209.45.132',
@@ -122,3 +123,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'user.User'
