@@ -20,10 +20,10 @@ from . import views
 app_name = 'member'
 urlpatterns = [
     path('', views.main, name='main'),
-    path('/update', views.update, name='update'),
-    path('/delete/', views.delete, name='delete'),
-    path('/paylist/', views.paylist, name='paylist'),
-    path('/lec', views.lec, name='lec'),
-    path('/paylist/refund', views.pay_refund, name='pay_refund'),
-    path('/lec/delete', views.lec_delete, name='lec_delete'),
+    path('update/', views.update, name='update'),
+    path('delete/', views.delete, name='delete'),
+    path('paylist/', views.paylist, name='paylist'),
+    path('lec/', views.lec, name='lec'),
+    path('paylist/refund/', views.pay_refund, name='pay_refund'),
+    path('lec/delete/', views.lec_delete, name='lec_delete'),
 ]
