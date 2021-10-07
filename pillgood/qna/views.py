@@ -1,26 +1,59 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
 
-def index(request):
-    return HttpResponse("Q&A입니다.")
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-
-def detail():
-    return None
+from pillgood.qna.models import Qna
+from pillgood.qna.serializers import QnaSerializer
 
 
-def create():
-    return None
+@api_view(['GET'])
+def qna_index(request):
+    qna = Qna.object.all()
+    serializer = QnaSerializer(qna, many=True)
+    return Response(serializer.data)
 
 
-def update():
-    return None
+@api_view(['GET'])
+def qna_detail(request, pk):
+    qna = Qna.object.get(id=pk)
+    serializer = QnaSerializer(qna, many=True)
+    return Response(serializer.data)
 
 
-def delete():
-    return None
+@api_view(['POST'])
+def qna_create(request):
+    serializer = QnaSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Success!"})
+    else:
+        return Response({"message": "data not valid!"})
 
 
-def answer():
-    return None
+@api_view(['PUT'])
+def qna_update(request, pk):
+    qna = Qna.object.get(id=pk)
+    serializer = QnaSerializer(instance=qna, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Success!"})
+
+
+@api_view(['DELETE'])
+def qna_delete(pk):
+    qna = Qna.object.get(id=pk)
+    qna.delete()
+    return Response({"message": "Success!"})
+
+
+@api_view(['POST'])
+def qna_answer(request, pk):
+    qna = Qna.object.get(id=pk)
+    serializer = QnaSerializer(instance=qna, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Success!"})
+    else:
+        return Response({"message": "data not valid!"})
