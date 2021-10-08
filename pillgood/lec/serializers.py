@@ -4,7 +4,7 @@ from manager.models import Book
 
 
 
-class LecSerializer(serializers.HyperlinkedModelSerializer):
+class LecSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lec
         fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'number', 'status']
