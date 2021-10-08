@@ -23,7 +23,7 @@ urlpatterns = [
     path('update/', views.update, name='update'),
     path('delete/', views.delete, name='delete'),
     path('paylist/', views.paylist, name='paylist'),
+    path('paylist/refund/<int:pk>/', views.pay_refund, name='pay_refund'),
     path('lec/', views.lec, name='lec'),
-    path('paylist/refund/', views.pay_refund, name='pay_refund'),
     path('lec/delete/', views.lec_delete, name='lec_delete'),
 ]
