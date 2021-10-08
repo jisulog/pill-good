@@ -9,7 +9,7 @@ from .serializers import PaySerializer
 
 @api_view(['GET'])
 def membership_index(request):
-    memberships = Membership.object.all()
+    memberships = Membership.objects.all()
     serializer = MembershipSerializer(memberships, many=True)
     return Response(serializer.data)
 
