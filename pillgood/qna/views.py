@@ -10,14 +10,14 @@ from .serializers import QnaSerializer
 
 @api_view(['GET'])
 def qna_index(request):
-    qna = Qna.object.all()
+    qna = Qna.objects.all()
     serializer = QnaSerializer(qna, many=True)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 def qna_detail(request, pk):
-    qna = Qna.object.get(id=pk)
+    qna = Qna.objects.get(id=pk)
     serializer = QnaSerializer(qna, many=True)
     return Response(serializer.data)
 
@@ -34,7 +34,7 @@ def qna_create(request):
 
 @api_view(['PUT'])
 def qna_update(request, pk):
-    qna = Qna.object.get(id=pk)
+    qna = Qna.objects.get(id=pk)
     serializer = QnaSerializer(instance=qna, data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -43,14 +43,14 @@ def qna_update(request, pk):
 
 @api_view(['DELETE'])
 def qna_delete(pk):
-    qna = Qna.object.get(id=pk)
+    qna = Qna.objects.get(id=pk)
     qna.delete()
     return Response({"message": "Success!"})
 
 
 @api_view(['POST'])
 def qna_answer(request, pk):
-    qna = Qna.object.get(id=pk)
+    qna = Qna.objects.get(id=pk)
     serializer = QnaSerializer(instance=qna, data=request.data)
     if serializer.is_valid():
         serializer.save()
