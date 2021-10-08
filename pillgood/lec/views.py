@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from lec.serializer import LecSerializer
+from lec.serializers import LecSerializer, BookSerializer
 from lec.models import Lec
+
 
 # Create your views here.
 
@@ -20,7 +21,7 @@ def lec_detail(request, pk):
     return Response(serializer.data)
 
 
-@api_view(['GET','POST'])            #예약 생성 : 회원 시점
+@api_view(['POST'])            #예약 생성 : 회원 시점
 def book_create(request):
     serializer = BookSerializer(data=request.data)
     if serializer.is_valid():
