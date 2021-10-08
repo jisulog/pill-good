@@ -7,8 +7,7 @@ from django.db import models
 
 
 class Lec(models.Model):
-    object = models.Manager()
-
+    objects = models.Manager()
     lec_id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=50)
     content = models.TextField()
@@ -20,10 +19,14 @@ class Lec(models.Model):
     number = models.IntegerField()
     status = models.IntegerField()
 
+    def __str__(self):
+        return self.title
 
 class Image(models.Model):
-    object = models.Manager()
-
+    objects = models.Manager()
     image_id = models.IntegerField(primary_key=True)
     lec_id = models.ForeignKey('Lec', on_delete=models.CASCADE)
     image_url = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.image_id

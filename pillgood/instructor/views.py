@@ -1,18 +1,19 @@
 
-from lec.serializer import LecSerializer
+from lec.serializers import LecSerializer
 from lec.models import Lec
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from user.models import User
-
-
+from user.serializers import UserSerializer
+from lec.models import Lec
+from lec.serializers import LecSerializer
 
 # Create your views here.
 
 @api_view(['GET'])
 def user_list(request):       #회원목록 (강사 권한 인증)
     users = User.objects.all()
-    serializer = UserSerializer(lecs, many=True)
+    serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
