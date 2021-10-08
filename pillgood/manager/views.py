@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from user.serializers import UserSerializer
-from lec.serializer import LecSerializer
+from lec.serializers import LecSerializer
 from membership.serializers import MembershipSerializer, PaySerializer
 from user.models import User
 from lec.models import Lec
