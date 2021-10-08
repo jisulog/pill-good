@@ -21,8 +21,8 @@ from rest_framework import urls
 
 app_name = 'user'
 urlpatterns = [
-    path('join/', views.join, name='join'),
-    path('login/', include('rest_framework.urls')),
+    path('join/', views.join.as_view(), name='join'),
+    path('login/', views.login, name='login'),
     path('help/', views.user_help, name='help'),
     path('update/', views.user_update, name='update'),
 ]
