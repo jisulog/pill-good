@@ -13,11 +13,11 @@ class UserSerializer(serializers.ModelSerializer):
             type=validated_data['type'],
             image=validated_data['image'],
             join_date=validated_data['join_date'],
-            last_date=validated_data['last_date'],
+            last_login=validated_data['last_login'],
         )
         return user
 
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'name', 'phone', 'intro', 'type', 'image', 'join_date', 'last_Date']
+        fields = ['email', 'password', 'name', 'phone', 'intro', 'type', 'image', 'join_date', 'last_login']
