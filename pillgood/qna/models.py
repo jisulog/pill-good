@@ -6,7 +6,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Qna(models.Model):
-    object = models.Manager()
+    objects = models.Manager()
 
     qna_id = models.IntegerField(primary_key=True)  # 상담pk
     title = models.CharField(max_length=100)  # 제목

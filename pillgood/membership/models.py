@@ -5,7 +5,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Membership(models.Model):
-    object = models.Manager()
+    objects = models.Manager()
 
     membership_id = models.IntegerField(primary_key=True)
     number = models.IntegerField()  # 횟수
@@ -18,7 +18,7 @@ class Membership(models.Model):
 
 
 class Pay(models.Model):
-    object = models.Manager()
+    objects = models.Manager()
 
     pay_id = models.IntegerField(primary_key=True)  # 결제pk
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)  # 회원
