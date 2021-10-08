@@ -25,5 +25,5 @@ urlpatterns = [
     path('paylist/', views.paylist, name='paylist'),
     path('paylist/refund/<int:pk>/', views.pay_refund, name='pay_refund'),
     path('lec/', views.lec, name='lec'),
-    path('lec/delete/', views.lec_delete, name='lec_delete'),
+    path('lec/delete/<int:pk>/', views.lec_delete, name='lec_delete'),
 ]

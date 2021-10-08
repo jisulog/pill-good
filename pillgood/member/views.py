@@ -94,9 +94,10 @@ def paylist(request):
 
     # 세션에서 로그인 유저 아이디 가져오기
     login_user = request.user.id
+    print(login_user)
 
     # pay정보 가져와서 serializer로 데이터 정렬
-    pays = Pay.objects.filter(id=login_user)
+    pays = Pay.objects.filter(email=login_user)
     serializer = PaySerializer(pays, many=True)
     return Response(serializer.data)
 
@@ -140,7 +141,7 @@ def lec(request):
     login_user = request.user.id
 
     # 예약정보 가져와서 serializer로 데이터 정렬
-    books = Book.objects.get(email=login_user)
+    books = Book.objects.filter(email=login_user)
     serializer = BookSerializer(books, many=True)
     return Response(serializer.data)
 
