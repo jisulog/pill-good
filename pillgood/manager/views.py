@@ -72,7 +72,7 @@ def manager_lec_delete(request, pk):
 
 @api_view(['POST'])
 def manager_membership(request):
-    serializer = MembershipSerializer(request.data)
+    serializer = MembershipSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
