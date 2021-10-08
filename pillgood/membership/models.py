@@ -7,11 +7,12 @@ from django.utils import timezone
 class Membership(models.Model):
     objects = models.Manager()
 
-    membership_id = models.IntegerField(primary_key=True)
+    membership_id = models.AutoField(primary_key=True)
     number = models.IntegerField()  # 횟수
     period = models.IntegerField()  # 기간
     price = models.IntegerField()  # 가격
     type = models.IntegerField()  # 유형
+    status = models.IntegerField()  #상태
 
     def __str__(self):
         return self.type
@@ -20,7 +21,7 @@ class Membership(models.Model):
 class Pay(models.Model):
     objects = models.Manager()
 
-    pay_id = models.IntegerField(primary_key=True)  # 결제pk
+    pay_id = models.AutoField(primary_key=True)  # 결제pk
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)  # 회원
     pay_date = models.DateTimeField(default=timezone.now)  # 결제일시
     pay_type = models.IntegerField()  # 결제방식

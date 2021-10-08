@@ -8,7 +8,7 @@ from django.utils import timezone
 class Qna(models.Model):
     objects = models.Manager()
 
-    qna_id = models.IntegerField(primary_key=True)  # 상담pk
+    qna_id = models.AutoField(primary_key=True)  # 상담pk
     title = models.CharField(max_length=100)  # 제목
     question_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question_user')  # 작성자(회원)
     question = models.TextField()  # 내용
