@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.lec_index, name='lec_index'),
-    path('lec/<int:pk>/', views.lec_detail, name='lec_detail'),
-    path('lec/book/<int:pk>/', views.book_create, name='book_create'),
+    path('<int:pk>/', views.lec_detail, name='lec_detail'),
+    path('book/<int:pk>/', views.book_index, name='book_index'),
+    path('book/<int:pk>/', views.book_create, name='book_create'),
 ]

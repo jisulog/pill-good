@@ -8,7 +8,7 @@ from django.db import models
 
 class Lec(models.Model):
     objects = models.Manager()
-    lec_id = models.IntegerField(primary_key=True)
+    lec_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     content = models.TextField()
     room = models.CharField(max_length=10)
@@ -24,7 +24,7 @@ class Lec(models.Model):
 
 class Image(models.Model):
     objects = models.Manager()
-    image_id = models.IntegerField(primary_key=True)
+    image_id = models.AutoField(primary_key=True)
     lec_id = models.ForeignKey('Lec', on_delete=models.CASCADE)
     image_url = models.CharField(max_length=255)
 
