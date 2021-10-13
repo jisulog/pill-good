@@ -2,14 +2,14 @@ from rest_framework import serializers
 from .models import Membership, Pay
 
 
-class MembershipSerializer(serializers.HyperlinkedModelSerializer):
+class MembershipSerializer(serializers.ModelSerializer):
     class Meta:
         model = Membership
-        fields = ['membership_id', 'number', 'period', 'price', 'type']
+        fields = ['membership_id', 'number', 'period', 'price', 'type', 'status']
 
 
-class PaySerializer(serializers.HyperlinkedModelSerializer):
+class PaySerializer(serializers.ModelSerializer):
+ 
     class Meta:
         model = Pay
-        fields = ['pay_id', 'email', 'pay_date', 'pay_type', 'remain',
-                  'end_date', 'membership_id', 'refund_date', 'status']
+        fields = ['pay_id', 'email', 'pay_type', 'remain', 'end_date', 'membership_id', 'status']

@@ -14,11 +14,17 @@ def membership_index(request):
     return Response(serializer.data)
 
 
+# 맴버십 결제
 @api_view(['POST'])
 def membership_pay(request):
-    serializer = PaySerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Success!"})
+    # 로그인 여부 권한 체크
+    if request.user.is_authenticated:
+
+        serializer = PaySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
     else:
-        return Response({"message": "data not valid!"})
+        return Response({"message": "로그인 해주세요!"})
