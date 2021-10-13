@@ -5,7 +5,7 @@ from lec.serializers import LecSerializer
 from membership.serializers import MembershipSerializer, PaySerializer
 from user.models import User
 from lec.models import Lec
-from membership.models import Pay
+from membership.models import Pay, Membership
 # Create your views here.
 
 @api_view(['GET'])
@@ -17,10 +17,10 @@ def manager_user(request):
 @api_view(['PUT'])
 def manager_user_access(request, pk):
     user = User.objects.get(id=pk)
-    serializer = UserSerializer(instance=user, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+    user.type = request.data['type']
+    user.save()
+    return Response("access success")
+
 
 @api_view(['GET'])
 def manager_user_detail(request, pk):
@@ -36,29 +36,20 @@ def manager_lec(request):
 
 @api_view(['GET'])
 def manager_lec_detail(request, pk):
-    lec = Lec.objects.get(id=pk)
+    lec = Lec.objects.get(lec_id=pk)
     serializer = LecSerializer(lec, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 def manager_lec_access(request, pk):
-    lec = Lec.objects.get(id=pk)
-    serializer = LecSerializer(instance=lec, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-def manager_lec_reject(request, pk):
-    lec = Lec.objects.get(id=pk)
-    serializer = LecSerializer(instance=lec, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+    lec = Lec.objects.get(lec_id=pk)
+    lec.status = request.data['status']
+    lec.save()
+    return Response("access success")
 
 @api_view(['PUT'])
 def manager_lec_update(request, pk):
-    lec = Lec.objects.get(id=pk)
+    lec = Lec.objects.get(lec_id=pk)
     serializer = LecSerializer(instance=lec, data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -66,16 +57,29 @@ def manager_lec_update(request, pk):
 
 @api_view(['DELETE'])
 def manager_lec_delete(request, pk):
-    lec = Lec.objects.get(id=pk)
+    lec = Lec.objects.get(lec_id=pk)
     lec.delete()
     return Response('Delete Lec')
 
 @api_view(['POST'])
-def manager_membership(request):
+def manager_membership_create(request):
     serializer = MembershipSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+@api_view(["GET"])
+def manager_membership(request):
+    memberships = Membership.objects.all()
+    serializer = MembershipSerializer(memberships, many=True)
+    return Response(serializer.data)
+
+@api_view(["PUT"])
+def manager_membership_access(request, pk):
+    membership = Membership.objects.get(membership_id=pk)
+    membership.status = request.data['status']
+    membership.save()
+    return Response("access success")
 
 @api_view(['GET'])
 def manager_refund(request):
@@ -85,22 +89,13 @@ def manager_refund(request):
 
 @api_view(['GET'])
 def manager_refund_detail(request, pk):
-    pay = Pay.objects.get(id=pk)
+    pay = Pay.objects.get(pay_id=pk)
     serializer = PaySerializer(pay, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 def manager_refund_access(request, pk):
-    pay = Pay.objects.get(id=pk)
-    serializer = PaySerializer(instance=pay, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-def manager_refund_reject(request, pk):
-    pay = Pay.objects.get(id=pk)
-    serializer = PaySerializer(instance=pay, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+    pay = Pay.objects.get(pay_id=pk)
+    pay.status = request.data['status']
+    pay.save()
+    return Response("access success")
