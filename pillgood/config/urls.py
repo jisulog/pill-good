@@ -28,4 +28,10 @@ urlpatterns = [
     path('membership/', include('membership.urls')),
     path('qna/', include('qna.urls')),
     path('user/', include('user.urls')),
+
+    # login
+    path('api_auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # ㄴ django - login/logout, pip install django-rest-auth
+    # path('api-token-auth/', views.obtain_auth_token),
+    # ㄴ token api endpoint
 ]

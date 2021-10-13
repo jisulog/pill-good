@@ -1,9 +1,15 @@
+from django.conf import settings
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 
 # 유저 생성을 위한 헬퍼 클래스
+from rest_framework.authtoken.models import Token
+
+
 class UserManager(BaseUserManager):
 
     # 사용자 user 생성
@@ -55,6 +61,7 @@ class User(AbstractBaseUser):
     intro = models.TextField(null=True, default='')
     type = models.IntegerField()
     image = models.CharField(max_length=200, null=True, default='')
+    # image = models.ImageField(blank=True), pip install pillow
     join_date = models.DateTimeField(default=timezone.now)
     last_login = models.DateTimeField('last login', null=True)
 
@@ -81,3 +88,5 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_admin
+
+
