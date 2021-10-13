@@ -19,7 +19,7 @@ def main(request):
     # if request.user.is_authenticated:
 
     # 세션에서 로그인 유저 아이디 가져오기
-    login_user = 1 #request.user.id
+    login_user = 1  # request.user.id
 
     # 유저정보 가져와서 serializer로 데이터 정렬
     user = User.objects.get(id=login_user)
@@ -37,23 +37,23 @@ def update(request, member):
     """
 
     # 로그인여부 체크해 접근 제한, 테스트 중이므로 주석처리
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
 
-        # 세션에서 로그인 유저 아이디 가져오기
-        login_user = request.user.id
+    # 세션에서 로그인 유저 아이디 가져오기
+    login_user = 1  # request.user.id
 
-        # serializer로 데이터 정렬해 update
-        user = User.objects.get(id=login_user)
-        serializer = UserSerializer(instance=user, data=request.data)
+    # serializer로 데이터 정렬해 update
+    user = User.objects.get(id=login_user)
+    serializer = UserSerializer(instance=user, data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
-
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
     else:
-        return Response({"is_active": 0})
+        return Response(serializer.errors)
+
+# else:
+#     return Response({"is_active": 0})
 
 
 @api_view(['PUT'])
@@ -63,23 +63,23 @@ def delete(request):
     """
 
     # 로그인여부 체크해 접근 제한, 테스트 중이므로 주석처리
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
 
-        # 세션에서 로그인 유저 아이디 가져오기
-        login_user = request.user.id
+    # 세션에서 로그인 유저 아이디 가져오기
+    login_user = 1  # request.user.id
 
-        # serializer로 데이터 정렬해 update
-        user = User.objects.get(id=login_user)
-        serializer = UserSerializer(instance=user, data={"is_active": 0})
+    # serializer로 데이터 정렬해 update
+    user = User.objects.get(id=login_user)
+    serializer = UserSerializer(instance=user, data={"is_active": 0})
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
-
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
     else:
-        return Response({"message": 0})
+        return Response(serializer.errors)
+
+# else:
+#     return Response({"message": 0})
 
 
 @api_view(['GET'])
@@ -92,8 +92,7 @@ def paylist(request):
     # if request.user.is_authenticated:
 
     # 세션에서 로그인 유저 아이디 가져오기
-    login_user = request.user.id
-    print(login_user)
+    login_user = 1  # request.user.id
 
     # pay정보 가져와서 serializer로 데이터 정렬
     pays = Pay.objects.filter(email=login_user)
@@ -134,18 +133,18 @@ def book(request):
     """
 
     # 로그인여부 체크해 접근 제한, 테스트 중이므로 주석처리
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
 
-        # 세션에서 로그인 유저 아이디 가져오기
-        login_user = request.user.id
+    # 세션에서 로그인 유저 아이디 가져오기
+    login_user = request.user.id
 
-        # 예약정보 가져와서 serializer로 데이터 정렬
-        books = Book.objects.filter(email_id=login_user)
-        serializer = BookSerializer(books, many=True)
-        return Response(serializer.data)
+    # 예약정보 가져와서 serializer로 데이터 정렬
+    books = Book.objects.filter(email_id=login_user)
+    serializer = BookSerializer(books, many=True)
+    return Response(serializer.data)
 
-    else:
-        return Response({"message": 0})
+# else:
+#     return Response({"message": 0})
 
 
 @api_view(['PUT'])
@@ -154,17 +153,17 @@ def book_cancel(request, pk):
     예약한 강의 취소
     """
 
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
 
-        # 요청 들어온 예약 정보 삭제
-        book = Book.objects.get(book_id=pk)
-        serializer = BookSerializer(instance=book, data=request.data)
+    # 요청 들어온 예약 정보 삭제
+    book = Book.objects.get(book_id=pk)
+    serializer = BookSerializer(instance=book, data=request.data)
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
-
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
     else:
-        return Response({"message": 0})
+        return Response(serializer.errors)
+
+# else:
+#     return Response({"message": 0})

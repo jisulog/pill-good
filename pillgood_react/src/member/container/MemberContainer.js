@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {observer} from 'mobx-react';
 import MemberStore from "../store/MemberStore";
 import MemberView from "../component/MemberView";
 
@@ -19,4 +20,4 @@ class MemberContainer extends Component {
     }
 }
 
-export default MemberContainer;
+export default observer(MemberContainer);
