@@ -1,5 +1,8 @@
+from django.contrib.auth import authenticate
 from .models import User
 from rest_framework import serializers
+from rest_framework_jwt.settings import api_settings
+from django.contrib.auth.models import update_last_login
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,17 +12,93 @@ class UserSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
             name=validated_data['name'],
             phone=validated_data['phone'],
-            intro=validated_data['intro'],
-            # 주석 시 저장안됌, type_error : create_user() got an unexpected keyword argument 'intro' - 7line
+            # intro=validated_data['intro'],  회원가입 이후 작성하기로 함
             type=validated_data['type'],
-            # image=validated_data['image'],
-            # 주석 시 변경사항 확인예정, type_error : 7line create_user() got an unexpected keyword argument 'image' - 7line
-            # join_date=validated_data['join_date'], # 주석 시 정상작동
-            # last_login=validated_data['last_login'],
+            # image=validated_data['image'],  회원가입 이후 작성하기로 함
+            # join_date=validated_data['join_date'], # 자동(입력x)
+            # last_login=validated_data['last_login'],  # 자동(입력x)
         )
         return user
 
+    class Meta:
+        model = User
+        fields = ['email', 'password', 'name', 'phone', 'type']
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    password = serializers.CharField(max_length=128, write_only=True)
+    # token = serializers.CharField(max_length=255, read_only=True)
+
+    def validate(self, data):
+        email = data.get("email", None)
+        password = data.get("password", None)
+        user = authenticate(email=email, password=password)
+
+        if user is None:
+            return {
+                'email': 'None'
+            }
+        try:
+            update_last_login(None, user)
+        except User.DoesNotExist:
+            raise serializers.ValidationError(
+                'User with given email and password does not exists'
+            )
+        return {
+            'email': user.email,
+            # 'token': jwt_token
+        }
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'name', 'phone', 'intro', 'type', 'image']
+        fields = ['email', 'password']
+
+
+class HelpSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(max_length=10)
+    phone = serializers.CharField(max_length=13)
+
+    def validate(self, data):
+        name = data.get("name", None)
+        phone = data.get("phone", None)
+        user = authenticate(name=name, phone=phone)  # 검증 방법 변경 필요
+
+        if user is None:
+            return {
+                'email': 'None'
+            }
+        else:
+            return {
+                'email': user.email,
+            }
+
+    class Meta:
+        model = User
+        fields = ['name', 'phone']
+
+
+class UpdateSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(max_length=255)
+    name = serializers.CharField(max_length=10)
+    phone = serializers.CharField(max_length=13)
+
+    def validate(self, data):
+        email = data.get("email", None)
+        name = data.get("name", None)
+        phone = data.get("phone", None)
+        user = authenticate(email=email, name=name, phone=phone)  # 검증 방법 변경 필요
+
+        if user is None:
+            return {
+                'email': 'None'
+            }
+        else:
+            return {
+                'Temporary password': 'my_new_password',
+                # 임시 비밀번호 난수 함수 입력
+            }
+
+    class Meta:
+        model = User
+        fields = ['email', 'name', 'phone']
