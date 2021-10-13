@@ -29,4 +29,4 @@ class Image(models.Model):
     image_url = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.image_id
+        return str(self.image_id)
