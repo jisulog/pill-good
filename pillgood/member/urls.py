@@ -24,6 +24,6 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'),
     path('paylist/', views.paylist, name='paylist'),
     path('paylist/refund/<int:pk>/', views.pay_refund, name='pay_refund'),
-    path('lec/', views.lec, name='lec'),
-    path('lec/delete/<int:pk>/', views.lec_delete, name='lec_delete'),
+    path('book/', views.book, name='book'),
+    path('book/cancel/<int:pk>/', views.book_cancel, name='book_cancel'),
 ]
