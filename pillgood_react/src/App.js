@@ -16,17 +16,29 @@ class App extends Component {
             <Router>
                 <Switch>
                     <Route exact path="/" component={Home} />
-
-                    <Route exact path="/manager/user/" component={ManagerUserPage} />
-                    <Route exact path="/manager/user/:id" component={ManagerUserDetailPage} />
-
-                    <Route exact path="/manager/lec/" component={ManagerLecPage} />
-                    <Route exact path="/manager/lec/:id" component={ManagerLecDetailPage} />
-                    <Route exact path="/manager/lec/update/:id" component={ManagerLecUpdatePage} />
-
-                    <Route exact path="/manager/membership/create/" component={ManagerMemberShipCreatePage} />
-                    <Route exact path="/manager/membership/" component={ManagerMembershipPage} />
-
+                    <Route exact path="/member" component={MemberMainPage} />
+                    <Route exact path="/member/update" component={MemberUpdatePage} />
+                    <Route exact path="/member/delete" component={MemberDeletePage} />
+                    <Route exact path="/member/paylist" component={MemberPayListPage} />
+                    <Route exact path="/member/paylist/refund" component={MemberPayRefundPage} />
+                    <Route exact path="/member/book" component={MemberBookListPage} />
+                    <Route exact path="/member/book/cancel" component={MemberBookCancelPage} />
+                    <Route exact path="/user/join/" component={UserJoinPage} />
+                    <Route exact path="/user/login" component={UserLoginPage} />
+                    <Route exact path="/membership" component={MembershipMainPage} />
+                    <Route exact path="/membership/pay" component={PayPage} />
+                    <Route exact path="/qna" component={QnaMainPage} />
+                    <Route exact path="/qna/:id" component={QnaDetailPage} />
+                    <Route exact path="/qna/create/" component={QnaCreatePage} />
+                    <Route exact path="/qna/update/:id" component={QnaUpdatePage} />
+                    <Route exact path="/qna/answer/:id" component={QnaAnswerPage} />
+                    <Route exact path="/lec" component={LecMainPage} />
+                    <Route exact path ="/lec/:id" component={LecDetailPage} />
+                    <Route exact path ="/lec/book/:id" component={BookPage} />
+                    <Route exact path ="/instructor/lec/create" component={LecCreatePage} />
+                    <Route exact path ="/instructor/lec/" component={InstructorLecPage} />
+                    <Route exact path ="/instructor/lec/update/:id" component={LecModifyPage} />
+                    <Route exact path ="/instructor/lec/user" component={UserListPage} />
                 </Switch>
             </Router>
         );

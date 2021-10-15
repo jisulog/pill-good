@@ -16,9 +16,9 @@ class MemberApi {
             .then((response) => response.data);
     }
     // 'delete/'
-    memberDelete() {
+    memberDelete(member) {
         return axios
-            .put(this.URL + "delete/")
+            .put(this.URL + "delete/", { member: `${member}` })
             .then((response) => response.data);
     }
 
