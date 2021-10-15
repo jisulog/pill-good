@@ -9,6 +9,13 @@ import ManagerMembershipPage from './manager/pages/ManagerMembershipPage';
 import ManagerUserDetailPage from "./manager/pages/ManagerUserDetailPage";
 import ManagerUserPage from './manager/pages/ManagerUserPage';
 
+import LecMainPage from "./lec/pages/LecMainPage";
+import BookPage from "./lec/pages/Bookpage";
+import LecDetailPage from './lec/pages/LecDetailPage';
+import LecCreatePage from "./instructor/pages/LecCreatePage";
+import InstructorLecPage from "./instructor/pages/InstructorLecPage";
+import LecModifyPage from  "./instructor/pages/LecModifyPage";
+import UserListPage from "./instructor/pages/UserListPage";
 
 class App extends Component {
     render() {
@@ -32,6 +39,13 @@ class App extends Component {
                     <Route exact path="/qna/create/" component={QnaCreatePage} />
                     <Route exact path="/qna/update/:id" component={QnaUpdatePage} />
                     <Route exact path="/qna/answer/:id" component={QnaAnswerPage} />
+                    <Route exact path="/lec" component={LecMainPage} />
+                    <Route exact path ="/lec/:id" component={LecDetailPage} />
+                    <Route exact path ="/lec/book/:id" component={BookPage} />
+                    <Route exact path ="/instructor/lec/create" component={LecCreatePage} />
+                    <Route exact path ="/instructor/lec/" component={InstructorLecPage} />
+                    <Route exact path ="/instructor/lec/update/:id" component={LecModifyPage} />
+                    <Route exact path ="/instructor/lec/user" component={UserListPage} />
                     <Route exact path="/lec" component={LecMainPage} />
                     <Route exact path ="/lec/:id" component={LecDetailPage} />
                     <Route exact path ="/lec/book/:id" component={BookPage} />
