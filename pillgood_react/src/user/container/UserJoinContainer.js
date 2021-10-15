@@ -67,3 +67,4 @@ class UserJoinContainer extends Component {
 }
 
 export default observer(UserJoinContainer);
+

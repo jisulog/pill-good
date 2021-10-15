@@ -71,3 +71,5 @@ def user_update(request):
         'Temporary password': 'my_new_password'
     }
     return Response(response)
+
+

@@ -26,3 +26,4 @@ urlpatterns = [
     path('update/', views.user_update, name='update'),
 
 ]
+
