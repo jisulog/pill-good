@@ -2,6 +2,7 @@ import axios from 'axios';
 class ManagerApi{
     URL = '/manager/';
 
+
     // user
     userList(){
         return axios.get(this.URL+`user/`).then((response)=>response.data).catch((error)=>console.log(error));

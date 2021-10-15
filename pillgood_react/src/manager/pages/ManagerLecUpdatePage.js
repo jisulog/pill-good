@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ManagerLecUpdateContainer from '../container/ManagerLecUpdateContainer';
 
+
 class ManagerLecUpdatePage extends Component {
   render() {
     return (

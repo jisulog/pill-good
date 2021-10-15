@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import ManagerStore from '../store/ManagerStore';
 
+
 class ManagerLecUpdateContainer extends Component {
   managerStore = ManagerStore;
 

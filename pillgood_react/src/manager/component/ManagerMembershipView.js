@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ManagerMembershipView extends Component {
   render() {
     const {membership} = this.props;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ManagerLecDetailView extends Component {
   render() {
     const {lec} = this.props;

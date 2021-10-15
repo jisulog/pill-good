@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ManagerLecView extends Component {
   render() {
     const { lec } = this.props;

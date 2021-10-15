@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import ManagerApi from "../api/ManagerApi";
 
+
 class ManagerStore {
   user = {};
   users = [];

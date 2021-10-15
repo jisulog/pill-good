@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import ManagerUserDetailView from '../component/ManagerUserDetailView';
 import ManagerStore from '../store/ManagerStore';
 
+
 class ManagerUserDetailContainer extends Component {
   
   managerStore = ManagerStore;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ManagerUserDetailContainer from '../container/ManagerUserDetailContainer';
 
+
 class ManagerUserDetailPage extends Component {
   render() {
     return (

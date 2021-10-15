@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class ManagerUserView extends Component {
   render() {
     const { user } = this.props;
