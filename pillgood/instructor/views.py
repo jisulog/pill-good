@@ -24,12 +24,12 @@ def user_list(request):
 @api_view(['GET'])
 def lec_list(request):   # 강의 목록 = 자신의 강의.
     login_user = request.user.id
-    if request.user.type == 1:
-        print(login_user)#강사 권한 체크 (type 2 = 강사), 현재는 임시로 type 1 설정
-        lecs = Lec.objects.filter(email_id=login_user)    # 로그인 한 유저 = 강의를 생성한 유저 (강사 본인이 생성한 강의)
-        serializer = LecSerializer(lecs, many=True)
-        return Response(serializer.data)
-    return HttpResponse("권한이 없습니다")
+    # if request.user.type == 1:
+        # print(login_user)        강사 권한 체크 (type 2 = 강사), 현재는 임시로 type 1 설정
+    lecs = Lec.objects.filter(email_id=login_user)    # 로그인 한 유저 = 강의를 생성한 유저 (강사 본인이 생성한 강의)
+    serializer = LecSerializer(lecs, many=True)
+    return Response(serializer.data)
+    # return HttpResponse("권한이 없습니다")
 
 
 

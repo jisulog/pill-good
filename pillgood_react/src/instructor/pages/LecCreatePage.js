@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import InstructorContainer from '../container/InstructorContainer';
 
-class InstructorView extends Component {
+//page를 하나의 html로 생각.
+class LecCreatePage extends Component {
     render() {
         return (
             <div>
-
+                <InstructorContainer />
             </div>
         );
     }
 }
 
-export default InstructorView;
+export default LecCreatePage;
