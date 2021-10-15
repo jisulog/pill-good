@@ -1,13 +1,29 @@
-import React, { Component } from 'react';
+import axios from "axios";
 
-class MembershipApi extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
+class MembershipApi {
+    URL = "/membership/";
+
+    // 'membership' [GET]
+    membership() {
+        return axios
+            .get(this.URL)
+            .then((response) => response.data);
+    }
+
+    // 'membership/pay' [POST]
+    membershipPay(pay) {
+        return axios
+            .post(this.URL + `pay/`, {
+                pay_id: `${pay.pay_id}`,
+                email: `${pay.email}`,
+                pay_type: `${pay.pay_type}`,
+                remain: `${pay.remain}`,
+                end_date: `${pay.end_date}`,
+                membership_id: `${pay.membership_id}`,
+                status: `${pay.status}`
+            })
+            .then((response) => response.data);
     }
 }
 
-export default MembershipApi;
+export default new MembershipApi();
