@@ -8,6 +8,9 @@ import ManagerMemberShipCreatePage from "./manager/pages/ManagerMemberShipCreate
 import ManagerMembershipPage from './manager/pages/ManagerMembershipPage';
 import ManagerUserDetailPage from "./manager/pages/ManagerUserDetailPage";
 import ManagerUserPage from './manager/pages/ManagerUserPage';
+import MemberMainPage from "./pages/MemberMainPage";
+import UserJoinPage from "./user/pages/UserJoinPage";
+import UserLoginPage from "./user/pages/UserLoginPage";
 
 import LecMainPage from "./lec/pages/LecMainPage";
 import BookPage from "./lec/pages/Bookpage";
@@ -53,6 +56,8 @@ class App extends Component {
                     <Route exact path ="/instructor/lec/" component={InstructorLecPage} />
                     <Route exact path ="/instructor/lec/update/:id" component={LecModifyPage} />
                     <Route exact path ="/instructor/lec/user" component={UserListPage} />
+                    <Route exact path="/user/join/" component={UserJoinPage} />
+                    <Route exact path="/user/login" component={UserLoginPage} />
                 </Switch>
             </Router>
         );

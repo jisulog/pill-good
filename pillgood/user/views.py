@@ -6,13 +6,16 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 
-# @api_view(['POST']) 입력 시 urls.py 변경(method) + JSON 입력
-class Join(generics.CreateAPIView):
+@api_view(['POST'])
+def join(request):
     """
     회원가입 뷰
     """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    print(request.data)
+    serializer = UserSerializer(data=request.data)  # 새로운 데이터가 넘어올 때는 역직렬화, serializer이 직렬화 역직렬화 두 가지 기능
+    if serializer.is_valid():
+        serializer.save()
+    return Response({'message': 'success'})
 
 
 @api_view(['POST'])
@@ -68,3 +71,5 @@ def user_update(request):
         'Temporary password': 'my_new_password'
     }
     return Response(response)
+
+
