@@ -6,6 +6,7 @@ class PayPage extends Component {
         return (
             <div>
                 <PayContainer />
+                
             </div>
         );
     }

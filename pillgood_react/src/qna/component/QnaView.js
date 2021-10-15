@@ -5,7 +5,6 @@ class QnaView extends Component {
         const {qna} = this.props;
         return (
             <div>
-                
                 제목 : {qna.title}
             </div>
         );

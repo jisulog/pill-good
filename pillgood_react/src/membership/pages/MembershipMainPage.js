@@ -7,6 +7,7 @@ class MembershipMainPage extends Component {
             <div>
                 
                 <MembershipContainer />
+                
             </div>
         );
     }

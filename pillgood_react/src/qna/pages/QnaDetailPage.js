@@ -4,6 +4,7 @@ class QnaDetailPage extends Component {
     render() {
         return (
             <div>
+                detail page
                 <QnaContainer />
             </div>
         );

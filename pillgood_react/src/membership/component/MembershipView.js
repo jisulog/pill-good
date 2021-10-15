@@ -19,7 +19,8 @@ class MembershipView extends Component {
                 <br />
                 <button onClick={()=>this.MembershipsStore.selectPay()}>결제</button>
                 <br />
-              
+               
+               
             </div>
         );
     }

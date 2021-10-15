@@ -11,6 +11,7 @@ class MembershipStore {
         makeAutoObservable(this, {}, {autoBind: true});
     }
 
+    
     // 멤버십 목록보기
     async selectMembershipAll() {
         try {

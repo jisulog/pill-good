@@ -15,6 +15,7 @@ class PayContainer extends Component {
             <div>
                 <h1>Pay Page</h1>
                 <PayView pay={pay} />
+                
             </div>
         );
     }

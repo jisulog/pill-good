@@ -4,6 +4,7 @@ class QnaMainPage extends Component {
     render() {
         return (
             <div>
+                main page
                 <QnaContainer />
             </div>
         );

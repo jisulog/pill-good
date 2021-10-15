@@ -19,6 +19,7 @@ class PayView extends Component {
                 <br />
                 {pay.status}
             </div>
+            
         );
     }
 }

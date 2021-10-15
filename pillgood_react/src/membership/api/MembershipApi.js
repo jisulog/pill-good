@@ -8,6 +8,7 @@ class MembershipApi {
         return axios
             .get(this.URL)
             .then((response) => response.data);
+            
     }
 
     // 'membership/pay' [POST]

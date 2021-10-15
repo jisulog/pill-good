@@ -5,6 +5,7 @@ class QnaStore {
     qnas = [];
     message = "";
 
+    
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
     }

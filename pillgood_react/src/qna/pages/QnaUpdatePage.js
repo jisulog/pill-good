@@ -4,6 +4,7 @@ class QnaUpdatePage extends Component {
     render() {
         return (
             <div>
+                update page
                 <QnaContainer />
             </div>
         );

@@ -14,6 +14,7 @@ class MembershipContainer extends Component {
         const membershipList1 = memberships.map(membership =>{
             return <MembershipView key={membership.membership_id} membership = {membership} />  
         
+            
         });
       
         const membershipList2 = memberships.map(membership =>{

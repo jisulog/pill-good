@@ -6,6 +6,7 @@ class QnaAnswerPage extends Component {
             <div>
                 answer page
                 <QnaContainer />
+                
             </div>
         );
     }

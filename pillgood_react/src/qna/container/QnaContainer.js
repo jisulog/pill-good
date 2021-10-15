@@ -12,7 +12,6 @@ class QnaContainer extends Component {
         const {qna} = this.qnaStore;
         return (
             <div>
-                
                 <QnaView qna = {qna} />
             </div>
         );
