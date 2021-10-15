@@ -8,9 +8,18 @@ import ManagerMemberShipCreatePage from "./manager/pages/ManagerMemberShipCreate
 import ManagerMembershipPage from './manager/pages/ManagerMembershipPage';
 import ManagerUserDetailPage from "./manager/pages/ManagerUserDetailPage";
 import ManagerUserPage from './manager/pages/ManagerUserPage';
+
 import MemberMainPage from "./pages/MemberMainPage";
+import MemberUpdatePage from './member/pages/MemberUpdatePage';
+import MemberDeletePage from './member/pages/MemberDeletePage';
+import MemberPayListPage from './member/pages/MemberPayListPage';
+import MemberPayRefundPage from './member/pages/MemberPayRefundPage';
+import MemberBookListPage from './member/pages/MemberBookListPage';
+import MemberBookCancelPage from "./member/pages/MemberBookCancelPage";
+
 import UserJoinPage from "./user/pages/UserJoinPage";
 import UserLoginPage from "./user/pages/UserLoginPage";
+
 import MembershipMainPage from "./membership/pages/MembershipMainPage";
 import PayPage from "./membership/pages/PayPage";
 import QnaMainPage from "./qna/pages/QnaMainPage";
@@ -63,7 +72,7 @@ class App extends Component {
                     <Route exact path ="/instructor/lec/" component={InstructorLecPage} />
                     <Route exact path ="/instructor/lec/update/:id" component={LecModifyPage} />
                     <Route exact path ="/instructor/lec/user" component={UserListPage} />
-                    <Route exact path="/lec" component={LecMainPage} />
+                    <Route exact path ="/lec" component={LecMainPage} />
                     <Route exact path ="/lec/:id" component={LecDetailPage} />
                     <Route exact path ="/lec/book/:id" component={BookPage} />
                     <Route exact path ="/instructor/lec/create" component={LecCreatePage} />
@@ -72,6 +81,15 @@ class App extends Component {
                     <Route exact path ="/instructor/lec/user" component={UserListPage} />
                     <Route exact path="/user/join/" component={UserJoinPage} />
                     <Route exact path="/user/login" component={UserLoginPage} />
+                    <Route exact path="/manager/user/" component={ManagerUserPage} />
+                    <Route exact path="/manager/user/:id" component={ManagerUserDetailPage} />
+
+                    <Route exact path="/manager/lec/" component={ManagerLecPage} />
+                    <Route exact path="/manager/lec/:id" component={ManagerLecDetailPage} />
+                    <Route exact path="/manager/lec/update/:id" component={ManagerLecUpdatePage} />
+
+                    <Route exact path="/manager/membership/create/" component={ManagerMemberShipCreatePage} />
+                    <Route exact path="/manager/membership/" component={ManagerMembershipPage} />
                 </Switch>
             </Router>
         );
