@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import DeleteContainer from '../container/DeleteContainer';
+// import DeleteContainer from '../container/DeleteContainer';
 
 class MemberDeletePage extends Component {
     render() {
         return (
             <div>
-                <DeleteContainer />
+                {/* <DeleteContainer /> */}
             </div>
         );
     }
