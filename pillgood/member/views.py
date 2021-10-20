@@ -98,7 +98,7 @@ def paylist(request, id):
     login_user = id
 
     # pay정보 가져와서 serializer로 데이터 정렬
-    pays = Pay.objects.filter(id=login_user)
+    pays = Pay.objects.filter(email=login_user)
     serializer = PaySerializer(pays, many=True)
     return Response(serializer.data)
 

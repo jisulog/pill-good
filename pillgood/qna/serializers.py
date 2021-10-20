@@ -1,9 +1,12 @@
 from rest_framework import serializers
+
+from member.serializers import UserSerializer
 from .models import Qna
 
 
 class QnaSerializer(serializers.ModelSerializer):
-    answer_user = serializers.PrimaryKeyRelatedField(allow_null=True, read_only=True)
+    question_user = UserSerializer(read_only=True)
+    answer_user = UserSerializer(allow_null=True, read_only=True)
     answer = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:

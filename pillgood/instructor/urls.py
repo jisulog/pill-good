@@ -22,5 +22,5 @@ urlpatterns = [
     path('lec/', views.lec_list, name='lec_list'),
     path('lec/create/', views.lec_create, name='lec_create'),
     path('lec/update/<int:pk>/', views.lec_update, name='lec_update'),
-    path('lec/<int:pk>/', views.instructor_lec_detail, name='instructor_lec_detail')
+    # path('lec/<int:pk>/', views.instructor_lec_detail, name='instructor_lec_detail')
 ]

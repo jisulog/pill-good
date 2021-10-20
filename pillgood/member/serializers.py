@@ -39,6 +39,7 @@ class UserSerializer(serializers.ModelSerializer):
 #         return user
 
 class PaySerializer(serializers.ModelSerializer):
+    email = UserSerializer(read_only=True)
     membership_id = MembershipSerializer(read_only=True)
 
     class Meta:
