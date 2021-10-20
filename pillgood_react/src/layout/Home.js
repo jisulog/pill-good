@@ -4,7 +4,9 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h1>WEBCOME PIL-GOOD!</h1>
+
+                    <h1>WEBCOME PIL-GOOD!</h1>
+
             </div>
         );
     }

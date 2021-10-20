@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import UpdateContainer from '../container/UpdateContainer';
+import MemberUpdateContainer from '../container/MemberUpdateContainer';
 
 class MemberUpdatePage extends Component {
     render() {
         return (
             <div>
-                {/* <UpdateContainer /> */}
+                <MemberUpdateContainer />
             </div>
         );
     }

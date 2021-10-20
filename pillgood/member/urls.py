@@ -19,11 +19,12 @@ from . import views
 
 app_name = 'member'
 urlpatterns = [
-    path('', views.main, name='main'),
-    path('update/', views.update, name='update'),
-    path('delete/', views.delete, name='delete'),
-    path('paylist/', views.paylist, name='paylist'),
+    path('<int:id>', views.main, name='main'),
+    path('update/<int:id>', views.update, name='update'),
+    path('passwordupdate/<int:id>', views.password_update, name='password_update'),
+    path('delete/<int:id>', views.delete, name='delete'),
+    path('paylist/<int:id>', views.paylist, name='paylist'),
     path('paylist/refund/<int:pk>/', views.pay_refund, name='pay_refund'),
-    path('book/', views.book, name='book'),
+    path('book/<int:id>', views.book, name='book'),
     path('book/cancel/<int:pk>/', views.book_cancel, name='book_cancel'),
 ]

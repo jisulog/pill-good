@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MainContainer from '../container/MainContainer';
+import MemberContainer from '../container/MemberContainer';
 
 
 class MemberMainPage extends Component {
@@ -7,7 +7,7 @@ class MemberMainPage extends Component {
     render() {
         return (
             <div>
-                <MainContainer />
+                <MemberContainer />
             </div>
         );
     }
