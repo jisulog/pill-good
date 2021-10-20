@@ -3,7 +3,6 @@ import { observer } from 'mobx-react'
 import ManagerUserDetailView from '../component/ManagerUserDetailView';
 import ManagerStore from '../store/ManagerStore';
 
-
 class ManagerUserDetailContainer extends Component {
   
   managerStore = ManagerStore;
@@ -14,10 +13,11 @@ class ManagerUserDetailContainer extends Component {
   }
 
   render() {
-    const {user} = this.managerStore;
+    const {user, handleGoBack} = this.managerStore;
     return (
       <div>
         <ManagerUserDetailView user={user}/>
+        <button onClick={()=>handleGoBack()}>뒤로</button>
       </div>
     );
   }

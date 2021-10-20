@@ -5,9 +5,11 @@ import ManagerApi from "../api/ManagerApi";
 class ManagerStore {
   user = {};
   users = [];
+  userFilter = "";
 
   lec = {};
   lecs = [];
+  lecFilter = "";
 
   membership = {};
   memberships = [];
@@ -20,6 +22,10 @@ class ManagerStore {
   // action - user
   setUserProps(id, value){
     this.user = {...this.user, [id]:value}
+  }
+
+  changeUserFilter(userFilter){
+    this.userFilter = userFilter;
   }
 
   async selectUserAll() {
@@ -40,27 +46,35 @@ class ManagerStore {
     }
   }
 
-  async accessUser(){
+  async accessUser(id, type){
     try{
-      await ManagerApi.userAccess(this.user.id, this.user.type);
+      // await ManagerApi.userAccess(this.user.id, this.user.type);
+      if (type === 2) {
+        type = 3
+        await ManagerApi.userAccess(id, type);
+      } else {
+        type = 2
+        await ManagerApi.userAccess(id, type); 
+      }
       this.selectUserAll();
     }catch(error){
       runInAction(this.message = error.message);
     }
   }
 
-  
-
   // action - lec
   setLecProps(id, value){
     this.lec = {...this.lec, [id]:value}
+  }
+
+  changeLecFilter(lecFilter){
+    this.lecFilter = lecFilter;
   }
 
   async selectLecAll() {
     try {
       const results = await ManagerApi.lecList();
       runInAction(() => this.lecs = results);
-      console.log("success");
     } catch (error) {
       console.log(error);
     }
@@ -75,10 +89,25 @@ class ManagerStore {
     }
   }
 
+  async accessLec(lec_id, status, value){
+    try{
+      if (value === 'access') {
+        status = 2
+        await ManagerApi.lecAccess(lec_id, status);
+      } else {
+        status = 3
+        await ManagerApi.lecAccess(lec_id, status);
+      }
+      this.selectLecAll();
+    }catch(error){
+      runInAction(this.message = error.message);
+    }
+  }
+
   async updateLec() {
     try {
       await ManagerApi.lecUpdate(this.lec.lec_id, this.lec.title, this.lec.content, this.lec.room,
-        this.lec.date, this.lec.time, this.lec.level, this.lec.number, this.lec.status);
+        this.lec.date, this.lec.time, this.lec.level, this.lec.email, this.lec.number, this.lec.status);
     } catch (error) {
       console.log(error);
     }
@@ -101,9 +130,23 @@ class ManagerStore {
     try {
       const results = await ManagerApi.membershipList();
       runInAction(() => this.memberships = results);
-      console.log("success");
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async accessMembership(id, status){
+    try{
+      if (status === 1){
+        status = 2
+        await ManagerApi.membershipAccess(id, status);
+      } else{
+        status = 1
+        await ManagerApi.membershipAccess(id, status);
+      }
+      this.selectMembershipAll();
+    }catch(error){
+      runInAction(this.message = error.message);
     }
   }
 
@@ -115,8 +158,10 @@ class ManagerStore {
     }
   }
 
-  
-
+  // action - history
+  handleGoBack(){
+    window.history.back()
+  };
 
 
 }

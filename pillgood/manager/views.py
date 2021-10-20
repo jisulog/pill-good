@@ -8,6 +8,7 @@ from lec.models import Lec
 from membership.models import Pay, Membership
 # Create your views here.
 
+# user
 @api_view(['GET'])
 def manager_user(request):
     users = User.objects.all()
@@ -21,13 +22,14 @@ def manager_user_access(request, pk):
     user.save()
     return Response("access success")
 
-
 @api_view(['GET'])
 def manager_user_detail(request, pk):
     user = User.objects.get(id=pk)
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
+
+# lec
 @api_view(['GET'])
 def manager_lec(request):
     lecs = Lec.objects.all()
@@ -61,6 +63,8 @@ def manager_lec_delete(request, pk):
     lec.delete()
     return Response('Delete Lec')
 
+
+# membership
 @api_view(['POST'])
 def manager_membership_create(request):
     serializer = MembershipSerializer(data=request.data)
@@ -81,6 +85,8 @@ def manager_membership_access(request, pk):
     membership.save()
     return Response("access success")
 
+
+# refund
 @api_view(['GET'])
 def manager_refund(request):
     pays = Pay.objects.all()

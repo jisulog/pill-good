@@ -6,13 +6,13 @@ class ManagerLecDetailView extends Component {
     const {lec} = this.props;
     return (
       <div>
-        {lec.title}<br/>
-        {lec.date}<br/>
-        {lec.time}<br/>
-        {lec.level}<br/>
-        {lec.number}<br/>
-        {lec.status}<br/>
-        {lec.content}
+        강의 명: {lec.title}<br/>
+        강의 날짜: {lec.date}<br/>
+        강의 시간: {lec.time}<br/>
+        강의 난이도: {lec.level}<br/>
+        강의 인원: {lec.number}<br/>
+        강의 상태: {lec.status}<br/>
+        강의 내용: {lec.content}
       </div>
     );
   }
