@@ -11,16 +11,18 @@ class BookContainer extends Component {
     const {id} = this.props;
     this.lecStore.selectLec(id); //mount 되면 전체 강의
 }
+
   render() {
-    const {lec} = this.lecStore;
-    console.log(lec)
+    const {lec, setDateProps} = this.lecStore;
+
     
 
   // });
     return (
        <div>
-         <h1>강의 예약</h1>
-        <BookView lec= {lec} />
+         <h1>예약</h1>
+
+        <BookView lec={lec} />
        </div>
     );
   }

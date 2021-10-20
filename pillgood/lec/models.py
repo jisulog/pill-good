@@ -18,15 +18,16 @@ class Lec(models.Model):
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     number = models.IntegerField()
     status = models.IntegerField()
+    lec_image = models.CharField(max_length=255, default="")
 
     def __str__(self):
         return self.title
-
-class Image(models.Model):
-    objects = models.Manager()
-    image_id = models.AutoField(primary_key=True)
-    lec_id = models.ForeignKey('Lec', on_delete=models.CASCADE)
-    image_url = models.CharField(max_length=255)
-
-    def __str__(self):
-        return str(self.image_id)
+# 
+# class Image(models.Model):
+#     objects = models.Manager()
+#     image_id = models.AutoField(primary_key=True)
+#     lec_id = models.ForeignKey('Lec', on_delete=models.CASCADE)
+#     image_url = models.CharField(max_length=255)
+# 
+#     def __str__(self):
+#         return str(self.image_id)

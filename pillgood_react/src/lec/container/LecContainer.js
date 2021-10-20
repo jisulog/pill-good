@@ -11,13 +11,14 @@ class LecContainer extends Component {
   componentDidMount() {
     const {id} = this.props;
     this.lecStore.selectLec(id); //mount 되면 전체 강의
-}
+    console.log(id)}
+
+
   render() {
     const {lec} = this.lecStore;
     console.log(lec)
     
 
-  // });
     return (
        <div>
          <h1>강의 상세</h1>
@@ -31,16 +32,3 @@ export default observer(LecContainer);
 
 
 
-// class BookContainer extends Component {
-//   bookStore = BookStore;
-//   render() {
-//     const {book} = this.bookStore;
-//     return (
-//        <div>
-//          <BookDetailView book={book} />
-//        </div>
-//     );
-//   }
-// }
-
-// export default observer(BookContainer);

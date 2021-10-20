@@ -12,5 +12,5 @@ class UserListPage extends Component {
         );
     }
 }
-
+  
 export default UserListPage;
