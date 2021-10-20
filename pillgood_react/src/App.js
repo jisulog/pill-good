@@ -15,7 +15,7 @@ import MemberBookListPage from "./member/pages/MemberBookListPage";
 
 import InstructorLecPage from "./instructor/pages/InstructorLecPage";
 import LecCreatePage from "./instructor/pages/LecCreatePage";
-import LecModifyPage from "./instructor/pages/LecModifyPage";
+import InstructorLecUpdatePage from "./instructor/pages/InstructorLecUpdatePage";
 import UserListPage from "./instructor/pages/UserListPage";
 
 import ManagerLecDetailPage from "./manager/pages/ManagerLecDetailPage";
@@ -29,7 +29,7 @@ import ManagerUserPage from "./manager/pages/ManagerUserPage";
 import MembershipMainPage from "./membership/pages/MembershipMainPage";
 import PayPage from "./membership/pages/PayPage";
 
-import BookPage from "./lec/pages/Bookpage";
+import BookPage from "./lec/pages/BookPage";
 import LecDetailPage from "./lec/pages/LecDetailPage";
 import LecMainPage from "./lec/pages/LecMainPage";
 
@@ -97,7 +97,7 @@ class App extends Component {
                     <Route
                         exact
                         path="/instructor/lec/update/:id"
-                        component={LecModifyPage}
+                        component={InstructorLecUpdatePage}
                     />
                     <Route
                         exact
