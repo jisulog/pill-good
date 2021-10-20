@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class QnaView extends Component {
+class QnaAnswerView extends Component {
     render() {
-        const {qna} = this.props;
         return (
             <div>
-                제목 : {qna.title}
+                
             </div>
         );
     }
 }
 
-export default QnaView;
+export default QnaAnswerView;

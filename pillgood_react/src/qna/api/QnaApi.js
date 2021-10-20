@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 class QnaApi{
-    URL = "/Qna/";
+    URL = "/qna/";
 
     // '' [GET]
     qnaList(){
@@ -10,8 +10,9 @@ class QnaApi{
     }
 
     //'<int:pk>/' [GET]
-    qnaDetail(qnaId){
-        return axios.get(this.URL + `/${qnaId}/`).then((response) => response.data);
+    qnaDetail(qna_id){
+        return axios.get(this.URL + `${qna_id}/`)
+        .then((response) => response.data);
     }
 
     // 'create/' [POST]
@@ -19,28 +20,30 @@ class QnaApi{
         return axios.post(this.URL + `create/`, {
             qna_id: `${qna.qna_id}`,
             title: `${qna.title}`,
+            category : `${qna.category}`,
             question_user: `${qna.question_user}`,
             question: `${qna.question}`,
             answer_user: `${qna.answer_user}`,
             answer: `${qna.answer}`,
-          }).then((response) => response.data);
+          }).then((response) => response.data, console.log("dd"));
     }
 
     // 'update/<int:pk>/' [PUT]
-    qnaUpdate(qnaId){
-        return axios.put(this.URL + `update/${qnaId}/`).then((response) => response.data);
+    qnaUpdate(qna_id){
+        return axios.put(this.URL + `update/${qna_id}/`).then((response) => response.data);
     }
     
     // 'delete/<int:pk>/' [DELETE]
-    qnaDelete(qnaId){
-        return axios.delete(this.URL + `delete/${qnaId}/`).then((response) => response.data)
+    qnaDelete(qna_id){
+        return axios.delete(this.URL + `delete/${qna_id}/`).then((response) => response.data)
     }
 
     // 'answer/<int:pk>/' [POST]
-    qnaAnswer(qna, qnaId){
-        return axios.post(this.URL + `answer/${qnaId}/`, {
+    qnaAnswer(qna, qna_id){
+        return axios.post(this.URL + `answer/${qna_id}/`, {
             qna_id: `${qna.qna_id}`,
             title: `${qna.title}`,
+            category : `${qna.category}`,
             question_user: `${qna.question_user}`,
             question: `${qna.question}`,
             answer_user: `${qna.answer_user}`,

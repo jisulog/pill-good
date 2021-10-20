@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import QnaContainer from '../container/QnaContainer'
+import QnaMainContainer from '../container/QnaMainContainer'
+
+
+// html페이지 
 class QnaMainPage extends Component {
     render() {
         return (
             <div>
-                main page
-                <QnaContainer />
+                <QnaMainContainer />
             </div>
         );
     }

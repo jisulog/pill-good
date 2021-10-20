@@ -8,9 +8,5 @@ class QnaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Qna
-        fields = ['qna_id', 'title', 'question_user', 'question', 'answer_user', 'answer']
+        fields = ['qna_id', 'title', 'category', 'question_user', 'question', 'answer_user', 'answer', 'date']
 
-    def get_answer(self, instance):
-        serializers = self.__class__(instance.answer, many=True)
-        serializers.bind('', self)
-        return serializers.data

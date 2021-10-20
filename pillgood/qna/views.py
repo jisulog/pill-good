@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Qna
-from .serializers import QnaSerializer
+from qna.serializers import QnaSerializer
 
 
 @api_view(['GET'])
@@ -17,26 +17,18 @@ def qna_index(request):
 
 @api_view(['GET'])
 def qna_detail(request, pk):
-    if request.user.is_authenticated:
-        qna = Qna.objects.get(qna_id=pk)
-        serializer = QnaSerializer(qna, many=True)
-        return Response(serializer.data)
-    else:
-        return Response({"message": "로그인 해주세요!"})
+    qna = Qna.objects.get(qna_id=pk)
+    serializer = QnaSerializer(qna, many=False)
+    return Response(serializer.data)
 
 
 @api_view(['POST'])
 def qna_create(request):
-    if request.user.is_authenticated:
-        serializer = QnaSerializer(data=request.data)
-        print(serializer)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
-    else:
-        return Response({"message": "로그인 해주세요!"})
+    serializer = QnaSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+
 
 
 @api_view(['PUT'])
