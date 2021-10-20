@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import ManagerStore from '../store/ManagerStore';
-
+import { Link } from 'react-router-dom';
 
 class ManagerLecUpdateContainer extends Component {
   managerStore = ManagerStore;
@@ -51,15 +51,15 @@ class ManagerLecUpdateContainer extends Component {
           <option value="3">8인</option>
         </select><br />
         활성
-        <div name="status" value={lec.status||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
+        <div name="status" value={lec.status} onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
           <input type="radio" id="status2" name="status" value="2" />
-          <label for="dewey">승인</label>
-          <input type="radio" id="status8" name="status" value="3" />
-          <label for="louie">반려</label>
+          <label htmlFor="o">승인</label>
+          <input type="radio" id="status3" name="status" value="3" />
+          <label htmlFor="x">반려</label>
         </div>
-        <button onClick={()=>updateLec()}>수정</button> &nbsp;&nbsp; 
-        <button onClick={()=>deleteLec()}>삭제</button> &nbsp;&nbsp; 
+        <Link to={`/manager/lec/${lec.lec_id}`}><button onClick={()=>updateLec()}>수정</button></Link>
+        <Link to={`/manager/lec/${lec.lec_id}`}><button onClick={()=>deleteLec()}>삭제</button></Link>
+        <Link to={`/manager/lec/${lec.lec_id}`}><button>수정취소</button></Link>
       </div>
     );
   }

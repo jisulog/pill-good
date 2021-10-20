@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import ManagerStore from '../store/ManagerStore';
-
+import { Link } from 'react-router-dom';
 
 class ManagerMembershipCreateContainer extends Component {
   managerStore = ManagerStore;
   render() {
-    const { membership, createMembership, setMembershipProps } = this.managerStore;
+    const { membership, createMembership, setMembershipProps, handleGoBack } = this.managerStore;
     return (
       <div>
         횟수: <input type="number" id="number" name="number" value={membership.number||""} 
@@ -40,7 +40,8 @@ class ManagerMembershipCreateContainer extends Component {
           <input type="radio" id="status2" name="status" value="2" />
           <label htmlFor="x">비활성</label>
         </div>
-        <button onClick={()=>createMembership()}>추가</button>
+        <Link to="/manager/membership/"><button onClick={()=>createMembership()}>추가</button></Link>
+        <button onClick={()=>handleGoBack()}>뒤로</button>
       </div>
     );
   }

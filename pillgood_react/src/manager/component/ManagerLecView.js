@@ -8,7 +8,9 @@ class ManagerLecView extends Component {
     return (
       <div>
         {lec.title}
-        
+        {lec.status === 1 ? "승인대기":
+        lec.status === 2 ? "승인":
+        lec.status === 3 ? "거절" : ""}
       </div>
     );
   }

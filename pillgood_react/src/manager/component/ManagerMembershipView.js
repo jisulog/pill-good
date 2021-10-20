@@ -6,11 +6,12 @@ class ManagerMembershipView extends Component {
     const {membership} = this.props;
     return (
       <div>
-        {membership.number}<br/>
-        {membership.period}<br/>
-        {membership.price}<br/>
-        {membership.type}<br/>
-        {membership.status}<br/>
+        횟수: {membership.number} / 
+        기간: {membership.period} /
+        가격: {membership.price} /
+        유형: {membership.type} /
+        상태: {membership.status === 1 ? "활성" :
+        membership.status === 2 ? "비활성": ""}
       </div>
     );
   }
