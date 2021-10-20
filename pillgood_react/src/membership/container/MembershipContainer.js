@@ -11,28 +11,21 @@ class MembershipContainer extends Component {
     }
     render() {
         const {memberships} = this.membershipStore;
-        const membershipList1 = memberships.map(membership =>{
+        const membershipList = memberships.map(membership =>{
             return <MembershipView key={membership.membership_id} membership = {membership} />  
         
             
         });
       
-        const membershipList2 = memberships.map(membership =>{
-            return <MembershipView key={membership.membership_id} membership = {membership} />  
-        
-        });
-        const membershipList3 = memberships.map(membership =>{
-            return <MembershipView key={membership.membership_id} membership = {membership} />  
-        });
         return (
             <div>
                 <h1>Membership Page</h1>
                 <h3>One-on-One(1:1)</h3>
-                {membershipList1}
+                {membershipList}
                 <h3>Couple(1:2)</h3>
-                {membershipList2}
+                {membershipList}
                 <h3>Group(1:8)</h3>
-                {membershipList3}
+                {membershipList}
                 
             </div>
         );

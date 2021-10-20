@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import QnaContainer from '../container/QnaContainer'
+import QnaUpdateContainer from '../container/QnaUpdateContainer'
 class QnaUpdatePage extends Component {
     render() {
         return (
             <div>
-                update page
-                <QnaContainer />
+                <QnaUpdateContainer />
             </div>
         );
     }

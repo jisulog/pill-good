@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import QnaContainer from '../container/QnaContainer'
+import QnaCreateContainer from '../container/QnaCreateContainer'
 class QnaCreatePage extends Component {
     render() {
         return (
             <div>
-                create page
-                <QnaContainer />
+                <QnaCreateContainer />
             </div>
         );
     }
