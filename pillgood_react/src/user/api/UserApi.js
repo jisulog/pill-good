@@ -15,16 +15,16 @@ class UserApi{
     })
       .then((response)=>response.data)};
 
-
     // http://127.0.0.1:3000/user/login
     // http://127.0.0.1:3000/api_auth/
     userLogin(email, password) {
-    return axios.post(this.URL+'login/',
+    return axios.get(this.URL+'login/',
     {
     email:`${email}`,
     password:`${password}`
     })
       .then((response)=>response.data)};
+      
 }
 
 export default new UserApi();

@@ -1,4 +1,6 @@
 from django.contrib.auth import authenticate
+from django.utils import timezone
+
 from .models import User
 from rest_framework import serializers
 from django.contrib.auth.models import update_last_login
@@ -14,17 +16,16 @@ class UserSerializer(serializers.ModelSerializer):
             # intro=validated_data['intro'],  회원가입 이후 작성하기로 함
             type=validated_data['type'],
             # image=validated_data['image'],  회원가입 이후 작성하기로 함
-            # join_date=validated_data['join_date'], # 자동(입력x)
-            # last_login=validated_data['last_login'],  # 자동(입력x)
         )
         return user
 
     class Meta:
         model = User
-        fields = ['email', 'password', 'name', 'phone', 'type']
+        fields = ['id', 'email', 'password', 'name', 'phone', 'type', 'join_date', 'last_login']
 
 
 class LoginSerializer(serializers.ModelSerializer):
+    user = UserSerializer
     email = serializers.CharField(max_length=255)
     password = serializers.CharField(max_length=128, write_only=True)
     # token = serializers.CharField(max_length=255, read_only=True)
@@ -46,7 +47,6 @@ class LoginSerializer(serializers.ModelSerializer):
             )
         return {
             'email': user.email,
-            # 'token': jwt_token
         }
 
     class Meta:

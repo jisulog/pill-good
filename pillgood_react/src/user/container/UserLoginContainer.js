@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import {observer} from 'mobx-react';
 import UserStore from "../store/UserStore";
 
@@ -12,7 +13,8 @@ class UserLoginContainer extends Component {
 //    }
 
     render() {
-        const {user, handlerSet, handlerLogin} = this.userStore;
+        const {handlerSet, handlerLogin} = this.userStore;  
+
 
         return (
             <div>
@@ -21,19 +23,21 @@ class UserLoginContainer extends Component {
                     <div>
                         <label>이메일 : </label>
                         <input type="email"
-                               name="email"
-                               value={this.userStore.user.email}
+                               name="email"                               
                                onChange={(e)=>handlerSet(e.target.name, e.target.value)}/>
                     </div>
                     <div>
                         <label>비밀번호 : </label>
                         <input type="password"
-                               name="password"
-                               value={this.userStore.user.password}
+                               name="password"                               
                                onChange={(e)=>handlerSet(e.target.name, e.target.value)}/>
                     </div>
-                    <button onClick={()=>handlerLogin()}>로그인</button>
+                    {/* link event안으로 변경하기 */}
+                    {/* <Link to="/">                       */}
+                      <input type="submit" onClick={()=>handlerLogin()} value="로그인"/>
+                    {/* </Link> */}
                 </form>
+                <h1>email:{this.userStore.user.email}</h1>
             </div>
         );
     }
