@@ -11,19 +11,20 @@ class LecListContainer extends Component {
         this.lecStore.selectAll(); //mount 되면 전체 강의
     }
 
+
     render() {
         const {lecs} = this.lecStore;
-        console.log(lecs.length)
-        const lecList = lecs.map((element)=>{
-            // console.log(element)
+        const {id} =this.props;
+        const lecList = lecs && lecs.map((element)=>{
             return (<LecView key={element.lec_id} lec = {element}/>)
 
         });
-        console.log(lecList)
+
         return(
             <div>
             <h1>강의 목록</h1>
              {lecList}
+
             </div>
           );
         }

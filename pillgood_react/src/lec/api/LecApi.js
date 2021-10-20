@@ -22,12 +22,11 @@ class LecApi {
     }
 
     // 'book/create/'
-    bookCreate(book) {
-        return axios.post(this.URL+'book/create/',{
-            book_id:`${book.book_id}`,
-            email:`${book.email}`,
-            lec_id:`${book.lec_d}`,
-            status:`${book.status}`})
+    bookCreate(email, lec_id, status) {
+        return axios.post(this.URL+`create/book/${lec_id}/`,{
+            email:`${email}`,
+            lec_id:`${lec_id}`,
+            status:`${status}`})
         .then((response) => response.data);
  }
 

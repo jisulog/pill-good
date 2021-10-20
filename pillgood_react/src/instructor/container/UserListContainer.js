@@ -11,14 +11,12 @@ class UserListContainer extends Component {
     componentDidMount() {
         this.instructorStore.selectAllUser(); //mount 되면 전체 강의
     }
-
+  
     render() {
         const {users} = this.instructorStore;
-        console.log(users.length)
         const usersList = users.map((user)=>{
-            console.log(user)
             return (<UserListView user = {user}/>)
-        });
+        });   
         console.log(usersList)
         return(
             <div>

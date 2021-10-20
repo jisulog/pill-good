@@ -11,5 +11,5 @@ class LecCreatePage extends Component {
         );
     }
 }
-
+     
 export default LecCreatePage;
