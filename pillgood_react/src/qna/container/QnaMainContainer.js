@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {observer} from 'mobx-react';
 import QnaStore from '../store/QnaStore';
 import QnaMainView from '../component/QnaMainView';
+import { Link } from 'react-router-dom';
 
 //List
 class QnaMainContainer extends Component {
@@ -21,8 +22,8 @@ class QnaMainContainer extends Component {
             <div>
                 <h1>QnA List</h1>
                 {qnaList}
-                <button onClick={()=>createQna()}>글쓰기</button>
-                <button onClick={()=>selectQnaAll()}>목록</button>
+                <Link to={`/qna/create/`}>글작성</Link>
+                <Link to={`/qna/`}>목록</Link>
             </div>
         );
     }
