@@ -22,7 +22,7 @@ def join(request):
     return Response({'message': 'success'})
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 def login(request):
     """
     로그인 뷰
@@ -36,13 +36,13 @@ def login(request):
         return Response({"message": "Error."})
     if serializer.validated_data['email'] == "None":
         return Response({'message': 'fail'})
-    print(serializer.validated_data['email'])
+    print(serializer.validated_data['email'], serializer.validated_data['id'])
     # user = User.objects.filter(email=request.data["email"])
     # print(user)
     # userserializer = UserSerializer(user)
     # print(userserializer.data)
     # return Response(userserializer.data)
-    return Response({"email":serializer.validated_data['email']})
+    return Response({"email":serializer.validated_data['email'], "id":serializer.validated_data['id']})
 
     # get 변경 후 Bad Request: /user/login/
 

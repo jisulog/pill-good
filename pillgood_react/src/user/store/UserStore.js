@@ -47,7 +47,9 @@ class UserStore {
         // });
         console.log("loginresult", result);
         window.localStorage.setItem('email', result.email);
+        window.localStorage.setItem('id', result.id);
         window.sessionStorage.setItem('email', result.email);
+        window.sessionStorage.setItem('id', result.id);
       }catch(error){
         console.log(error)
       this.message = `아이디 또는 비밀번호가 잘못 입력되었습니다.`
