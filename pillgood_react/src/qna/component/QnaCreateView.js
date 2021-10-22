@@ -1,50 +1,46 @@
 import React, { Component} from 'react';
-import QnaStore from '../store/QnaStore';
 import {observer} from 'mobx-react';
+import { Link } from 'react-router-dom';
 
 class QnaCreateView extends Component {
-    qnaStore = QnaStore;
- 
     render() {
-        const {qna, handlerSet, createQna} = this.qnaStore;
-        
+        const {onsetprops, oncreate, member} = this.props;
         return (
             <div>
                 <h1>create page</h1>
                 <form>
                     <div>
-                        <lable>제목 : </lable>
-                        <input type="text" name="title" value={qna.title||""}
-                        onChange={(e)=>handlerSet(e.target.name, e.target.value)}/>
-                    </div>
-                  
-                    <div>
-                        <lable>작성자 : </lable>
-                     
+                        <lable htmlFor ="title">제목 : </lable>
+                        <input type="text" name="title" id = "title"
+                        onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
                     <div>
-                        <lable>카테고리 : </lable>
-                        <select name="type" value={this.qnaStore.qna.type} onChange={(e)=>handlerSet(e.target.name, e.target.value)}>
+                        <lable htmlFor ="question_user">작성자 : </lable>
+                        <span id = "question_user">
+                            {member.name}
+                        </span>
+         
+                    </div>
+                    <div>
+                        <lable htmlFor = "category">카테고리 : </lable>
+                        <select name="category" id="category" onChange={(e)=>onsetprops(e.target.name, e.target.value)}>
                             <option value="none">카테고리</option>
-                            <option value="1">예약문의</option>
-                            <option value="2">강의문의</option>
-                            <option value="3">운동문의</option>
-                            <option value="4">기타문의</option>
+                            <option value="예약문의">예약문의</option>
+                            <option value="강의문의">강의문의</option>
+                            <option value="운동문의">운동문의</option>
+                            <option value="기타문의">기타문의</option>
                         </select>
                     </div>
                     <div>
-                        <lable>작성일 : </lable>
-                    
-                    </div>
-                    <div>
                         내용<br/>
-                        <textarea name="question" value={qna.question} 
-                        onChange={(e)=>handlerSet(e.target.name, e.target.value)}/>
+                        <textarea name="question" 
+                        onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
-                    <button onClick>저장</button>
-                    <button >취소</button>
+                    <input type="submit" onClick={()=>oncreate(`${member.name}`)} value= "저장" />
+
+                   
                 </form>  
-                
+                <Link to={`/qna/`}>목록</Link>
             </div>
         );
     }
