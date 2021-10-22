@@ -8,6 +8,7 @@ from lec.models import Lec
 from membership.models import Pay, Membership
 # Create your views here.
 
+
 # user
 @api_view(['GET'])
 def manager_user(request):

@@ -17,8 +17,26 @@ class ManagerLecUpdateContainer extends Component {
       <div>
         강의명: <input type="text" id="title" name="title" value={lec.title||""} 
         onChange={(e)=>setLecProps(e.target.name, e.target.value)} placeholder="강의명" /><br />
-        <textarea name="content" id="content" value={lec.content||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)}></textarea><br />
+        날짜: <input type="date" id="date" name="date" value={lec.date||""}
+        onChange={(e)=>setLecProps(e.target.name, e.target.value)} /><br />
+        난이도: 
+        <select name="level" id="level" value={lec.level||""}
+        onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
+          <option value="">--난이도--</option>
+          <option value="1">level-1</option>
+          <option value="2">level-2</option>
+          <option value="3">level-3</option>
+        </select><br />
+        시간: <input type="time" id="time" name="time"  value={lec.time||""}
+        onChange={(e)=>setLecProps(e.target.name, e.target.value)}/><br />
+        인원:
+        <select name="number" id="number" value={lec.number||""}
+        onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
+          <option value="">--인원--</option>
+          <option value="1">1인</option>
+          <option value="2">2인</option>
+          <option value="3">8인</option>
+        </select><br />
         강의실:
         <select name="room" id="room" value={lec.room||""}
         onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
@@ -30,27 +48,8 @@ class ManagerLecUpdateContainer extends Component {
           <option value="202호">202호</option>
           <option value="101호">101호</option>
         </select><br />
-        날짜: <input type="date" id="date" name="date" value={lec.date||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)} /><br />
-        시간: <input type="time" id="time" name="time"  value={lec.time||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)}/><br />
-        난이도: 
-        <select name="level" id="level" value={lec.level||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
-          <option value="">--난이도--</option>
-          <option value="1">level-1</option>
-          <option value="2">level-2</option>
-          <option value="3">level-3</option>
-        </select><br />
-        인원:
-        <select name="number" id="number" value={lec.number||""}
-        onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
-          <option value="">--인원--</option>
-          <option value="1">1인</option>
-          <option value="2">2인</option>
-          <option value="3">8인</option>
-        </select><br />
-        활성
+        <textarea name="content" id="content" value={lec.content||""}
+        onChange={(e)=>setLecProps(e.target.name, e.target.value)}></textarea><br />
         <div name="status" value={lec.status} onChange={(e)=>setLecProps(e.target.name, e.target.value)}>
           <input type="radio" id="status2" name="status" value="2" />
           <label htmlFor="o">승인</label>
@@ -58,7 +57,7 @@ class ManagerLecUpdateContainer extends Component {
           <label htmlFor="x">반려</label>
         </div>
         <Link to={`/manager/lec/${lec.lec_id}`}><button onClick={()=>updateLec()}>수정</button></Link>
-        <Link to={`/manager/lec/${lec.lec_id}`}><button onClick={()=>deleteLec()}>삭제</button></Link>
+        <Link to={`/manager/lec/`}><button onClick={()=>deleteLec()}>삭제</button></Link>
         <Link to={`/manager/lec/${lec.lec_id}`}><button>수정취소</button></Link>
       </div>
     );
