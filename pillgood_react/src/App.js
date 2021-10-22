@@ -32,6 +32,7 @@ import PayPage from "./membership/pages/PayPage";
 import BookPage from "./lec/pages/BookPage";
 import LecDetailPage from "./lec/pages/LecDetailPage";
 import LecMainPage from "./lec/pages/LecMainPage";
+import BookCreatePage from "./lec/pages/BookCreatePage"
 
 import QnaMainPage from "./qna/pages/QnaMainPage";
 import QnaDetailPage from "./qna/pages/QnaDetailPage";
@@ -74,7 +75,7 @@ class App extends Component {
                     />
                     <Route
                         exact
-                        path="/member/paylist/refund"
+                        path="/member/refund/:id"
                         component={MemberPayRefundPage}
                     />
                     <Route
@@ -101,7 +102,7 @@ class App extends Component {
                     />
                     <Route
                         exact
-                        path="/instructor/lec/user"
+                        path="/instructor/user/:id"
                         component={UserListPage}
                     />
 
@@ -154,6 +155,7 @@ class App extends Component {
                     <Route exact path="/lec" component={LecMainPage} />
                     <Route exact path="/lec/:id" component={LecDetailPage} />
                     <Route exact path="/lec/book/:id" component={BookPage} />
+                    <Route exact path="/lec/create/book/:id" component={BookCreatePage} />
 
                     {/* qna */}
                     <Route exact path="/qna" component={QnaMainPage} />

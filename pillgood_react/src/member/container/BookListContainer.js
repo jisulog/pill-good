@@ -9,17 +9,17 @@ class BookListContainer extends Component {
     componentDidMount() {
         let user = window.localStorage.getItem("id");
         if (user === "" || user === null) {
-            user = 1;
+            user = 4;
         }
 
         this.bookStore.selectBookAll(user);
     }
 
     render() {
-        const { books } = this.bookStore;
+        const { books, cancelBook } = this.bookStore;
 
         const bookList = books.map((book) => {
-            return <BookListView key={book.book_id} book={book} />;
+            return <BookListView key={book.book_id} book={book} onCancel={cancelBook} />;
         });
 
         return (

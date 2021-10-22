@@ -27,7 +27,7 @@ class PayActiveItemView extends Component {
                 <dl>
                     <dt>횟수</dt>
                     <dd>
-                        {pay.membership_id.number}회 중 {pay.remain} 회 남음
+                        {pay.membership_id.period}회 중 {pay.remain} 회 남음
                     </dd>
                 </dl>
             </div>

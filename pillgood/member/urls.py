@@ -19,12 +19,14 @@ from . import views
 
 app_name = 'member'
 urlpatterns = [
-    path('<int:id>', views.main, name='main'),
-    path('update/<int:id>', views.update, name='update'),
-    path('passwordupdate/<int:id>', views.password_update, name='password_update'),
-    path('delete/<int:id>', views.delete, name='delete'),
-    path('paylist/<int:id>', views.paylist, name='paylist'),
+    path('<int:id>/', views.main, name='main'),
+    path('update/<int:id>/', views.update, name='update'),
+    path('passwordupdate/<int:id>/', views.password_update, name='password_update'),
+    path('delete/<int:id>/', views.delete, name='delete'),
+    path('paylist/<int:id>/', views.paylist, name='paylist'),
+    path('paylist/detail/<int:pk>/', views.pay_detail, name='pay_detail'),
     path('paylist/refund/<int:pk>/', views.pay_refund, name='pay_refund'),
-    path('book/<int:id>', views.book, name='book'),
+    path('book/<int:id>/', views.book, name='book'),
+    path('book/detail/<int:pk>/', views.book_detail, name='book_detail'),
     path('book/cancel/<int:pk>/', views.book_cancel, name='book_cancel'),
 ]

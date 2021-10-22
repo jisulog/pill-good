@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class BookListView extends Component {
     render() {
-        const {book} = this.props;
+        const {book, onCancel} = this.props;
         return (
             <tr>
                 <td>{book.lec_id.title}</td>
@@ -15,7 +15,15 @@ class BookListView extends Component {
                 </td>
                 <td>
                     {book.status === 1
-                        ? "예약"
+                        ? (<span>예약
+                              <input
+                                  type="button"
+                                  value="취소"
+                                  onClick={(e) => {
+                                      onCancel(book.book_id, book.email.id);
+                                  }}
+                              /></span>)
+                          
                         : book.status === 2
                         ? "취소"
                         : "완료"}

@@ -2,16 +2,10 @@ import React, { Component } from "react";
 
 class PasswordUpdateView extends Component {
     render() {
-        // const { member } = this.props;
+        // const {} = this.props;
 
         return (
             <div>
-                <dl>
-                    <dt>기존 비밀번호</dt>
-                    <dd>
-                        <input type="password" />
-                    </dd>
-                </dl>
                 <dl>
                     <dt>신규 비밀번호</dt>
                     <dd>

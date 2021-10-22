@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
-import PayRefundContainer from '../container/PayRefundContainer';
+import React, { Component } from "react";
+import PayRefundContainer from "../container/PayRefundContainer";
 
 class MemberPayRefundPage extends Component {
     render() {
+        // const { pay_id } = this.props.location.state.pay_id;
         return (
             <div>
-                <PayRefundContainer />
+                <PayRefundContainer payId={this.props.match.params['id']}/>
             </div>
         );
     }

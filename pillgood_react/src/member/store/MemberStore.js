@@ -86,6 +86,29 @@ class MemberStore {
         }
     }
 
+    async deleteMember() {
+        try {
+            this.member.is_active = 0;
+            await memberApi.memberDelete(
+                this.member.id,
+                this.member.password,
+                this.member.name,
+                this.member.phone,
+                this.member.intro,
+                this.member.image,
+                this.member.type,
+                this.member.is_active
+            );
+
+            runInAction(() => {
+                this.selectMember(this.member.id);
+                window.location.replace("/member");
+            });
+        } catch (error) {
+            runInAction((this.message = error.message));
+        }
+    } 
+
     // image upload start
     // handleFileInput(e) {
     //     this.setState({

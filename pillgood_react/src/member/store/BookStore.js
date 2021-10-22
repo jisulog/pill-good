@@ -6,27 +6,9 @@ class BookStore {
 
     book = {
         book_id: 0,
-        email: {
-            id: 0,
-            name: "",
-            phone: "",
-        },
-        lec_id: {
-            lec_id: 0,
-            title: "",
-            room: "",
-            date: "",
-            time: "",
-            level: 0,
-            email: {
-                email: "",
-                name: "",
-                intro: ""
-            },
-            number: 0,
-            status: 0
-        },
-        status: 1
+        email: 0,
+        lec_id: 0,
+        status: 0
     };
     message = "";
 
@@ -54,6 +36,41 @@ class BookStore {
             });
         } catch (error) {
             runInAction(() => (this.message = error.message));
+        }
+    }
+
+    async selectBook(bookId) {
+        try {
+            const result = await MemberApi.bookDetail(bookId);
+
+            runInAction(() => {
+                this.book = result;
+                console.log(333)
+            });
+        } catch (error) {
+            runInAction(() => (this.message = error.message));
+        }        
+    }
+
+    async cancelBook(bookId, id){
+        try {
+            const result = await MemberApi.bookDetail(bookId);
+            this.book = result;
+            this.book.status = 2;
+            
+            await MemberApi.bookCancel(
+                this.book.book_id,
+                this.book.email,
+                this.book.lec_id,
+                this.book.status,
+            );
+
+            runInAction(() => {
+                this.selectBookAll(id);
+                
+            });
+        } catch (error) {
+            runInAction((this.message = error.message));
         }
     }
 }
