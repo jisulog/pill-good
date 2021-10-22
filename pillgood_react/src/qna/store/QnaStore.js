@@ -12,6 +12,7 @@ class QnaStore {
     }
 
     qnas = [];
+    qnaFilter = [];
     message = "";
 
     constructor() {
@@ -70,6 +71,7 @@ class QnaStore {
                 this.qna.category,
                 this.qna.question_user,
                 this.qna.question,
+                this.qna.answer
                 );
             this.selectQnaAll();
         } catch (error) {
@@ -81,12 +83,15 @@ class QnaStore {
     //qna 삭제하기
     async handlerRemove() {
         try {
-            console.log("aa");
             await qnaApi.qnaDelete(this.qna.qna_id);
         } catch (error) {
             console.log(error);
         }
     }
+
+    changeQnaFilter(qnaFilter){
+        this.qnaFilter = qnaFilter;
+      }
 
     handlerSet(name, value) {
         this.qna = {

@@ -10,11 +10,11 @@ class PayContainer extends Component {
         this.membershipStore.selectPay();
     }
     render() {
-        const {pay} = this.membershipStore;
+        const {membership} = this.membershipStore;
         return (
             <div>
                 <h1>Pay Page</h1>
-                <PayView pay={pay} />
+                <PayView membership={membership} />
                 
             </div>
         );

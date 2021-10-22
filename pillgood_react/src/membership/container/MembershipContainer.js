@@ -8,24 +8,30 @@ class MembershipContainer extends Component {
 
     componentDidMount() {
         this.membershipStore.selectMembershipAll();
+        
     }
     render() {
-        const {memberships} = this.membershipStore;
-        const membershipList = memberships.map(membership =>{
-            return <MembershipView key={membership.membership_id} membership = {membership} />  
-        
-            
+        const {memberships, setmembership, Pay} = this.membershipStore;
+        const user = window.localStorage.getItem("id");
+        const membershipList1 = memberships.filter((membership)=>membership.type===1).map(membership =>{
+            return <span onClick={(e) => setmembership(membership.membership_id)}><MembershipView key={membership.membership_id} membership = {membership} user={user} pay={Pay}/></span>
         });
-      
+        const membershipList2 = memberships.filter((membership)=>membership.type===2).map(membership =>{
+            return <MembershipView key={membership.membership_id} membership = {membership} user={user} />
+        });
+        const membershipList3 = memberships.filter((membership)=>membership.type===3).map(membership =>{
+            return <MembershipView key={membership.membership_id} membership = {membership} user={user} />
+        });
+        
         return (
             <div>
                 <h1>Membership Page</h1>
                 <h3>One-on-One(1:1)</h3>
-                {membershipList}
+                {membershipList1}
                 <h3>Couple(1:2)</h3>
-                {membershipList}
+                {membershipList2}
                 <h3>Group(1:8)</h3>
-                {membershipList}
+                {membershipList3}
                 
             </div>
         );

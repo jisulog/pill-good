@@ -40,7 +40,7 @@ class QnaCreateView extends Component {
 
                    
                 </form>  
-                <Link to={`/qna/`}>목록</Link>
+                <Link to={`/qna/`}><button>목록</button></Link>
             </div>
         );
     }

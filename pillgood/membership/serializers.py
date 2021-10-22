@@ -10,7 +10,6 @@ class MembershipSerializer(serializers.ModelSerializer):
 
 
 class PaySerializer(serializers.ModelSerializer):
- 
     class Meta:
         model = Pay
         fields = ['pay_id', 'email', 'pay_type', 'remain', 'end_date', 'membership_id', 'status']

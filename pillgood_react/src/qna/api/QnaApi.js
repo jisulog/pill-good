@@ -26,18 +26,19 @@ class QnaApi{
     }
 
     // 'update/<int:pk>/' [PUT]
-    qnaUpdate(qna_id, title, category, question_user, question){
+    qnaUpdate(qna_id, title, category, question_user, question, answer){
         return axios.put(this.URL + `update/${qna_id}/`, {
             title: `${title}`,
             category : `${category}`,
             question_user: `${question_user}`,
             question: `${question}`,
+            answer : `${answer}`
         }).then((response) => response.data);
     }
     
     // 'delete/<int:pk>/' [DELETE]
     qnaDelete(qna_id){
-        return axios.delete(this.URL + `delete/${qna_id}/`).then((response) => response.data, console.log("aaa"))
+        return axios.delete(this.URL + `delete/${qna_id}/`).then((response) => response.data).catch((error)=>console.log(error));
     }
 
     // 'answer/<int:pk>/' [POST]

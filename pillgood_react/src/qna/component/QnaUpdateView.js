@@ -32,7 +32,7 @@ class QnaUpdateView extends Component {
                         onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
                     <input type="submit" onClick={()=>onupdate()} value="수정"/>
-                    <Link to={`/qna/`}>목록</Link>
+                    <Link to={`/qna/`}><button>목록</button></Link>
                 </form>  
             </div>
         );
