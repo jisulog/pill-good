@@ -18,7 +18,7 @@ class UserApi{
     // http://127.0.0.1:3000/user/login
     // http://127.0.0.1:3000/api_auth/
     userLogin(email, password) {
-    return axios.get(this.URL+'login/',
+    return axios.post(this.URL+'login/',
     {
     email:`${email}`,
     password:`${password}`

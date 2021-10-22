@@ -34,7 +34,7 @@ class UserLoginContainer extends Component {
                     </div>
                     {/* link event안으로 변경하기 */}
                     {/* <Link to="/">                       */}
-                      <input type="submit" onClick={()=>handlerLogin()} value="로그인"/>
+                      <input type="button" onClick={()=>handlerLogin()} value="로그인"/>
                     {/* </Link> */}
                 </form>
                 <h1>email:{this.userStore.user.email}</h1>

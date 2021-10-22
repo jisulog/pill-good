@@ -62,7 +62,7 @@ class UserJoinContainer extends Component {
                    </div>
                    {/* link event안으로 변경하기 */}
                    {/* <Link to="/user/login">   */}
-                     <input type="submit" onClick={()=>handlerJoin()} value="가입하기"/>
+                     <input type="button" onClick={()=>handlerJoin()} value="가입하기"/>
                    {/* </Link> */}
                 </form>
             </div>
