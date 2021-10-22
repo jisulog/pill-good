@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import MemberUpdateView from "../component/MemberUpdateView";
 import MemberStore from "../store/MemberStore";
+import Bucket from "../../image/Bucket";
 
 class MemberUpdateContainer extends Component {
     memberStore = MemberStore;
@@ -17,6 +18,7 @@ class MemberUpdateContainer extends Component {
         const { member, handlerSetProps, updateMember } = this.memberStore;
         return (
             <div>
+                <Bucket />
                 <MemberUpdateView
                     member={member}
                     onSetProps={handlerSetProps}

@@ -35,6 +35,41 @@ class PayStore {
             runInAction(() => (this.message = error.message));
         }
     }
+
+    async selectPay(payId) {
+        try {
+            const result = await MemberApi.payDetail(payId);
+
+            runInAction(() => {
+                this.pay = result;
+            });
+        } catch (error) {
+            runInAction(() => (this.message = error.message));
+        }
+    }
+
+    async refundPay() {
+        try {
+            this.pay.status = 2;
+            await MemberApi.payRefund(
+                this.pay.pay_id,
+                this.pay.pay_type,
+                this.pay.remain,
+                this.pay.pay_date,
+                this.pay.end_date,
+                this.pay.membership_id,
+                this.pay.status,
+            );
+
+            runInAction(() => {
+                this.selectPay(this.pay.pay_id);
+                window.location.replace("/member/paylist");
+            });
+        } catch (error) {
+            runInAction(() => (this.message = error.message));
+        }        
+    }
+
 }
 
 export default new PayStore();

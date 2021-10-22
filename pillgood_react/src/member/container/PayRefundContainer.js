@@ -8,14 +8,22 @@ class PayRefundContainer extends Component {
     payStore = PayStore;
     memberStore = MemberStore;
 
-    componentDidMount() {}
+    componentDidMount() {
+        let user = window.localStorage.getItem("id");
+        if (user === "" || user === null) {
+            user = 1;
+        }
+        this.memberStore.selectMember(user);
+
+        this.payStore.selectPay(this.props.payId);
+    }
 
     render() {
-        const { pay } = this.payStore;
+        const { pay, refundPay } = this.payStore;
         const { member } = this.memberStore;
         return (
             <div>
-                <PayRefundView pay={pay} member={member} />
+                <PayRefundView pay={pay} member={member} onRefund={refundPay}/>
             </div>
         );
     }

@@ -1,13 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from lec.models import Lec
-from lec.serializers import BookSerializer
 from manager.models import Book
 from manager.serializers import BookSerializer
 from membership.models import Pay
 from user.models import User
-from .serializers import UserSerializer, PaySerializer, PaySerializer  # , PasswordSerializer
+from .serializers import UserSerializer, PaySerializer  # , PasswordSerializer
 
 
 @api_view(['GET'])
@@ -103,6 +101,17 @@ def paylist(request, id):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def pay_detail(request, pk):
+    """
+    결제 디테일
+    """
+    # serializer로 데이터 정렬해 update
+    pay = Pay.objects.get(pay_id=pk)
+    serializer = PaySerializer(pay, many=False)
+    return Response(serializer.data)
+
+
 @api_view(['PUT'])
 def pay_refund(request, pk):
     """
@@ -110,11 +119,13 @@ def pay_refund(request, pk):
     """
 
     # serializer로 데이터 정렬해 update
-    pay = Pay.objects.get(id=pk)
+    pay = Pay.objects.get(pay_id=pk)
+    print(111)
     serializer = PaySerializer(instance=pay, data=request.data)
-
+    print(2222)
     if serializer.is_valid():
         serializer.save()
+        print(3333)
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
@@ -135,6 +146,19 @@ def book(request, id):
 
     # 예약정보 가져와서 count(역참조)
 
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def book_detail(request, pk):
+    """
+    예약한 강의 디테일 보기
+    """
+    # 예약정보 가져와서 serializer로 데이터 정렬
+    books = Book.objects.get(book_id=pk)
+    serializer = BookSerializer(books, many=False)
+
+    # 예약정보 가져와서 count(역참조)
 
     return Response(serializer.data)
 
@@ -154,3 +178,4 @@ def book_cancel(request, pk):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
+

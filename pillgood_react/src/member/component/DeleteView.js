@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class DeleteView extends Component {
     render() {
-        const { pay, period } = this.props;
+        const { pay, period, onDelete } = this.props;
         let html;
 
         if (pay.remain > 0 && period > 0) {
@@ -28,10 +28,9 @@ class DeleteView extends Component {
                 <div>
                     <p>
                         소진되지 않은 멤버십이 존재하지 않습니다. <br/>
-                        탈퇴하시려면 비밀번호를 입력해주세요.
+                        탈퇴하시려면 아래 버튼을 눌러주세요.
                     </p>
-                    <input type="password" />
-                    <input type="button" value="회원 탈퇴" />
+                    <input type="button" value="회원 탈퇴" onClick={(e)=>onDelete()}/>
                 </div>
             );
         }

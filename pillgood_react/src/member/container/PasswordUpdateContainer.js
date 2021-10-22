@@ -15,7 +15,7 @@ class PasswordUpdateContainer extends Component {
         const {member} = this.memberStore; 
         return (
             <div>
-                <PasswordUpdateView member={member} />
+                <PasswordUpdateView member={member}/>
             </div>
         );
     }

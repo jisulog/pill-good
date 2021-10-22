@@ -9,14 +9,21 @@ class DeleteContainer extends Component {
     payStore = PayStore;
 
     componentDidMount() {
-        this.memberStore.selectMember(1);
+        let user = window.localStorage.getItem("id");
+        if (user === "" || user === null) {
+            user = 4;
+        }
+
+        this.memberStore.selectMember(user);
+        this.payStore.selectMember(user);
     }
 
     render() {
         const { pay, period } = this.payStore;
+        const {deleteMember} = this.memberStore;
         return (
             <div>
-                <DeleteView pay={pay} period={period} />
+                <DeleteView pay={pay} period={period} onDelete={deleteMember}/>
             </div>
         );
     }
