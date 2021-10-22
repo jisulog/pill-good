@@ -23,7 +23,7 @@ class LecListContainer extends Component {
         return(
             <div>
             <h1>강의 목록</h1>
-             {lecList}
+               {lecList}
 
             </div>
           );

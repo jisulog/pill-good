@@ -4,9 +4,9 @@ import axios from "axios";
 class InstructorApi {
     URL = '/instructor/';
 
-    // 'lec/user'    #회원 목록
-    userList() {
-        return axios.get(this.URL+'user/').then((response) => response.data);
+    // 'user/<int:pk>'    #회원 목록
+    userList(id) {
+        return axios.get(this.URL+`user/${id}/`).then((response) => response.data, console.log("api"));
     }
 
     // 'lec/'          #자신의 강의 목록 

@@ -20,7 +20,7 @@ class BookCreateContainer extends Component {
     return (
       <div>
           <h1>예약 확정</h1>
-          <BookCreateView book={book} lec={lec} />
+          <BookCreateView book={book} lec={lec} createBook={createBook} setBookProps={setBookProps}/>
       </div>
 
     );

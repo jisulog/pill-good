@@ -9,7 +9,9 @@ class UserListContainer extends Component {
   instructorStore = InstructorStore;
 
     componentDidMount() {
-        this.instructorStore.selectAllUser(); //mount 되면 전체 강의
+        const {id} = this.props;
+        console.log(id)
+        this.instructorStore.selectAllUser(id); //mount 되면 전체 강의
     }
   
     render() {

@@ -22,20 +22,21 @@ class BookCreateView extends Component {
                                 value={lec.email}
                                 onChange={(e)=>setBookProps(e.target.name, e.target.value)}
                                 placeholder="강사명 " /><br />
-                강의번호 : <input type="number"
+               강의번호 : <input type="number"
                                 id="lec_id"
                                 name="lec_id"
                                 value={lec.lec_id}
                                 onChange={(e)=>setBookProps(e.target.name, e.target.value)}
                                 placeholder="강의번호 " /><br />
-                상태 : <input type="number"
+               상태 : <input type="number"
                                 id="status"
                                 name="status"
                                 value={book.status}
                                 onChange={(e)=>setBookProps(e.target.name, e.target.value)}
                                 placeholder="상태 " /><br />
-        <button onClick={()=>createBook()}>예약 확정</button>&nbsp;&nbsp;
-        <Link to= "/lec"><button >강의 목록</button></Link>&nbsp;&nbsp;
+
+                <button onClick={()=>createBook()}>예약 확정</button>&nbsp;&nbsp;
+                <Link to= "/lec"><button >강의 목록</button></Link>&nbsp;&nbsp;
 
 
         </div>

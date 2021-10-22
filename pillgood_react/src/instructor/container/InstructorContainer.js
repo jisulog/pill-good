@@ -62,7 +62,7 @@ class InstructorContainer extends Component {
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                                 /><br/>
               </div>
-                인원 :<div name="number" value={lec.number} onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
+                인원 :<div name="number" value={lec.number||''} onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                       <input type="radio" id="1" name="number" value="1" />
                       <label htmlFor="1">1인</label>
                       <input type="radio" id="2" name="number" value="2"/>

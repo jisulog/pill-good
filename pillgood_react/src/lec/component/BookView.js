@@ -13,26 +13,25 @@ class BookView extends Component {
     const {lec, setDateProps } = this.props;
 
     return (
-      <div>
-             <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <StaticDatePicker
-            orientation="landscape"
+              <div>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <StaticDatePicker
+                  orientation="landscape"
+                  openTo="day"
+                  value={lec.date}
+                  renderInput={(params) => <TextField {...params} />}
+                      />
+              </LocalizationProvider><br />
 
+              강의 번호: {lec.lec_id}<br />
+              날짜: {lec.date}<br />
+              시간: {lec.time}<br />
+              강사명:{lec.email}<br />
+              인원:{lec.number}<br />
 
-            openTo="day"
-            value={lec.date}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </LocalizationProvider><br />
-
-      강의 번호: {lec.lec_id}<br />
-      날짜: {lec.date}<br />
-      시간: {lec.time}<br />
-      강사명:{lec.email}<br />
-      인원:{lec.number}<br />  
-
-      <Link to = {`/lec/create/book/${lec.lec_id}`}><button>예약 신청</button></Link>
-      <Link to= "/lec"><button >돌아가기 </button></Link>&nbsp;&nbsp;
+              <Link to = {`/lec/book/${lec.lec_id}`}><button>예약 등록</button ></Link>
+              <Link to = {`/lec/create/book/${lec.lec_id}`}><button>예약 신청</button></Link>
+              <Link to= "/lec"><button >돌아가기 </button></Link>&nbsp;&nbsp;
        </div>
 
 

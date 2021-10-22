@@ -6,7 +6,7 @@ class InstructorLecPage extends Component {
     render() {
         return (
             <div>
-             <InstructorLecContainer/>
+             <InstructorLecContainer />
             </div>
         );
     }
