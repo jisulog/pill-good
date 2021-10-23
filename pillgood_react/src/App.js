@@ -15,7 +15,6 @@ import MemberBookListPage from "./member/pages/MemberBookListPage";
 
 import InstructorLecPage from "./instructor/pages/InstructorLecPage";
 import LecCreatePage from "./instructor/pages/LecCreatePage";
-import InstructorLecUpdatePage from "./instructor/pages/InstructorLecUpdatePage";
 import UserListPage from "./instructor/pages/UserListPage";
 
 import ManagerLecDetailPage from "./manager/pages/ManagerLecDetailPage";
@@ -29,7 +28,6 @@ import ManagerUserPage from "./manager/pages/ManagerUserPage";
 import MembershipMainPage from "./membership/pages/MembershipMainPage";
 import PayPage from "./membership/pages/PayPage";
 
-import BookPage from "./lec/pages/BookPage";
 import LecDetailPage from "./lec/pages/LecDetailPage";
 import LecMainPage from "./lec/pages/LecMainPage";
 import BookCreatePage from "./lec/pages/BookCreatePage"
@@ -87,18 +85,13 @@ class App extends Component {
                     {/* instructor */}
                     <Route
                         exact
-                        path="/instructor/lec/"
+                        path="/instructor/lec/:id"
                         component={InstructorLecPage}
                     />
                     <Route
                         exact
-                        path="/instructor/lec/create"
+                        path="/instructor/create"
                         component={LecCreatePage}
-                    />
-                    <Route
-                        exact
-                        path="/instructor/lec/update/:id"
-                        component={InstructorLecUpdatePage}
                     />
                     <Route
                         exact
@@ -152,10 +145,21 @@ class App extends Component {
                     <Route exact path="/membership/pay" component={PayPage} />
 
                     {/* lec */}
-                    <Route exact path="/lec" component={LecMainPage} />
-                    <Route exact path="/lec/:id" component={LecDetailPage} />
-                    <Route exact path="/lec/book/:id" component={BookPage} />
-                    <Route exact path="/lec/create/book/:id" component={BookCreatePage} />
+                    <Route
+                        exact
+                        path="/lec"
+                        component={LecMainPage}
+                    />
+                    <Route
+                        exact
+                        path="/lec/:id"
+                        component={LecDetailPage}
+                    />
+                    <Route
+                        exact
+                        path="/lec/create/book/:id"
+                        component={BookCreatePage}
+                    />
 
                     {/* qna */}
                     <Route exact path="/qna" component={QnaMainPage} />

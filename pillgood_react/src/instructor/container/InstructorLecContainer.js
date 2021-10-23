@@ -10,21 +10,20 @@ class InstructorLecContainer extends Component {
   instructorStore = InstructorStore;
 
     componentDidMount() {
-        this.instructorStore.selectAllLec(); //mount 되면 전체 강의
+        const user = window.localStorage.getItem("id");
+        this.instructorStore.instructorLec(user);//mount 되면 전체 강의
     }
 
     render() {
         const {lecs} = this.instructorStore;
-//        console.log(lecs)
+        console.log(lecs)
         const mylecList = lecs && lecs.map((lec)=>{
-//            console.log(lec)
             return (<InstructorLecView key = {lec.lec_id} lec={lec}/>)
         });
-//        console.log(mylecList)
         return(
             <div>
             <h1> 나(강사)의 강의  목록</h1>
-            <Link to= "/instructor/lec/create"><button >강의 등록 </button></Link>&nbsp;&nbsp;
+            <Link to= "/instructor/create"><button >강의 등록 </button></Link>&nbsp;&nbsp;
              {mylecList}
             </div>
           );

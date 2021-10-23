@@ -4,8 +4,14 @@ import lecApi from "../api/LecApi";
 class LecStore {
     lec = {lec_id :"", title:"",content:"", room :"", date: "", time:"", level:"", email:"", number:"", status :1};
     lecs = [];
+
     message = "";
-    book = {book_id:"", email:"", lec_id:"", status:"1"};
+
+    book = {book_id:"", email:"" , lec_id:"", status:"1"};
+    books =[];
+
+    user = {};
+    page: 1;
 
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true });
@@ -23,7 +29,7 @@ class LecStore {
         }catch(error){
           this.message = error.message}
       }
-      
+
     //전체 강의 목록  
     async selectAll() {
         try {
@@ -36,16 +42,28 @@ class LecStore {
             runInAction(() => (this.message = error.message));
         }
     }
+
+     handlePageChange(page) {
+    this.page = {page}
+    console.log(page)
+    }
+
+
     setBookProps(name, value){
     this.book = {...this.book, [name]:value}
   }
-  setDateProps(value){
-    alert('해당 날짜에는 예약이 불가능합니다!')
-  }
+    setCounter(e) {
+    this.count = e.target.count[1];
+    }
+
+
+   //file 업로드
+
     //강의 예약
     async createBook() {
       try{
-        await lecApi.bookCreate(this.lec.email, this.lec.lec_id, this.lec.status)
+        const email = window.localStorage.getItem("id");
+        await lecApi.bookCreate(email, this.lec.lec_id, this.lec.status)
       }catch(error){
         console.log(error);
 

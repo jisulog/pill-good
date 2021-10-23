@@ -19,7 +19,6 @@ from . import views
 
 urlpatterns = [
     path('user/<int:pk>/', views.user_list, name='user_list'),
-    path('lec/', views.lec_list, name='lec_list'),
-    path('lec/create/', views.lec_create, name='lec_create'),
-    path('lec/update/<int:pk>/', views.lec_update, name='lec_update'),
+    path('lec/<int:id>/', views.lec_list, name='lec_list'),
+    path('create/', views.lec_create, name='lec_create')
 ]
