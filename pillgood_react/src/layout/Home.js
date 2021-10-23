@@ -79,15 +79,17 @@ class Home extends Component {
                         aria-controls="basic-menu"
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick()}
+                        // onClick={handleClick()}
                     >
+                        <Link to="/user/login">
                         LOGIN
+                        </Link>
                     </Button>
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={Boolean(anchorEl)}
-                        onClose={handleClose()}
+                        // onClose={handleClose()}
                         MenuListProps={{
                         'aria-labelledby': 'basic-button',
                         }}
