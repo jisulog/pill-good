@@ -1,12 +1,9 @@
-from django.contrib.auth.hashers import make_password
-from django.http import JsonResponse
 from rest_framework.decorators import api_view
 import user
 from .serializers import UserSerializer, LoginSerializer, HelpSerializer, UpdateSerializer
 from .models import User
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login
-
+import re
 
 
 @api_view(['POST'])
@@ -14,57 +11,52 @@ def join(request):
     """
     회원가입 뷰
     """
-    print(request.data)
+    validationEmail = re.compile(r'^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
+    emailCheck = validationEmail.match(request.data['email'])
+    if emailCheck is None:
+        return Response({'message': '이메일 형식을 바르게 입력하세요.'})
+
+    validationPW = re.compile(r'^[a-zA-Z0-9_]{8,}$')
+    passwordCheck = validationPW.match(request.data['password'])
+    if passwordCheck is None:
+        return Response({'message': '비밀번호는 영문자와 숫자를 포함하여 8자 이상 입력하세요'})
+
+    validationPhone = re.compile(r'\d{2,3}-\d{3,4}-\d{4}')
+    phoneCheck = validationPhone.match(request.data['phone'])
+    if phoneCheck is None:
+        return Response({'message': '연락처 형식을 바르게 입력하세요.'})
+
+    check = User.objects.filter(email=request.data['email'])
+    if check:
+        return Response({'message': '해당 이메일의 회원이 존재합니다.'})
+
     serializer = UserSerializer(data=request.data)  # 새로운 데이터가 넘어올 때는 역직렬화, serializer이 직렬화 역직렬화 두 가지 기능
+    if not serializer.is_valid():
+        return Response({'message': '회원 정보를 정확히 입력해주세요.'})
     if serializer.is_valid():
         serializer.save()
-        print("회원가입성공")
-    return Response({'message': 'success'})
+        return Response({'message': '회원가입이 완료되었습니다!'})
 
 
-@api_view(['GET'])
+
+@api_view(['POST'])
 def login(request):
     """
     로그인 뷰
     """
-    print(request.data)
 
-    # data 검사
+    validationEmail = re.compile(r'^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
+    emailCheck = validationEmail.match(request.data['email'])
+    if emailCheck is None:
+        return Response({'message': '이메일 형식을 바르게 입력하세요.'})
+
     serializer = LoginSerializer(data=request.data)
 
     if not serializer.is_valid(raise_exception=True):
-        return Response({"message": "Error."})
+        return Response({"message": "이메일과 비밀번호를 입력해주세요!"})
     if serializer.validated_data['email'] == "None":
-        return Response({'message': 'fail'})
-    print(serializer.validated_data['email'], serializer.validated_data['id'])
-    # user = User.objects.filter(email=request.data["email"])
-    # print(user)
-    # userserializer = UserSerializer(user)
-    # print(userserializer.data)
-    # return Response(userserializer.data)
-    return Response({"email":serializer.validated_data['email'], "id":serializer.validated_data['id']})
-
-    # get 변경 후 Bad Request: /user/login/
-
-
-
-
-
-
-    # TypeError: Object of type property is not JSON serializable
-
-    # return Response(UserSerializer.data, request.data["email"])
-    # TypeError: HTTP status code must be an integer.
-
-    # return Response없으면 나는 error
-    # AssertionError: Expected a `Response`,
-    # `HttpResponse` or `HttpStreamingResponse`
-    # to be returned from the view, but received a `<class 'NoneType'>`
-"""
-AttributeError: Got AttributeError when attempting to get a value for field `email` on serializer `UserSerializer`.
-The serializer field might be named incorrectly and not match any attribute or key on the `QuerySet` instance.
-Original exception text was: 'QuerySet' object has no attribute 'email'.
-"""
+        return Response({'message': '이메일 또는 비밀번호가 정확하지않습니다.'})
+    return Response({"message": '방문을 환영합니다!', "email": serializer.validated_data['email'], "id": serializer.validated_data['id'], "is_admin": serializer.validated_data['is_admin']})
 
 
 
@@ -75,15 +67,20 @@ def user_help(request):
     """
     serializer = HelpSerializer(data=request.data)
 
-    if not serializer.is_valid(raise_exception=True):
-        return Response({"message": "Error."})
-    if serializer.validated_data['email'] == "None":
-        return Response({'message': 'go sign up'})
+    searchEmail = User.objects.filter(name=request.data['name'], phone=request.data['phone'])
+    print(searchEmail)
+    # <QuerySet [<User: finish finish@test.com>]>
+    # {
+    # "name":"finish",
+    # "phone":"031-000-0000"
+    # }
+    if searchEmail:
+        print(searchEmail[0])
+        return Response({'message': searchEmail[0]})
+    # TypeError: Object of type User is not JSON serializable
+    if not searchEmail:
+        return Response({"message": "해당 정보와 일치하는 이메일이 존재하지 않습니다."})
 
-    response = {
-        'email': user.email
-    }
-    return Response(response)
 
 
 @api_view(['POST'])

@@ -37,7 +37,7 @@ class UserLoginContainer extends Component {
                       <input type="button" onClick={()=>handlerLogin()} value="로그인"/>
                     {/* </Link> */}
                 </form>
-                <h1>email:{this.userStore.user.email}</h1>
+                <Link to="/user/join">회원가입</Link>
             </div>
         );
     }
