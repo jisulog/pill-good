@@ -1,7 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from user.serializers import UserSerializer
-from lec.serializers import LecSerializer
+from manager.serializers import UserSerializer,LecSerializer
 from membership.serializers import MembershipSerializer, PaySerializer
 from user.models import User
 from lec.models import Lec
@@ -88,21 +87,21 @@ def manager_membership_access(request, pk):
 
 
 # refund
-@api_view(['GET'])
-def manager_refund(request):
-    pays = Pay.objects.all()
-    serializer = PaySerializer(pays, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def manager_refund_detail(request, pk):
-    pay = Pay.objects.get(pay_id=pk)
-    serializer = PaySerializer(pay, many=False)
-    return Response(serializer.data)
-
-@api_view(['PUT'])
-def manager_refund_access(request, pk):
-    pay = Pay.objects.get(pay_id=pk)
-    pay.status = request.data['status']
-    pay.save()
-    return Response("access success")
+# @api_view(['GET'])
+# def manager_refund(request):
+#     pays = Pay.objects.all()
+#     serializer = PaySerializer(pays, many=True)
+#     return Response(serializer.data)
+#
+# @api_view(['GET'])
+# def manager_refund_detail(request, pk):
+#     pay = Pay.objects.get(pay_id=pk)
+#     serializer = PaySerializer(pay, many=False)
+#     return Response(serializer.data)
+#
+# @api_view(['PUT'])
+# def manager_refund_access(request, pk):
+#     pay = Pay.objects.get(pay_id=pk)
+#     pay.status = request.data['status']
+#     pay.save()
+#     return Response("access success")

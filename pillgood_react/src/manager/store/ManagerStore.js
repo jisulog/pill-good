@@ -13,6 +13,7 @@ class ManagerStore {
 
   membership = {};
   memberships = [];
+  membershipFilter = "";
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true })
@@ -124,6 +125,11 @@ class ManagerStore {
   // action - membership
   setMembershipProps(id, value){
     this.membership = {...this.membership, [id]:value}
+  }
+
+
+  changeMembershipFilter(membershipFilter){
+    this.membershipFilter = membershipFilter;
   }
 
   async selectMembershipAll() {

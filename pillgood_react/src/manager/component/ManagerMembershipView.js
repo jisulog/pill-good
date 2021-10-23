@@ -3,16 +3,19 @@ import React, { Component } from 'react';
 
 class ManagerMembershipView extends Component {
   render() {
-    const {membership} = this.props;
+    const {membership, accessMembership} = this.props;
     return (
-      <div>
-        횟수: {membership.number} / 
-        기간: {membership.period} /
-        가격: {membership.price} /
-        유형: {membership.type} /
-        상태: {membership.status === 1 ? "활성" :
-        membership.status === 2 ? "비활성": ""}
-      </div>
+      <tr>
+        <td>{membership.number}회</td>
+        <td>{membership.period}일</td>
+        <td>{membership.price}원</td>
+        <td>{membership.type}인</td>
+        <td>{membership.status === 1 ? "활성" :
+        membership.status === 2 ? "비활성" : "" }</td>
+        <td>{membership.status === 1 ? <button onClick={() => accessMembership(membership.membership_id, membership.status)}>비활성</button> :
+        membership.status === 2 ?  <button onClick={() => accessMembership(membership.membership_id, membership.status)}>활성</button> : ""}
+        </td>
+      </tr>
     );
   }
 }
