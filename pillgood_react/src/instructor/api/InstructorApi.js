@@ -1,12 +1,13 @@
 import axios from "axios";
 import { uploadFile } from 'react-s3';
+import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from "../../image/S3bucket";
 // backend api 호출, 연결
 
 const config= {
-    bucketName : 'pillgoodimagebucket',
-    region: 'ap-northeast-2',
-    accessKeyId: 'AKIA5VZTIAOJV74NKNXA',
-    secretAccessKey: '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',
+    bucketName : S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
    }
 
 class InstructorApi {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { uploadFile } from 'react-s3';
-import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bukcet';
+import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bucket';
 import moment from "moment";
 
 const config = {
