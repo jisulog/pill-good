@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class InstructorContainer extends Component {
   instructorStore = InstructorStore;
   render() {
-    const { lec, createLec,  handlerSetProps} = this.instructorStore;
+    const { lec, createLec, handlerSetFile,  handlerSetProps} = this.instructorStore;
     return (
       <div>
           <h1>강의 등록</h1>
@@ -27,6 +27,9 @@ class InstructorContainer extends Component {
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                                 placeholder="강의내용 " />
               </div>
+                이미지 : <input type="file" name = "image" onChange={(e)=>{
+                        handlerSetProps(e.target.name, e.target.files[0].name);
+                        handlerSetFile(e)}} />
               <div>
                 장소 : <select name="room" id="room" value={lec.room||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
@@ -73,7 +76,7 @@ class InstructorContainer extends Component {
 
 
                       <button onClick={()=>createLec()}>등록</button>&nbsp;&nbsp;
-                      <Link to= "/instructor/lec"><button >취소</button></Link>&nbsp;&nbsp;
+
 
       </div>
     );

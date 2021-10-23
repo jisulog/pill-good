@@ -13,7 +13,7 @@ class UserListView extends Component {
             회원 성함 : {user.name}<br />
             특이사항 : {user.intro}<br /> 
            </p>
-           <Link to= "/instructor/lec"><button >강의 목록</button></Link>&nbsp;&nbsp;
+
         </div>
    
     );

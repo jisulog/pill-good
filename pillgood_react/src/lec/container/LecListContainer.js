@@ -3,6 +3,7 @@ import {observer} from 'mobx-react';
 import LecStore from "../store/LecStore";
 import LecView from "../component/LecView";
 
+
 //LecStore로부터 데이터 받아서 쓸 것. 
 class LecListContainer extends Component {
     lecStore = LecStore;
@@ -13,8 +14,9 @@ class LecListContainer extends Component {
 
 
     render() {
-        const {lecs} = this.lecStore;
-        const {id} =this.props;
+        const {lecs, page, handlePageChange} = this.lecStore;
+        const {id} = this.props;
+
         const lecList = lecs && lecs.map((element)=>{
             return (<LecView key={element.lec_id} lec = {element}/>)
 
@@ -24,7 +26,6 @@ class LecListContainer extends Component {
             <div>
             <h1>강의 목록</h1>
                {lecList}
-
             </div>
           );
         }

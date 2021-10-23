@@ -21,12 +21,12 @@ class LecApi {
         .then((response)=> response.data);
     }
 
-    // 'book/create/'
+    // 'create/book/<int:pk>'
     bookCreate(email, lec_id, status) {
         return axios.post(this.URL+`create/book/${lec_id}/`,{
             email:`${email}`,
             lec_id:`${lec_id}`,
-            status:`${status}`})
+            status: 1 })
         .then((response) => response.data);
  }
 

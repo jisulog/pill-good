@@ -16,14 +16,20 @@ class UserListContainer extends Component {
   
     render() {
         const {users} = this.instructorStore;
-        const usersList = users.map((user)=>{
-            return (<UserListView user = {user}/>)
+        const usersList = users.map((user, index)=>{
+            return (<UserListView key = {index} user = {user}/>)
         });   
         console.log(usersList)
         return(
             <div>
             <h1>회원 목록</h1>
-             {usersList}
+             {usersList.length ? (
+                usersList
+                        ) : (
+                            <div>
+                               해당 강의를 신청한 회원이 존재하지 않습니다.
+                            </div>
+                        )}
             </div>
           );
         }

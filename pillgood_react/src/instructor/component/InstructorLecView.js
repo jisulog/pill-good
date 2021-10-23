@@ -10,17 +10,15 @@ class InstructorLecView extends Component {
         <div>
           <p>
             <span> ========================</span><br />
-                  {lec.email?.email}
+
             강의명 : {lec.title}<br />
-            강의 내용 : {lec.content}<br />
+
             장소: {lec.room}<br />
             날짜: {lec.date}<br />
             시간: {lec.time}<br />
-            난이도: {lec.level}<br />
-            인원 :{lec.number} <br />
 
               <Link to= {`/instructor/user/${lec.lec_id}`}><button >신청 회원 목록 </button></Link>&nbsp;&nbsp;
-              <Link to = {`/instructor/lec/${lec.lec_id}`}><button>상세보기</button></Link>
+
             <br />
            </p>
         </div>

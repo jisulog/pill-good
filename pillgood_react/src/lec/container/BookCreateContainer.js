@@ -7,20 +7,23 @@ import BookCreateView from '../component/BookCreateView';
 class BookCreateContainer extends Component {
     lecStore = LecStore;
 
+
   componentDidMount() {
     const {id} = this.props;
     this.lecStore.selectLec(id); //mount 되면 전체 강의
-    console.log(id)}
+    }
+
+
 
   render() {
-    const {lec, book, createBook,  setBookProps} = this.lecStore;
-
+    const {lec, book, createBook} = this.lecStore;
+    const email = window.localStorage.getItem("id");
 
 
     return (
       <div>
           <h1>예약 확정</h1>
-          <BookCreateView book={book} lec={lec} createBook={createBook} setBookProps={setBookProps}/>
+          <BookCreateView book={book}  email= {email} lec={lec} createBook={createBook}/>
       </div>
 
     );
