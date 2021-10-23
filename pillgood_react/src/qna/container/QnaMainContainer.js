@@ -12,7 +12,7 @@ class QnaMainContainer extends Component {
         this.qnaStore.selectQnaAll();
     }
     render() {
-        const {qnas, createQna, selectQna,} = this.qnaStore;
+        const {qnas} = this.qnaStore;
         const qnaList = qnas.map(qna =>{
             return (<QnaMainView key={qna.qna_id} qna = {qna}/>)
         

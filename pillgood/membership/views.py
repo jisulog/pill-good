@@ -2,7 +2,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from member.serializers import PaySerializer
+from .serializers import PaySerializer
 from .models import Membership
 from .serializers import MembershipSerializer
 
@@ -21,7 +21,6 @@ def membership_pay(request):
     serializer = PaySerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        print(111)
         return Response(serializer.data)
     else:
         return Response(serializer.errors)

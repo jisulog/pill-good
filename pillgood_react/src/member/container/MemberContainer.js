@@ -7,19 +7,17 @@ class MemberContainer extends Component {
     memberStore = MemberStore;
 
     componentDidMount() {
-        let user = window.localStorage.getItem("id");
-        if (user === "" || user === null) {
-            user = 1;
-        }
+        const user = window.localStorage.getItem("id");
+        console.log(user)
 
         this.memberStore.selectMember(user);
     }
 
     render() {
-        const { member, handleFileInput } = this.memberStore;
+        const { member } = this.memberStore;
         return (
             <div>
-                <MemberView member={member} onFileInput={handleFileInput}/>
+                <MemberView member={member}/>
             </div>
         );
     }

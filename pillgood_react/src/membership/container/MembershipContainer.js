@@ -17,10 +17,10 @@ class MembershipContainer extends Component {
             return <span onClick={(e) => setmembership(membership.membership_id)}><MembershipView key={membership.membership_id} membership = {membership} user={user} pay={Pay}/></span>
         });
         const membershipList2 = memberships.filter((membership)=>membership.type===2).map(membership =>{
-            return <MembershipView key={membership.membership_id} membership = {membership} user={user} />
+            return <span onClick={(e) => setmembership(membership.membership_id)}><MembershipView key={membership.membership_id} membership = {membership} user={user} pay={Pay}/></span>
         });
         const membershipList3 = memberships.filter((membership)=>membership.type===3).map(membership =>{
-            return <MembershipView key={membership.membership_id} membership = {membership} user={user} />
+            return <span onClick={(e) => setmembership(membership.membership_id)}><MembershipView key={membership.membership_id} membership = {membership} user={user} pay={Pay}/></span>
         });
         
         return (

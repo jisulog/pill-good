@@ -1,4 +1,14 @@
 import axios from "axios";
+import { uploadFile } from 'react-s3';
+import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bukcet';
+import moment from "moment";
+
+const config = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
 
 class MemberApi {
     URL = "/member";
@@ -24,6 +34,15 @@ class MemberApi {
                 is_active: `${is_active}`,
             })
             .then((response) => response.data);
+    }
+
+    imageUpdate(file) {
+        
+        const now = moment().format("YYYYMMDDHHmmSSS");
+        file.name = file.name + now;
+        uploadFile(file, config)
+            .then(data => {console.log(data); return file.name})
+            .catch(err => {console.error(err); return null})
     }
 
     // 'passwordupdate/'

@@ -22,16 +22,17 @@ class QnaApi{
             category : `${category}`,
             question_user: `${question_user}`,
             question: `${question}`,
-          }).then((response) => response.data).catch((error)=> console.log(error));
+          }).then((response) => response.data).catch((error)=> error.message);
     }
 
     // 'update/<int:pk>/' [PUT]
-    qnaUpdate(qna_id, title, category, question_user, question, answer){
+    qnaUpdate(qna_id, title, category, question_user, question, answer_user, answer){
         return axios.put(this.URL + `update/${qna_id}/`, {
             title: `${title}`,
             category : `${category}`,
             question_user: `${question_user}`,
             question: `${question}`,
+            answer_user : `${answer_user}`,
             answer : `${answer}`
         }).then((response) => response.data);
     }
@@ -43,16 +44,17 @@ class QnaApi{
 
     // 'answer/<int:pk>/' [POST]
     qnaAnswer(qna, qna_id){
-        return axios.post(this.URL + `answer/${qna_id}/`, {
-            qna_id: `${qna.qna_id}`,
-            title: `${qna.title}`,
-            category : `${qna.category}`,
-            question_user: `${qna.question_user}`,
-            question: `${qna.question}`,
-            answer_user: `${qna.answer_user}`,
-            answer: `${qna.answer}`,
-          }).then((response) => response.data);
-
+        return axios
+            .post(this.URL + `answer/${qna_id}/`, {
+                qna_id: `${qna.qna_id}`,
+                title: `${qna.title}`,
+                category: `${qna.category}`,
+                question_user: `${qna.question_user}`,
+                question: `${qna.question}`,
+                answer_user: `${qna.answer_user}`,
+                answer: `${qna.answer}`,
+            })
+            .then((response) => response.data);
     }
 }
 export default new QnaApi();

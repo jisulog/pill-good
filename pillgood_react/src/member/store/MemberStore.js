@@ -14,11 +14,12 @@ class MemberStore {
         is_active: 0,
     };
     message = "";
+    selectedFile = null;
 
     oldPassword = "";
     newPassword = "";
 
-    // selectedFile = null;
+    selectedFile = null;
 
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true });
@@ -39,6 +40,10 @@ class MemberStore {
 
     handlerSetProps(name, value) {
         this.member = { ...this.member, [name]: value };
+    }
+
+    handlerSetFile(e) {
+        this.selectedFile = e.target.files[0];
     }
 
     handlerOldPassword(password) {
@@ -63,9 +68,19 @@ class MemberStore {
 
     async updateMember() {
         try {
-            // if (this.selectedFile != null) {
-            //     this.handlePost();
-            // }
+
+            let image = "";
+
+            if (this.selectedFile != null) {
+                image = await memberApi.imageUpdate(this.selectedFile);
+
+            }
+
+            if (image != null) {
+                console.log(image);
+                this.member.image = image;
+            }
+
             await memberApi.memberUpdate(
                 this.member.id,
                 this.member.password,
@@ -79,7 +94,7 @@ class MemberStore {
 
             runInAction(() => {
                 this.selectMember(this.member.id);
-                window.location.replace("/member");
+                // window.location.replace("/member");
             });
         } catch (error) {
             runInAction((this.message = error.message));

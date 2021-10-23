@@ -16,38 +16,35 @@ class MembershipStore {
     async selectMembershipAll() {
         try {
             const result = await membershipApi.membershipAll();
-            console.log(result)
 
             runInAction(() => {
                 this.memberships = result;
-                console.log(this.memberships)
             });
         } catch (error) {
-            console.log(error);
+            this.message = error.message;
         }
     }
     // 결제하기
     async Pay(user) {
         try {
-            let end_date = moment().format("YYYY-MM-DD").add(this.membership.period,"days")
-            await membershipApi.Pay(user, 1, this.membership.number, end_date, this.membership.membership_id,1);
-
+            const pay_date = moment().add(9, 'hours').format("YYYY-MM-DDTHH:mm:ss");
+            let end_date = moment().add(this.membership.period,"days").format("YYYY-MM-DD");
+            const result = await membershipApi.Pay(user, 1, this.membership.number, pay_date, end_date, this.membership.membership_id, 1);
+            console.log(result);
         } catch (error) {
-            console.log(error);
+            this.message = error.message;
         }
     }
 
     async setmembership(membership_id){
         try {
             const result = await membershipApi.membership(membership_id);
-            console.log(result)
 
             runInAction(() => {
                 this.membership = result;
-                console.log(this.membership)
             });
         } catch (error) {
-            console.log(error);
+            this.message = error.message;
         }
     }
 }

@@ -12,10 +12,12 @@ class QnaAnswerContainer extends Component {
     }
 
     render() {
-        const {qna, handlerSet, handlerModify} = this.qnaStore;
+        const {qna, handlerSet, handlerAnswer} = this.qnaStore;
+        const user = window.localStorage.getItem("id");
+
         return (
             <div>
-                <QnaAnswerView qna={qna} handlerSet={handlerSet} onupdate={handlerModify}/>
+                <QnaAnswerView qna={qna} handlerSet={handlerSet} onAnswer={handlerAnswer} adminId={user}/>
             </div>
         );
     }

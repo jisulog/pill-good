@@ -6,7 +6,12 @@ import PayStore from "../store/PayStore";
 class PayListContainer extends Component {
     payStore = PayStore;
 
-    componentDidMount() {}
+    componentDidMount() {
+        const user = window.localStorage.getItem("id");
+        console.log(user)
+        
+        this.payStore.selectMember(user); 
+    }
 
     render() {
         const { pays } = this.payStore;

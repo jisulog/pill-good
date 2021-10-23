@@ -7,10 +7,8 @@ class PayItemContainer extends Component {
     payStore = PayStore;
 
     componentDidMount() {
-        let user = window.localStorage.getItem("id");
-        if (user === "" || user === null) {
-            user = 1;
-        }
+        const user = window.localStorage.getItem("id");
+        console.log(user)
         
         this.payStore.selectMember(user);
     }

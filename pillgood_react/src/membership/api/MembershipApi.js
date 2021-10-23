@@ -18,12 +18,13 @@ class MembershipApi {
     }
 
     // 'membership/pay' [POST]
-    Pay(id, type, number, end_date, membership_id, status) {
+    Pay(id, type, number, pay_date, end_date, membership_id, status) {
         return axios
             .post(this.URL + `pay/`, {
                 email: `${id}`, 
                 pay_type: `${type}`, 
                 remain: `${number}`, 
+                pay_date: `${pay_date}`,
                 end_date: `${end_date}`, 
                 membership_id: `${membership_id}`, 
                 status :`${status}`

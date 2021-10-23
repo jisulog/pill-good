@@ -7,8 +7,9 @@ class PasswordUpdateContainer extends Component {
     memberStore = MemberStore;
 
     componentDidMount() {
-        // 회원 아이디 가져오기
-        this.memberStore.selectMember(1);
+        const user = window.localStorage.getItem("id");
+        console.log(user)
+        this.memberStore.selectMember(user);
     } 
        
     render() {

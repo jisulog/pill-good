@@ -22,7 +22,7 @@ def join(request):
     return Response({'message': 'success'})
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def login(request):
     """
     로그인 뷰

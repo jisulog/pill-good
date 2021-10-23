@@ -2,16 +2,20 @@ import React, { Component } from "react";
 
 class MemberUpdateView extends Component {
     render() {
-        const { member, onSetProps, onUpdate } = this.props;
+        const { member, onSetProps, onUpdate, onFileInput } = this.props;
 
         return (
             <div>
-                {/* <input
-                    type="file"
-                    name="file"
-                    onChange={(e) => onFileInput(e)}
-                /> */}
-
+                <dl>
+                    <dt>이미지</dt>
+                    <dd>
+                        <input
+                            type="file"
+                            name="image"
+                            onChange={(e) => onFileInput(e)}
+                        />
+                    </dd>
+                </dl>
                 <dl>
                     <dt>
                         {member.type === 1
