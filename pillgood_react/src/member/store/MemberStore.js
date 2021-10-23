@@ -1,10 +1,18 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import memberApi from "../api/MemberApi";
+import { uploadFile } from 'react-s3';
+import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bucket';
+
+const config = {
+    bucketName: S3_BUCKET,
+    region: REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SECRET_ACCESS_KEY
+}
 
 class MemberStore {
     member = {
         id: 0,
-        password: "",
         name: "",
         phone: "",
         intro: "",
@@ -28,7 +36,6 @@ class MemberStore {
     init() {
         this.member = {
             id: 0,
-            password: "",
             name: "",
             phone: "",
             intro: "",
@@ -68,29 +75,33 @@ class MemberStore {
 
     async updateMember() {
         try {
-
-            let image = "";
-
             if (this.selectedFile != null) {
-                image = await memberApi.imageUpdate(this.selectedFile);
-
+                uploadFile(this.selectedFile, config)
+                    .then(data => {
+                        this.member.image = data.key;
+                        memberApi.memberUpdate(
+                            this.member.id,
+                            this.member.name,
+                            this.member.phone,
+                            this.member.intro,
+                            this.member.image,
+                            this.member.type,
+                            this.member.is_active
+                        );   
+                    })
+                    .catch(error => (this.message = error.message))
+            } else {
+                await memberApi.memberUpdate(
+                    this.member.id,
+                    this.member.name,
+                    this.member.phone,
+                    this.member.intro,
+                    this.member.image,
+                    this.member.type,
+                    this.member.is_active
+                );
             }
 
-            if (image != null) {
-                console.log(image);
-                this.member.image = image;
-            }
-
-            await memberApi.memberUpdate(
-                this.member.id,
-                this.member.password,
-                this.member.name,
-                this.member.phone,
-                this.member.intro,
-                this.member.image,
-                this.member.type,
-                this.member.is_active
-            );
 
             runInAction(() => {
                 this.selectMember(this.member.id);
@@ -106,7 +117,6 @@ class MemberStore {
             this.member.is_active = 0;
             await memberApi.memberDelete(
                 this.member.id,
-                this.member.password,
                 this.member.name,
                 this.member.phone,
                 this.member.intro,
@@ -123,27 +133,6 @@ class MemberStore {
             runInAction((this.message = error.message));
         }
     } 
-
-    // image upload start
-    // handleFileInput(e) {
-    //     this.setState({
-    //         selectedFile: e.target.files[0],
-    //     });
-    // }
-
-    // handlePost() {
-    //     try {
-    //         const formData = new FormData();
-    //         formData.append("file", this.state.selectedFile);
-
-    //         runInAction(() => {
-    //             this.selectedFile = null;
-    //         });
-    //     } catch (error) {
-    //         runInAction((this.message = error.message));
-    //     }
-    // }
-    // image upload end
 }
 
 export default new MemberStore();

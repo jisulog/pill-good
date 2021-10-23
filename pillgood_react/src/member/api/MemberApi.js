@@ -1,14 +1,4 @@
 import axios from "axios";
-import { uploadFile } from 'react-s3';
-import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bucket';
-import moment from "moment";
-
-const config = {
-    bucketName: S3_BUCKET,
-    region: REGION,
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
-}
 
 class MemberApi {
     URL = "/member";
@@ -21,11 +11,10 @@ class MemberApi {
     }
 
     // 'update/'
-    memberUpdate(id, password, name, phone, intro, image, type, is_active) {
+    memberUpdate(id, name, phone, intro, image, type, is_active) {
         return axios
             .put(this.URL + `/update/${id}/`, {
                 id: `${id}`,
-                password: `${password}`,
                 name: `${name}`,
                 phone: `${phone}`,
                 intro: `${intro}`,
@@ -34,15 +23,6 @@ class MemberApi {
                 is_active: `${is_active}`,
             })
             .then((response) => response.data);
-    }
-
-    imageUpdate(file) {
-        
-        const now = moment().format("YYYYMMDDHHmmSSS");
-        file.name = file.name + now;
-        uploadFile(file, config)
-            .then(data => {console.log(data); return file.name})
-            .catch(err => {console.error(err); return null})
     }
 
     // 'passwordupdate/'
@@ -58,11 +38,10 @@ class MemberApi {
     }
 
     // 'delete/'
-    memberDelete(id, password, name, phone, intro, image, type, is_active) {
+    memberDelete(id, name, phone, intro, image, type, is_active) {
         return axios
             .put(this.URL + `/delete/${id}/`, {
                 id: `${id}`,
-                password: `${password}`,
                 name: `${name}`,
                 phone: `${phone}`,
                 intro: `${intro}`,

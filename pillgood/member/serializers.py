@@ -11,7 +11,6 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
-    password = serializers.CharField(max_length=128, write_only=True)
     name = serializers.CharField(max_length=10, required=False)
     phone = serializers.CharField(max_length=13, required=False)
     intro = serializers.CharField(required=False, allow_blank=True)
@@ -21,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'password', 'name', 'phone', 'intro', 'image', 'type', 'is_active']
+        fields = ['id', 'name', 'phone', 'intro', 'image', 'type', 'is_active']
 
 
 # class PasswordSerializer(serializers.Serializer):
