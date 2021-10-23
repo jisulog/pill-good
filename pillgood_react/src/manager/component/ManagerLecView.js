@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-
+import moment from 'moment';
 
 class ManagerLecView extends Component {
   render() {
     const { lec } = this.props;
     return (
-      <div>
-        {lec.email?.email}
-        {lec.email?.name}
-        {lec.title}
-        {lec.date}
-        {lec.time}
-        {lec.room}
+      <tr>
+        <td>{lec.email.email}</td>
+        <td>{lec.email.name}</td>
+        <td>{lec.title}</td>
+        <td>{moment(lec.date).format("YY.MM.DD")}</td>
+        <td>{moment(lec.time,"HH:mm:ss").format("HH:mm")}</td>
+        <td>{lec.room}</td>
+        <td>
         {lec.status === 1 ? "승인대기":
         lec.status === 2 ? "승인":
         lec.status === 3 ? "거절" : ""}
-      </div>
+        </td>
+      </tr>
     );
   }
 }

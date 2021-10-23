@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import ManagerStore from '../store/ManagerStore';
 import { observer } from 'mobx-react'
 import ManagerUserView from '../component/ManagerUserView'
-import { Link } from 'react-router-dom';
 
 class ManagerUserContainer extends Component {
     managerStore = ManagerStore;
 
     componentDidMount() {
-        this.managerStore.selectUserAll();
+      this.managerStore.selectUserAll();
     }
 
     render() {
@@ -21,33 +20,25 @@ class ManagerUserContainer extends Component {
                 if (user.type === 3) return;
                 if (user.type === 8) return;
                 rows.push(
-                    <span onClick={() => selectUser(user.id)} key={user.email}>
-                        <Link to={`user/${user.id}`}><ManagerUserView key={user.email} user={user} /></Link>
-                        <button onClick={() => accessUser(user.id, user.type)}>일반 회원으로 변경</button> </span>
+                        <ManagerUserView key={user.email} user={user} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
                 );
             }
             else if (userFilter === '3') {
                 if (user.type === 2) return;
                 if (user.type === 8) return;
                 rows.push(
-                    <span onClick={() => selectUser(user.id)} key={user.email}>
-                        <Link to={`user/${user.id}`}><ManagerUserView key={user.email} user={user} /></Link>
-                        <button onClick={() => accessUser(user.id, user.type)}>강사 회원으로 변경</button> </span>
+                        <ManagerUserView key={user.email} user={user} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
                 );
             }
             else {
                 rows.push(
-                    <span onClick={() => selectUser(user.id)} key={user.email}>
-                        <Link to={`user/${user.id}`}><ManagerUserView key={user.email} user={user} /></Link>
-                        {user.type === 2 ? <button onClick={() => accessUser(user.id, user.type)}>일반 회원으로 변경</button> :
-                            user.type === 3 ? <button onClick={() => accessUser(user.id, user.type)}>강사 회원으로 변경</button> :
-                                '변경불가'}</span>
+                        <ManagerUserView key={user.email} user={user} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
                 );
             }
         });
-
         return (
             <div>
+                <h1>회원목록</h1>
                 <form>
                     <select name="type" id="type" value={userFilter}
                         onChange={(e) => changeUserFilter(e.target.value)}>
@@ -56,7 +47,26 @@ class ManagerUserContainer extends Component {
                         <option value="3">회원</option>
                     </select><br />
                 </form>
-                {rows}
+
+                <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>이름</th>
+              <th>구분</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length ? (
+              rows)        
+            : (
+              <tr>
+                <td colSpan='3'>회원 목록이 없습니다 :(</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
             </div>
         );
     }

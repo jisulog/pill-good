@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import ManagerStore from '../store/ManagerStore';
-import { Link } from 'react-router-dom';
 
 class ManagerMembershipCreateContainer extends Component {
   managerStore = ManagerStore;
@@ -40,7 +39,7 @@ class ManagerMembershipCreateContainer extends Component {
           <input type="radio" id="status2" name="status" value="2" />
           <label htmlFor="x">비활성</label>
         </div>
-        <Link to="/manager/membership/"><button onClick={()=>createMembership()}>추가</button></Link>
+        <button onClick={()=>createMembership()}>추가</button>
         <button onClick={()=>handleGoBack()}>뒤로</button>
       </div>
     );
