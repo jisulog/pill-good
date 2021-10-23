@@ -11,12 +11,12 @@ class QnaDetailContainer extends Component {
         this.qnaStore.selectQna(id);
     }
     render() {
-        const {qna} = this.qnaStore;
-
+        const {qna, handlerRemove} = this.qnaStore;
+        const admin = window.localStorage.getItem("is_admin");
         return (
             <div>
                 <h1>QnA</h1>
-                <QnaDetailView key={qna.id} qna={qna}/>
+                <QnaDetailView key={qna.id} qna={qna} ondelete={handlerRemove} admin={admin}/>
             </div>
         );
     }

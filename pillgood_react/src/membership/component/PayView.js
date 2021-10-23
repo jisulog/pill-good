@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-
+import moment from 'moment';
 class PayView extends Component {
     render() {
-       const {pay} = this.props;
+       const {membership} = this.props;
         return(
             <div>
-                {pay.pay_id}
+                그룹 유형 : {membership.type}
                 <br />
-                {pay.email}
+                기간 : {membership.period}({moment().format("YYYY-MM-DD")}~{moment().format("YYYY-MM-DD").add(membership.period,'days')}
                 <br />
-                {pay.pay_type}
+                결제 금액 : {membership.price}
                 <br />
-                {pay.remain}
+                회수 : {membership.number}
                 <br />
-                {pay.end_date}
+                결제 일시 : {moment().format("YYYY-MM-DD")}
                 <br />
-                {pay.memebership_id}
-                <br />
-                {pay.status}
+                결제 방식 : 
+                <input type="radio" name="type" value="1">신용카드</input>
+                <input type="radio" name="type" value="2">계좌이체</input>
             </div>
             
         );

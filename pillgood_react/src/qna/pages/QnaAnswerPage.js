@@ -4,8 +4,7 @@ class QnaAnswerPage extends Component {
     render() {
         return (
             <div>
-                answer page
-                <QnaAnswerContainer />
+                <QnaAnswerContainer id={this.props.match.params.id}/>
                 
             </div>
         );

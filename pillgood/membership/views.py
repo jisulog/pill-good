@@ -2,9 +2,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from .serializers import PaySerializer
 from .models import Membership
 from .serializers import MembershipSerializer
-from .serializers import PaySerializer
 
 
 @api_view(['GET'])
@@ -17,14 +17,17 @@ def membership_index(request):
 # 맴버십 결제
 @api_view(['POST'])
 def membership_pay(request):
-    # 로그인 여부 권한 체크
-    if request.user.is_authenticated:
-
-        serializer = PaySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        else:
-            return Response(serializer.errors)
+    print(request.data)
+    serializer = PaySerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
     else:
-        return Response({"message": "로그인 해주세요!"})
+        return Response(serializer.errors)
+
+
+@api_view(['GET'])
+def membership(request, pk):
+    memberships = Membership.objects.get(membership_id=pk)
+    serializer = MembershipSerializer(memberships, many=False)
+    return Response(serializer.data)

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment';
 
 class PayActiveItemView extends Component {
     render() {
@@ -21,7 +22,7 @@ class PayActiveItemView extends Component {
                 <dl>
                     <dt>기간</dt>
                     <dd>
-                        {pay.pay_date} ~ {pay.end_date}
+                        {moment(pay.pay_date).format("YYYY-MM-DD")} ~ {pay.end_date}
                     </dd>
                 </dl>
                 <dl>

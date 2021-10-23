@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-import Moment from "react-moment";
+import moment from "moment";
 import MemberPayRefundPage from "../pages/MemberPayRefundPage";
 
 class PayListView extends Component {
@@ -11,7 +11,7 @@ class PayListView extends Component {
         
         return (
             <tr>
-                <td>{pay.pay_date}</td>
+                <td>{moment(pay.pay_date).format("YYYY-MM-DD")}</td>
                 <td>{pay.membership_id.type === 1
                     ? "1대1"
                     : pay.membership_id.type === 2
@@ -20,8 +20,7 @@ class PayListView extends Component {
                     ? "1대8"
                     : "유형이 정확하지 않습니다."}</td>
                 <td>
-                    <Moment format="YYYY-MM-DD">{pay.pay_date}</Moment>~{" "}
-                    {pay.end_date}
+                    {moment(pay.pay_date).format("YYYY-MM-DD")}~{pay.end_date}
                 </td>
                 <td>
                     {pay.membership_id.period} / {pay.remain}
@@ -32,7 +31,7 @@ class PayListView extends Component {
                     {pay.status === 1
                         ? "정상결제"
                         : pay.status === 2
-                        ? "환불신청"
+                        ? "환불"
                         : "환불완료"}
 
                     {pay.status === 1 &&

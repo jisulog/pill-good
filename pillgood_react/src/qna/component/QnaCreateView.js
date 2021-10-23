@@ -15,13 +15,6 @@ class QnaCreateView extends Component {
                         onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
                     <div>
-                        <lable htmlFor ="question_user">작성자 : </lable>
-                        <span id = "question_user">
-                            {member.name}
-                        </span>
-         
-                    </div>
-                    <div>
                         <lable htmlFor = "category">카테고리 : </lable>
                         <select name="category" id="category" onChange={(e)=>onsetprops(e.target.name, e.target.value)}>
                             <option value="none">카테고리</option>
@@ -36,11 +29,11 @@ class QnaCreateView extends Component {
                         <textarea name="question" 
                         onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
-                    <input type="submit" onClick={()=>oncreate(`${member.name}`)} value= "저장" />
+                    <input type="submit" onClick={()=>oncreate(`${member.id}`)} value= "저장" />
 
                    
                 </form>  
-                <Link to={`/qna/`}>목록</Link>
+                <Link to={`/qna/`}><button>목록</button></Link>
             </div>
         );
     }

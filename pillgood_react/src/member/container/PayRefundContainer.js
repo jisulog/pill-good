@@ -9,12 +9,11 @@ class PayRefundContainer extends Component {
     memberStore = MemberStore;
 
     componentDidMount() {
-        let user = window.localStorage.getItem("id");
-        if (user === "" || user === null) {
-            user = 1;
-        }
+        const user = window.localStorage.getItem("id");
+        console.log(user)
+        
         this.memberStore.selectMember(user);
-
+        this.payStore.selectMember(user);
         this.payStore.selectPay(this.props.payId);
     }
 

@@ -5,13 +5,23 @@ class QnaStore {
         qna_id: 0,
         title: "",
         category: "",
-        question_user: "",
+        question_user: {
+            id: 0,
+            name: "",
+            phone: "",
+            intro: "",
+            image: "",
+            type: 0,
+            is_active: 0
+        },
         question: "",
+        answer_user: 0,
         answer: "",
         date: ""
     }
 
     qnas = [];
+    qnaFilter = [];
     message = "";
 
     constructor() {
@@ -24,7 +34,6 @@ class QnaStore {
             const result = await qnaApi.qnaDetail(qna_id);
             runInAction(() => {
                 this.qna = result;
-                console.log(result)
             });
         } catch (error) {
             console.log(error.message);
@@ -44,49 +53,70 @@ class QnaStore {
     }
 
     //qna 등록하기
-    async createQna(name) {
+    async createQna(id) {
         try {
-            this.qna.question_user = name
+            this.qna.question_user = id
             await qnaApi.qnaCreate(
                 this.qna.title,
                 this.qna.category,
-                this.qna.question_user,
+                this.qna.question_user.id,
                 this.qna.question,
             );
-            console.log(123);
             this.selectQnaAll();
         } catch (error) {
-            console.log(error);
-            runInAction(() => this.message = error.message);
+            this.message = error.message;
         }
     }
 
     //qna 수정하기
     async handlerModify() {
         try {
+
             await qnaApi.qnaUpdate(
                 this.qna.qna_id,
                 this.qna.title, 
                 this.qna.category,
-                this.qna.question_user,
+                this.qna.question_user.id,
                 this.qna.question,
+                this.qna.answer_user,
+                this.qna.answer
                 );
             this.selectQnaAll();
         } catch (error) {
-            console.log(error);
-            runInAction(() => this.message = error.message);
+            this.message = error.message;
         }
     }
 
     //qna 삭제하기
     async handlerRemove() {
         try {
-            console.log("aa");
             await qnaApi.qnaDelete(this.qna.qna_id);
         } catch (error) {
-            console.log(error);
+            this.message = error.message;
         }
     }
+
+    //qna 답변달기
+    async handlerAnswer(adminId) {
+        try {
+            await qnaApi.qnaUpdate(
+                this.qna.qna_id,
+                this.qna.title, 
+                this.qna.category,
+                this.qna.question_user.id,
+                this.qna.question,
+                adminId,
+                this.qna.answer
+                );
+            this.selectQnaAll();
+        } catch (error) {
+            this.message = error.message;
+        }
+    }
+
+    changeQnaFilter(qnaFilter){
+        this.qnaFilter = qnaFilter;
+      }
 
     handlerSet(name, value) {
         this.qna = {

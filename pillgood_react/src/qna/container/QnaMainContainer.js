@@ -12,18 +12,19 @@ class QnaMainContainer extends Component {
         this.qnaStore.selectQnaAll();
     }
     render() {
-        const {qnas, createQna, selectQnaAll } = this.qnaStore;
+        const {qnas} = this.qnaStore;
         const qnaList = qnas.map(qna =>{
             return (<QnaMainView key={qna.qna_id} qna = {qna}/>)
         
         });
+        
     
         return (
             <div>
                 <h1>QnA List</h1>
                 {qnaList}
-                <Link to={`/qna/create/`}>글작성</Link>
-                <Link to={`/qna/`}>목록</Link>
+                <Link to={`/qna/create/`}><button>글작성</button></Link>
+                <Link to={`/qna/`}><button>목록</button></Link>
             </div>
         );
     }

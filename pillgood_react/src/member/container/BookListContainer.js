@@ -7,10 +7,8 @@ class BookListContainer extends Component {
     bookStore = BookStore;
 
     componentDidMount() {
-        let user = window.localStorage.getItem("id");
-        if (user === "" || user === null) {
-            user = 4;
-        }
+        const user = window.localStorage.getItem("id");
+        console.log(user)
 
         this.bookStore.selectBookAll(user);
     }
