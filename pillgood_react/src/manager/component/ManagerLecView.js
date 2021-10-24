@@ -13,9 +13,9 @@ class ManagerLecView extends Component {
         <td>{moment(lec.time,"HH:mm:ss").format("HH:mm")}</td>
         <td>{lec.room}</td>
         <td>
-        {lec.status === 1 ? "승인대기":
+        {lec.status === 1 ? "대기":
         lec.status === 2 ? "승인":
-        lec.status === 3 ? "거절" : ""}
+        lec.status === 3 ? "거부" : ""}
         </td>
       </tr>
     );

@@ -55,13 +55,13 @@ class ManagerUserDetailContainer extends Component {
 return (
   <div>
     <h1>기본정보</h1>
-    이미지:{user.image}<br />
+    이미지:{user.image === "" ? "이미지가 없습니다 :(" : user.image}<br />
     이름: {user.name}<br />
-    소개: {user.intro}<br />
+    소개: {user.intro === "" ? "소개가 없습니다 :(" : user.intro}<br />
     ID: {user.email}<br />
     연락처: {user.phone}<br />
     가입일자: {moment(user.join_date).format("YY.MM.DD")}<br />
-    마지막 접속일자: {user.last_login === null ? "기록없음" : moment(user.last_login).format("YY.MM.DD")}
+    마지막 접속일자: {user.last_login === null ? "기록이 없습니다 :(" : moment(user.last_login).format("YY.MM.DD")}
     <h1>예약정보</h1>
     <table>
       <thead>

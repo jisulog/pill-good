@@ -17,7 +17,7 @@ class ManagerUserPayDetailView extends Component {
                 <td>{moment(pay.end_date).format("YY.MM.DD")}</td>
                 <td>{pay.remain}회</td>
                 <td>{pay.pay_type === 1 ? "신용카드" : "현금결제"}</td>
-                <td>{pay.membership_id.price}원</td>
+                <td>{new Intl.NumberFormat('ja-JP', { currency: 'KRW' }).format(pay.membership_id.price)}원</td>
                 <td>
                     {pay.status === 1
                         ? "결제"

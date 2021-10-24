@@ -13,7 +13,6 @@ class ManagerUserView extends Component {
             user.type === 3 ? "일반" : "탈퇴회원"}
         </td>
         <td>
-
           {user.type === 2 ? <button onClick={() => accessUser(user.id, user.type)}>일반 회원으로 변경</button> :
             user.type === 3 ? <button onClick={() => accessUser(user.id, user.type)}>강사 회원으로 변경</button> :
               '변경불가'}
