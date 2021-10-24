@@ -6,7 +6,7 @@ class UserStore {
             password:"",
             name:"",
             phone:"",
-            type:""};  // observable
+            };  // observable
     users = [];
 
     message = "";

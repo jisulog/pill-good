@@ -44,7 +44,6 @@ def login(request):
     """
     로그인 뷰
     """
-
     validationEmail = re.compile(r'^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$')
     emailCheck = validationEmail.match(request.data['email'])
     if emailCheck is None:

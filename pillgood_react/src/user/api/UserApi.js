@@ -11,7 +11,7 @@ class UserApi{
     password:`${user.password}`,
     name:`${user.name}`,
     phone:`${user.phone}`,
-    type:`${user.type}`
+    type:`3`
     })
       .then((response)=>response.data)};
 
