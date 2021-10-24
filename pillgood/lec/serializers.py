@@ -8,7 +8,7 @@ from user.models import User
 class LecSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lec
-        fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'number', 'status']
+        fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'lec_count', 'number', 'status']
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,8 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id']
 
-class BookSerializer(serializers.ModelSerializer):
 
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['book_id', 'email', 'lec_id', 'status']

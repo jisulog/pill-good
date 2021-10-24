@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import lecApi from "../api/LecApi";
 
 class LecStore {
-    lec = {lec_id :"", title:"",content:"", room :"", date: "", time:"", level:"", email:"", number:"", status :1};
+    lec = {lec_id :"", title:"",content:"", room :"", date: "", time:"", level:"", email:"", lec_count: "", number:"", status :1};
     lecs = [];
 
     message = "";
@@ -10,9 +10,9 @@ class LecStore {
     book = {book_id:"", email:"" , lec_id:"", status:"1"};
     books =[];
 
-    user = {};
-    page: 1;
+    activePage = 1;
 
+    user = {};
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true });
     }
@@ -34,7 +34,6 @@ class LecStore {
     async selectAll() {
         try {
             const result = await lecApi.lecList();
-            // console.log(result)
             runInAction(() => {this.lecs = result;
                  console.log(this.lecs)
             });
@@ -43,18 +42,23 @@ class LecStore {
         }
     }
 
-     handlePageChange(page) {
-    this.page = {page}
-    console.log(page)
+    //페이지
+    handlePageChange(pageNumber) {
+        this.activePage = {pageNumber}
     }
 
 
     setBookProps(name, value){
     this.book = {...this.book, [name]:value}
   }
+
+
     setCounter(e) {
     this.count = e.target.count[1];
     }
+
+
+
 
 
    //file 업로드
@@ -62,11 +66,15 @@ class LecStore {
     //강의 예약
     async createBook() {
       try{
-        const email = window.localStorage.getItem("id");
-        await lecApi.bookCreate(email, this.lec.lec_id, this.lec.status)
+      const email = window.localStorage.getItem("id");
+        if (this.lec.lec_count < this.lec.number){
+            await lecApi.bookCreate(email, this.lec.lec_id, this.lec.status);
+            console.log(this.lec.lec_count)
+        } else {
+            return alert("예약 인원이 마감되었습니다")
+        }
       }catch(error){
         console.log(error);
-
       }
     }
 }

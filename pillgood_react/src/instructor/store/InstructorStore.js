@@ -90,7 +90,7 @@ class InstructorStore{
     
     async updateLec() {
       try {
-        await InstructorApi.lecUpdate(this.lec.lec_id, this.lec.title, this.lec.content, this.lec.image, this.lec.room, this.lec.date, this.lec.time, this.lec.level, this.lec.email,  this.lec.number, this.lec.status);
+        await InstructorApi.lecUpdate(this.lec.lec_id, this.lec.title, this.lec.content, this.lec.image, this.lec.room, this.lec.date, this.lec.time, this.lec.level, this.lec.email, this.lec_count, this.lec.number, this.lec.status);
       } catch (error) {
         console.log(error);
       }

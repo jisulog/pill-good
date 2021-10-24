@@ -14,7 +14,6 @@ class BookCreateContainer extends Component {
     }
 
 
-
   render() {
     const {lec, book, createBook} = this.lecStore;
     const email = window.localStorage.getItem("id");
