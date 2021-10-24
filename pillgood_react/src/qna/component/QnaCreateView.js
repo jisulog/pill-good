@@ -30,10 +30,10 @@ class QnaCreateView extends Component {
                         onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
                     <input type="submit" onClick={()=>oncreate(`${member.id}`)} value= "저장" />
-
+                    <Link to={`/qna/`}><button>목록</button></Link>
                    
                 </form>  
-                <Link to={`/qna/`}><button>목록</button></Link>
+
             </div>
         );
     }
