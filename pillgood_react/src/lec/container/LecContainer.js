@@ -11,12 +11,11 @@ class LecContainer extends Component {
   componentDidMount() {
     const {id} = this.props;
     this.lecStore.selectLec(id); //mount 되면 전체 강의
-    console.log(id)}
+    }
 
 
   render() {
     const {lec} = this.lecStore;
-    console.log(lec)
     
 
     return (

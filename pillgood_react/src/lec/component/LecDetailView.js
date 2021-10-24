@@ -18,7 +18,8 @@ class LecDetailView extends Component {
                   시간: {lec.time}<br />
                   난이도: {lec.level}<br />
                   강사명:{lec.email}<br />
-                  인원:{lec.number}<br />
+                  현재 인원: {lec.lec_count}<br />
+                  정원:{lec.number}<br />
 
                   <Link to = {`/lec/create/book/${lec.lec_id}`}><button>예약 신청</button></Link>
                 <Link to= "/lec"><button >강의 목록 </button></Link>&nbsp;&nbsp;

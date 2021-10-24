@@ -16,6 +16,7 @@ class Lec(models.Model):
     time = models.TimeField()
     level = models.IntegerField()
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    lec_count = models.IntegerField(default=0)
     number = models.IntegerField()
     status = models.IntegerField()
     lec_image = models.CharField(max_length=255, default="")

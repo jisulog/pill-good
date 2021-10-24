@@ -37,15 +37,19 @@ def book_index(request, pk):
 @api_view(['POST'])            #예약 신청
 def book_create(request, pk):
     lec_id = pk
-    print(request.data)
-    data = {"lec_id": pk, "email": request.data['email'], "status": 1}
-    print(data)
-    serializer = BookSerializer(data=data)
-    print(serializer)
-    if serializer.is_valid():
-        print(serializer)
-        serializer.save()
-        return Response(serializer.data)
+    serializerBook = BookSerializer(data=request.data)
+    lec = Lec.objects.get(pk=pk)
+    if lec.lec_count < lec.number:
+        lec.lec_count += 1
+        print(lec.lec_count)
+        serializerLec = LecSerializer(instance=lec, data=lec)
+        if serializerLec.is_valid():
+            serializerLec.save()
+    else:
+        return Response({"message": "정원이 모두 찼습니다."})
+    if serializerBook.is_valid():
+        serializerBook.save()
+        return Response(serializerBook.data)
 
 
 
