@@ -1,6 +1,7 @@
-from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from instructor.serializers import InstructorLecSerializer
 from lec.serializers import LecSerializer, BookSerializer
 from manager.models import Book
 from lec.models import Lec
@@ -34,22 +35,50 @@ def book_index(request, pk):
      return Response(serializer.data)
 
 
+@api_view(['PUT'])
+def lec_count_plus(request, pk):
+    lec = Lec.objects.get(pk=pk)
+    print(request.data)
+    if lec.number > lec.lec_count:
+        lec.lec_count += 1
+        print(lec)
+        serializer = InstructorLecSerializer(instance=lec, data=lec)
+        if serializer.is_valid():
+            serializer.save()
+            print(11)
+
+
+
+
+
 @api_view(['POST'])            #예약 신청
 def book_create(request, pk):
-    lec_id = pk
+    print(request.data)
     serializerBook = BookSerializer(data=request.data)
-    lec = Lec.objects.get(pk=pk)
-    if lec.lec_count < lec.number:
-        lec.lec_count += 1
-        print(lec.lec_count)
-        serializerLec = LecSerializer(instance=lec, data=lec)
-        if serializerLec.is_valid():
-            serializerLec.save()
-    else:
-        return Response({"message": "정원이 모두 찼습니다."})
     if serializerBook.is_valid():
         serializerBook.save()
+        print(22)
         return Response(serializerBook.data)
+    else:
+        return Response(serializerBook.errors)
+
+
+
+    # lec_id = pk
+    # serializerBook = BookSerializer(data=request.data)
+    # lec = Lec.objects.get(pk=pk)
+    # if lec.lec_count < lec.number:
+    #     print(lec.lec_count)
+    #     lec.lec_count += 1
+    #     print(lec.lec_count)
+    #     serializerLec = LecSerializer(instance=lec, data=lec)
+    #     if serializerLec.is_valid():
+    #         serializerLec.save()
+    # else:
+    #     return Response({"message": "정원이 모두 찼습니다."})
+    # if serializerBook.is_valid():
+    #     serializerBook.save()
+    #     return Response(serializerBook.data)
 
 
 

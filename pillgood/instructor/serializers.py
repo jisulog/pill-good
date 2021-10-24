@@ -12,7 +12,7 @@ class InstructorLecSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lec
-        fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'number', 'status']
+        fields = ['lec_id', 'title', 'content','lec_image', 'room', 'date', 'time', 'level', 'email','lec_count', 'number', 'status']
 #
 
 
