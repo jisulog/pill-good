@@ -1,17 +1,43 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 class QnaMainView extends Component {
     render() {
         const {qna} = this.props;
         return (
             <div>
-                    번호 : {qna.qna_id}<br/>
-                    <Link to={`/qna/detail/${qna.qna_id}`}>제목 : {qna.title}<br/></Link>
-                    카테고리 : {qna.category}<br/>
-                    작성자 : {qna.question_user.name}<br/>
-                    작성일:{moment(qna.date).format("YYYY-MM-DD")}<br/>
-                    
+                <TableContainer component={Paper}>
+                    <Table
+                        sx={{
+                            minWidth: 650
+                        }}
+                        aria-label="a dense table"size="small" >
+                        <TableHead>
+                           
+                        </TableHead>
+                        <TableBody>
+                            <TableRow
+                                key={qna.qna_id}
+                                sx={{'&:last-child td, &:last-child th' : {
+                                        border: 0
+                                    }}}>
+
+                                <TableCell component="th" scope="row">{qna.qna_id}</TableCell>
+                                <TableCell align="right" ><Link to={`/qna/detail/${qna.qna_id}`}>{qna.title}</Link></TableCell>
+                                <TableCell align="right">{qna.category}</TableCell>
+                                <TableCell align="right">{qna.question_user.name}</TableCell>
+                                <TableCell align="right">{moment(qna.date).format("YYYY-MM-DD")}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
 
             </div>
         );

@@ -5,15 +5,7 @@ class QnaStore {
         qna_id: 0,
         title: "",
         category: "",
-        question_user: {
-            id: 0,
-            name: "",
-            phone: "",
-            intro: "",
-            image: "",
-            type: 0,
-            is_active: 0
-        },
+        question_user: 0,
         question: "",
         answer_user: 0,
         answer: "",
@@ -54,14 +46,16 @@ class QnaStore {
 
     //qna 등록하기
     async createQna(id) {
+        
         try {
             this.qna.question_user = id
             await qnaApi.qnaCreate(
                 this.qna.title,
                 this.qna.category,
-                this.qna.question_user.id,
+                this.qna.question_user,
                 this.qna.question,
             );
+            
             this.selectQnaAll();
         } catch (error) {
             this.message = error.message;
