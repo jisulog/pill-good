@@ -78,7 +78,6 @@ class MemberStore {
             if (this.selectedFile != null) {
                 uploadFile(this.selectedFile, config)
                     .then(data => {
-                        this.member.image = data.key;
                         memberApi.memberUpdate(
                             this.member.id,
                             this.member.name,
@@ -87,7 +86,7 @@ class MemberStore {
                             this.member.image,
                             this.member.type,
                             this.member.is_active
-                        );   
+                        );
                     })
                     .catch(error => (this.message = error.message))
             } else {
@@ -132,7 +131,7 @@ class MemberStore {
         } catch (error) {
             runInAction((this.message = error.message));
         }
-    } 
+    }
 }
 
 export default new MemberStore();
