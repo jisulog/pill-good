@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {S3_BUCKET, REGION} from '../../image/S3bucket';
 
 class MemberView extends Component {
     render() {
         const { member } = this.props;
 
+        const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${member.image}`;
+
         return (
             <div>
                 <div>
-                    <img src={member.image} alt="프로필사진" />
+                    <img src={imgUrl} alt="프로필사진" width="200"/>
                 </div>
                 <div>
                     <dl>
