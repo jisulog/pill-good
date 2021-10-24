@@ -44,7 +44,7 @@ class ManagerUserContainer extends Component {
                         onChange={(e) => changeUserFilter(e.target.value)}>
                         <option value="0">--회원분류--</option>
                         <option value="2">강사</option>
-                        <option value="3">회원</option>
+                        <option value="3">일반</option>
                     </select><br />
                 </form>
 
@@ -54,7 +54,7 @@ class ManagerUserContainer extends Component {
               <th>ID</th>
               <th>이름</th>
               <th>구분</th>
-              <th></th>
+              <th>변경</th>
             </tr>
           </thead>
           <tbody>

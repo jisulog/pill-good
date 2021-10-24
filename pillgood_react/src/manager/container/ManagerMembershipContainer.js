@@ -49,9 +49,9 @@ class ManagerMembershipContainer extends Component {
         <form>
           <select name="status" id="status" value={membershipFilter}
             onChange={(e) => changeMembershipFilter(e.target.value)}>
-            <option value="0">--활성분류--</option>
-            <option value="1">비활성</option>
-            <option value="2">활성</option>
+            <option value="0">--활성 여부--</option>
+            <option value="1">활성</option>
+            <option value="2">비활성</option>
           </select><br />
         </form>
         <table>

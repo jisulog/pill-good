@@ -47,7 +47,7 @@ class ManagerLecContainer extends Component {
         <h1>강의목록</h1>
         <select name="status" id="status" value={lecFilter}
           onChange={(e) => changeLecFilter(e.target.value)}>
-          <option value="0">--신청상황--</option>
+          <option value="0">--승인여부--</option>
           <option value="1">대기</option>
           <option value="2">승인</option>
           <option value="3">거부</option>
@@ -61,7 +61,7 @@ class ManagerLecContainer extends Component {
               <th>날짜</th>
               <th>시간</th>
               <th>장소</th>
-              <th>구분</th>
+              <th>승인여부</th>
             </tr>
           </thead>
           <tbody>

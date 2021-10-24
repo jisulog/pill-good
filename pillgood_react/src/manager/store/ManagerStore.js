@@ -164,10 +164,6 @@ class ManagerStore {
     }
   }
 
-  // action - history
-  handleGoBack(){
-    window.history.back()
-  };
 
 
 }
