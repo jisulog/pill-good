@@ -67,16 +67,13 @@ def user_help(request):
     serializer = HelpSerializer(data=request.data)
 
     searchEmail = User.objects.filter(name=request.data['name'], phone=request.data['phone'])
-    print(searchEmail)
     # <QuerySet [<User: finish finish@test.com>]>
-    # {
-    # "name":"finish",
-    # "phone":"031-000-0000"
-    # }
+    # {"name":"finish",
+    # "phone":"031-000-0000"}
     if searchEmail:
-        print(searchEmail[0])
-        return Response({'message': searchEmail[0]})
-    # TypeError: Object of type User is not JSON serializable
+        print(type(searchEmail))
+        # <class 'django.db.models.query.QuerySet'>
+        return Response({'message': searchEmail(User[:])})
     if not searchEmail:
         return Response({"message": "해당 정보와 일치하는 이메일이 존재하지 않습니다."})
 

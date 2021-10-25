@@ -26,8 +26,8 @@ class UserStore {
         return alert("비밀번호가 일치하지 않습니다.")
       }
       const result = await UserApi.userJoin(this.user);
-      alert(result.message);
-    
+      alert(result.message); 
+      window.location.replace("/");
     }
 
 
@@ -37,13 +37,13 @@ class UserStore {
     async handlerLogin() {
       const result = await UserApi.userLogin(this.user.email, this.user.password);
       alert(result.message);
-      
       window.localStorage.setItem('email', result.email);
       window.localStorage.setItem('id', result.id);
-      window.localStorage.setItem('email', result.is_admin);
+      window.localStorage.setItem('is_admin', result.is_admin);
       window.sessionStorage.setItem('email', result.email);
       window.sessionStorage.setItem('id', result.id);
-      window.sessionStorage.setItem('email', result.is_admin);
+      window.sessionStorage.setItem('is_admin', result.is_admin);
+      window.location.replace("/");
     }
 
 
@@ -51,6 +51,7 @@ class UserStore {
     handlerLogout() {
       window.localStorage.clear();
       window.sessionStorage.clear();
+      window.location.replace("/");
     }
 
 
