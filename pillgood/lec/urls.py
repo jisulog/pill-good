@@ -21,5 +21,8 @@ urlpatterns = [
     path('', views.lec_index, name='lec_index'),
     path('<int:pk>/', views.lec_detail, name='lec_detail'),
     path('create/book/<int:pk>/', views.book_create, name='book_create'),
-    path('create/book_lec/<int:pk>/', views.lec_count_plus, name='lec_count_plus')
+    path('create/book_lec/<int:pk>/', views.lec_count_plus, name='lec_count_plus'),
+    path('paylist/<int:pk>/', views.user_paylist, name='user_paylist'),
+    path('create/book_pay/<int:pk>/', views.book_count_minus, name='book_count_minus')
+
 ]

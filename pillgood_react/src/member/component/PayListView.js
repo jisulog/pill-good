@@ -16,14 +16,14 @@ class PayListView extends Component {
                     ? "1대1"
                     : pay.membership_id.type === 2
                     ? "1대2"
-                    : pay.membership_id.type === 3
+                    : pay.membership_id.type === 8
                     ? "1대8"
                     : "유형이 정확하지 않습니다."}</td>
                 <td>
                     {moment(pay.pay_date).format("YYYY-MM-DD")}~{pay.end_date}
                 </td>
                 <td>
-                    {pay.membership_id.period} / {pay.remain}
+                    {pay.membership_id.number} / {pay.remain}
                 </td>
                 <td>{pay.pay_type === 1 ? "신용카드" : "현금결제"}</td>
                 <td>{pay.price}</td>
@@ -32,10 +32,10 @@ class PayListView extends Component {
                         ? "정상결제"
                         : pay.status === 2
                         ? "환불"
-                        : "환불완료"}
+                        : "에러"}
 
                     {pay.status === 1 &&
-                    // pay.membership_id.period === pay.remain &&
+                    pay.membership_id.number === pay.remain &&
                     pay.remain > 0 ? (
                         <Link
                             // to={`/member/refund/${pay.pay_id}`}

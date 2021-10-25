@@ -29,6 +29,7 @@ class MembershipStore {
         try {
             const pay_date = moment().add(9, 'hours').format("YYYY-MM-DDTHH:mm:ss");
             let end_date = moment().add(this.membership.period,"days").format("YYYY-MM-DD");
+            console.log(moment(), " ~ ", end_date);
             const result = await membershipApi.Pay(user, 1, this.membership.number, pay_date, end_date, this.membership.membership_id, 1);
             console.log(result);
         } catch (error) {

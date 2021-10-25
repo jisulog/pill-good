@@ -13,6 +13,17 @@ class BookStore {
     };
     message = "";
 
+    pays = [];
+    pay = {
+        pay_id: 0,
+        pay_type: 0,
+        remain: 0,
+        pay_date: "",
+        end_date: "",
+        membership_id: 0,
+        status: 0,
+    };
+
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true });
     }
@@ -83,6 +94,24 @@ class BookStore {
                 this.lec.number,
                 this.lec.status
             );
+
+            const paylist = await MemberApi.payList(id);
+            for (var i = 0; i < paylist.length; i++) {
+                if (paylist[i].membership_id.type === this.book.lec_id.number) {
+                    this.pay = paylist[i];
+                }
+            }
+
+            let remainCount = this.pay.remain + 1;
+            await LecApi.payCountUpdate(
+                this.pay.pay_id,
+                this.pay.pay_type,
+                remainCount,
+                this.pay.pay_date,
+                this.pay.end_date,
+                this.pay.membership_id,
+                this.pay.status
+            );            
 
             runInAction(() => {
                 this.selectBookAll(id);
