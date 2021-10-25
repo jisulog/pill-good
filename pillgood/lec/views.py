@@ -5,7 +5,8 @@ from lec.models import Lec
 from lec.serializers import LecSerializer, BookSerializer
 from manager.models import Book
 from manager.serializers import LecSerializer as MLecSerializer
-from membership.models import Membership
+from member.serializers import PaySerializer
+from membership.models import Membership, Pay
 from membership.serializers import MembershipSerializer
 
 
@@ -53,17 +54,22 @@ def lec_count_plus(request, pk):
         return Response(serializer.errors)
 
 
-@api_view(['POST'])
-def membership_count_minus(request, pk):
+@api_view(['PUT'])
+def book_count_minus(request, pk):
     """
-    멤버십 잔여횟수 빼기
+    멤버십결제 잔여횟수 빼기
     """
-    exist = Membership.objects.filter(email_id=request.data['email'], status=1).count()
-    if exist == 0:
-        membership = Membership.objects.get(membership_id=pk)
-        serializer = MembershipSerializer(instance=membership, data=request.data)
-    else:
+    print(request.data)
+    pay = Pay.objects.get(pay_id=pk)
+    if pay is None:
         return Response({"message": "멤버십 결제 후 예약해 주세요."})
+
+    serializer = PaySerializer(instance=pay, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)
 
 
 @api_view(['POST'])
@@ -81,3 +87,13 @@ def book_create(request, pk):
             return Response(serializer.errors)
     else:
         return Response({"message": "이미 예약된 강의입니다."})
+
+
+@api_view(['GET'])
+def user_paylist(request, pk):
+    """
+    현재 활성화된 멤버십 가져오기
+    """
+    paylist = Pay.objects.filter(email=pk, status=1, remain__gt=0)
+    serializer = PaySerializer(paylist, many=True)
+    return Response(serializer.data)

@@ -29,7 +29,8 @@ class LecApi {
             lec_id:`${lec_id}`,
             status: `${status}`
            })
-        .then((response) => response.data);
+        .then((response) => response.data)
+        .catch((error) => ({"message": error}));
     }
 
     lecCountUpdate(id, title, content, lec_image, room, date, time, level, email, lec_count, number, status){
@@ -48,10 +49,17 @@ class LecApi {
                 status: `${status}`,
             })
             .then((response) => response.data)
-            .catch((error) => console.log(error));
+            .catch((error) => ({"message": error}));
     }
 
-    membershipCountUpdate(pay_id, pay_type, remain, pay_date, end_date, membership_id, status){
+    payList(user_id) {
+        return axios
+            .get(this.URL + `paylist/${user_id}`)
+            .then((response) => response.data)
+            .catch((error) => ({ message: error }));
+    }
+
+    payCountUpdate(pay_id, pay_type, remain, pay_date, end_date, membership_id, status){
         return axios
             .put(this.URL + `create/book_pay/${pay_id}/`, {
                 pay_id: `${pay_id}`,
@@ -63,7 +71,7 @@ class LecApi {
                 status: `${status}`,
             })
             .then((response) => response.data)
-            .catch((error) => console.log(error));
+            .catch((error) => ({"message": error}));
     }
 
 

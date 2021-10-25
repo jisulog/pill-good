@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 class BookCreateView extends Component {
   render() {
-      const { lec, user_id, createBook } = this.props;
-
+      const { lec, createBook } = this.props;
+      const user_id = window.localStorage.getItem("id");
       return (
           <div>
               {lec.date} {lec.time}에 "{lec.title}" 예약을 진행하시겠습니까?<br />

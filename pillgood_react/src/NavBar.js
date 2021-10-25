@@ -118,6 +118,7 @@ class NavBar extends Component {
                 </Button>
                 }
                 </span>
+                <hr/>
             </div>
         </div>
       );

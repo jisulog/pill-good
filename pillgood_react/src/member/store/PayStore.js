@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import MemberApi from "../api/MemberApi";
+import moment from 'moment';
 
 class PayStore {
     pays = [];
@@ -9,12 +10,7 @@ class PayStore {
         remain: 0,
         pay_date: "",
         end_date: "",
-        membership_id: {
-            membership_id: 0,
-            number: 0,
-            price: 0,
-            type: 0,
-        },
+        membership_id: 0,
         status: 0,
     };
     message = "";
@@ -24,16 +20,48 @@ class PayStore {
         makeAutoObservable(this, {}, { autoBind: true });
     }
 
+    payInit(){
+        this.pay = {
+            pay_id: 0,
+            pay_type: 0,
+            remain: 0,
+            pay_date: "",
+            end_date: "",
+            membership_id: 0,
+            status: 0,
+        };        
+    }
+
     async selectMember(id) {
         try {
             const result = await MemberApi.payList(id);
 
             runInAction(() => {
                 this.pays = result;
+                this.todayPayUpdate();
             });
         } catch (error) {
             runInAction(() => (this.message = error.message));
         }
+    }
+
+    async todayPayUpdate(){
+        for(var i=0; i<this.pays.length;i++) {
+            this.pay = this.pays[i];
+            if (this.pay.end_date < moment().format("YYYY-MM-DD")) {
+                this.pay.status = 3;
+                await MemberApi.payRefund(
+                    this.pay.pay_id,
+                    this.pay.pay_type,
+                    this.pay.remain,
+                    this.pay.pay_date,
+                    this.pay.end_date,
+                    this.pay.membership_id,
+                    this.pay.status,
+                );
+            }
+        }
+
     }
 
     async selectPay(payId) {
