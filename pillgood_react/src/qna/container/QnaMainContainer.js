@@ -37,8 +37,9 @@ class QnaMainContainer extends Component {
                 {qnaList}
                 <Link to={`/qna/create/`}><button>글작성</button></Link>
                 <Link to={`/qna/`}><button>목록</button></Link>
-                <TablePagination rowsPerPageOptions={[10, 50]} />
-            </div>
+ 
+
+            </div> 
         );
     }
 }
