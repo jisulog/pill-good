@@ -37,6 +37,7 @@ class UserStore {
     async handlerLogin() {
       const result = await UserApi.userLogin(this.user.email, this.user.password);
       alert(result.message);
+      if (result.message !== "이메일 또는 비밀번호가 정확하지않습니다.") {
       window.localStorage.setItem('email', result.email);
       window.localStorage.setItem('id', result.id);
       window.localStorage.setItem('is_admin', result.is_admin);
@@ -44,6 +45,7 @@ class UserStore {
       window.sessionStorage.setItem('id', result.id);
       window.sessionStorage.setItem('is_admin', result.is_admin);
       window.location.replace("/");
+      }
     }
 
 
