@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import UserLoginContainer from './user/container/UserLoginContainer';
 import UserStore from "./user/store/UserStore";
-import './NavBar.css';
 
 class Tab extends Component {
 
