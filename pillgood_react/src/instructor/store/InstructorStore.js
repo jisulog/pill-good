@@ -13,6 +13,7 @@ const config = {
 class InstructorStore{
   lec = {lec_id :"", title:"",content:"",room :"", date: "", time:"", level:"", email:"", lec_count: 0 , number:"", status :1, lec_image:""};
   selectedFile = null;
+  selectedDate= null;
 //lec={};
   lecs = [];
   users =[];
@@ -31,6 +32,9 @@ class InstructorStore{
     this.selectedFile = e.target.files[0];
     }   //file 업로드
 
+    changeDate = (newValue) => {
+      this.selectedDate = {...this.selectedDate,newValue};
+  }
     async selectAllUser(lec_id){
       try{
         const result = await InstructorApi.userList(lec_id);

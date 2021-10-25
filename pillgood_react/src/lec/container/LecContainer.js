@@ -20,7 +20,7 @@ class LecContainer extends Component {
 
     return (
        <div>
-         <h1>강의 상세</h1>
+
         <LecDetailView lec= {lec} />
        </div>
     );
