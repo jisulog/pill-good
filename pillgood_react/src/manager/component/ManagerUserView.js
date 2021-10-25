@@ -3,8 +3,9 @@ import { DataGrid } from '@mui/x-data-grid';
 
 class ManagerUserView extends Component {
   render() {
-    const { columns, rows  } = this.props;
-
+    const { columns, rows, useStyles  } = this.props;
+    const classes = useStyles;
+    
     return (
       // <tr>
       //   <td>{user.email}</td>
@@ -19,10 +20,12 @@ class ManagerUserView extends Component {
       //         '변경불가'}
       //   </td>
       // </tr>
-            <DataGrid style={{ height: 500, width: '70%' }}
+            <DataGrid style={{ height: 500, width: '100%'}} 
             rows={rows}
             columns={columns}
             pageSize={7}
+            hideFooterSelectedRowCount={true}
+            className={classes.root}
           />
     );
   }
