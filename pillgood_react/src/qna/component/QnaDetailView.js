@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 class QnaDetailView extends Component {
     render() {
         const {qna, ondelete, admin} = this.props;
@@ -16,11 +18,13 @@ class QnaDetailView extends Component {
                             ? `답변 : ${qna.answer}`
                             :""}
                 <br />
-                <Link to={`/qna/update/${qna.qna_id}`}>수정</Link>
-                <button onClick={()=>ondelete()}>삭제</button>
-                <Link to={`/qna/`}>목록</Link>
+                <Stack spacing={2} direction="row">
+                <Button variant="outlined"><Link to={`/qna/update/${qna.qna_id}`}>수정</Link></Button>
+                <Button variant="outlined" onClick={()=>ondelete()}>삭제</Button>
+                <Button variant="outlined"><Link to={`/qna/`}>목록</Link></Button>
                 {admin !== true
-                            ? <Link to={`/qna/answer/${qna.qna_id}`}>답변</Link>:""}
+                            ? <Button variant="outlined"> <Link to={`/qna/answer/${qna.qna_id}`}>답변</Link></Button>:""}
+                </Stack>
             </div>
         );
     }
