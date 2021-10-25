@@ -3,17 +3,17 @@ import lecApi from "../api/LecApi";
 
 class LecStore {
     lec = {
-        lec_id: "",
+        lec_id: 0,
         title: "",
         content: "",
         lec_image: "",
         room: "",
         date: "",
         time: "",
-        level: "",
-        email: "",
-        lec_count: "",
-        number: "",
+        level: 0,
+        email: 0,
+        lec_count: 0,
+        number: 0,
         status: 1,
     };
     lecs = [];
@@ -23,9 +23,19 @@ class LecStore {
     book = { book_id: "", email: "", lec_id: "", status: "1" };
     books = [];
 
+    pays = [];
+    pay = {
+        pay_id: 0,
+        pay_type: 0,
+        remain: 0,
+        pay_date: "",
+        end_date: "",
+        membership_id: 0,
+        status: 0,
+    };
+
     activePage = 1;
 
-    user = {};
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true });
     }
@@ -49,7 +59,6 @@ class LecStore {
             const result = await lecApi.lecList();
             runInAction(() => {
                 this.lecs = result;
-                console.log(this.lecs);
             });
         } catch (error) {
             runInAction(() => (this.message = error.message));
@@ -72,15 +81,19 @@ class LecStore {
     //file 업로드
 
     //강의 예약
-    async createBook() {
+    async createBook(user_id) {
         try {
-            const email = window.localStorage.getItem("id");
             if (this.lec.lec_count < this.lec.number) {
-                await lecApi.bookCreate(
-                    email,
-                    this.lec.lec_id,
-                    this.lec.status
-                );
+                
+                // book create
+                const result = await lecApi.bookCreate(user_id, this.lec.lec_id, 1);
+                
+                if (result.message !== "" && result.message !== undefined) {
+                    return alert(result.message);
+                }
+
+                // lec count update
+                let count = this.lec.lec_count + 1;
                 await lecApi.lecCountUpdate(
                     this.lec.lec_id,
                     this.lec.title,
@@ -91,15 +104,20 @@ class LecStore {
                     this.lec.time,
                     this.lec.level,
                     this.lec.email,
-                    this.lec.lec_count,
+                    count,
                     this.lec.number,
                     this.lec.status
                 );
+                this.selectLec(this.lec.lec_id);
+
+                //membership count minus
+                // const membership = await lecApi.
+                
             } else {
                 return alert("예약 인원이 마감되었습니다");
             }
         } catch (error) {
-            console.log(error);
+            this.message = error.message;
         }
     }
 }

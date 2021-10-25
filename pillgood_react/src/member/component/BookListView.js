@@ -11,7 +11,7 @@ class BookListView extends Component {
                 <td>{book.lec_id.room}</td>
                 <td>{book.lec_id.email.name}</td>
                 <td>
-                    {book.lec_id.number} / {book.lec_id.number}
+                {book.lec_id.lec_count} / {book.lec_id.number}
                 </td>
                 <td>
                     {book.status === 1
@@ -20,7 +20,7 @@ class BookListView extends Component {
                                   type="button"
                                   value="취소"
                                   onClick={(e) => {
-                                      onCancel(book.book_id, book.email.id);
+                                      onCancel(book.book_id, book.email.id, book.lec_id.lec_id);
                                   }}
                               /></span>)
                           

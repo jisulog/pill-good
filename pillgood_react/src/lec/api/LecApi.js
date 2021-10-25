@@ -27,15 +27,46 @@ class LecApi {
         return axios.post(this.URL+`create/book/${lec_id}/`,{
             email:`${email}`,
             lec_id:`${lec_id}`,
-            status: 1
+            status: `${status}`
            })
         .then((response) => response.data);
     }
 
     lecCountUpdate(id, title, content, lec_image, room, date, time, level, email, lec_count, number, status){
-        return axios.put(this.URL+`create/book_lec/${id}/`, {title:`${title}`, content:`${content}`,
-        lec_image:`${lec_image}`,room:`${room}`, date:`${date}`, time:`${time}`, level:`${level}`, email:`${email}`,  lec_count:`${lec_count}`, number:`${number}`, status:`${status}`}).then((response)=>response.data).catch((error)=>console.log(error));
+        return axios
+            .put(this.URL + `create/book_lec/${id}/`, {
+                title: `${title}`,
+                content: `${content}`,
+                lec_image: `${lec_image}`,
+                room: `${room}`,
+                date: `${date}`,
+                time: `${time}`,
+                level: `${level}`,
+                email: `${email}`,
+                lec_count: `${lec_count}`,
+                number: `${number}`,
+                status: `${status}`,
+            })
+            .then((response) => response.data)
+            .catch((error) => console.log(error));
     }
+
+    membershipCountUpdate(pay_id, pay_type, remain, pay_date, end_date, membership_id, status){
+        return axios
+            .put(this.URL + `create/book_pay/${pay_id}/`, {
+                pay_id: `${pay_id}`,
+                pay_type: `${pay_type}`,
+                remain: `${remain}`,
+                pay_date: `${pay_date}`,
+                end_date: `${end_date}`,
+                membership_id: `${membership_id}`,
+                status: `${status}`,
+            })
+            .then((response) => response.data)
+            .catch((error) => console.log(error));
+    }
+
+
 }
 
 export default new LecApi();

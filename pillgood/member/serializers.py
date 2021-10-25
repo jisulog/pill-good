@@ -23,22 +23,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'phone', 'intro', 'image', 'type', 'is_active']
 
 
-# class PasswordSerializer(serializers.Serializer):
-#     old_password = serializers.CharField(required=True)
-#     new_password = serializers.CharField(required=False)
-#
-#     def validate_old_password(self, value):
-#         user = self.context['request'].user
-#         if not user.check_password(value):
-#             raise serializers.ValidationError('비밀번호가 일치하지 않습니다.')
-#
-#     def save(self, **kwargs):
-#         password = self.validated_data['new_password']
-#         user = self.context['request'].user
-#         user.set_password(password)
-#         user.save()
-#         return user
-
 class PaySerializer(serializers.ModelSerializer):
     email = UserSerializer(read_only=True)
     membership_id = MembershipSerializer(read_only=True)

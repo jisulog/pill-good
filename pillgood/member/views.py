@@ -1,6 +1,8 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from lec.models import Lec
+from lec.serializers import LecSerializer
 from manager.models import Book
 from manager.serializers import BookSerializer
 from membership.models import Pay
@@ -57,13 +59,6 @@ def password_update(request, id):
         return Response(serializer.data)
     else:
         return Response(serializer.errors)
-
-
-# def checkPassword(old_password, new_password):
-#     serializer = PasswordSerializer(data={"old_password": old_password, "new_password": new_password})
-#
-#     if serializer.is_valid():
-#         serializer.save()
 
 
 @api_view(['PUT'])
@@ -179,3 +174,17 @@ def book_cancel(request, pk):
     else:
         return Response(serializer.errors)
 
+
+@api_view(['PUT'])
+def lec_count_minus(request, pk):
+    """
+    강의 예약 숫자 줄이기
+    """
+    print(request.data)
+    lec = Lec.objects.get(pk=pk)
+    serializer = LecSerializer(instance=lec, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)

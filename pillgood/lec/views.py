@@ -1,94 +1,83 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from instructor.serializers import InstructorLecSerializer
+from lec.models import Lec
 from lec.serializers import LecSerializer, BookSerializer
 from manager.models import Book
-from lec.models import Lec
+from manager.serializers import LecSerializer as MLecSerializer
+from membership.models import Membership
+from membership.serializers import MembershipSerializer
 
 
-# Create your views here.
-from user.models import User
-
-
-@api_view(['GET'])             # 등록된 전체 강의 목록
+@api_view(['GET'])
 def lec_index(request):
+    """
+    등록된 전체 강의 목록
+    """
     lecs = Lec.objects.all()
     serializer = LecSerializer(lecs, many=True)
     return Response(serializer.data)
 
 
-
-@api_view(['GET'])                    # 특정 강의 상세 페이지
+@api_view(['GET'])
 def lec_detail(request, pk):
+    """
+    특정 강의 상세 페이지
+    """
     lec = Lec.objects.get(pk=pk)
     serializer = LecSerializer(lec, many=False)
     return Response(serializer.data)
 
 
-
-
-@api_view(['GET'])      # 예약 페이지 (강의 간단 설명) + 추후 캘린더 구현
+@api_view(['GET'])
 def book_index(request, pk):
-     lec = Lec.objects.get(pk=pk)
-     serializer = LecSerializer(lec, many=False)
-     return Response(serializer.data)
+    """
+    예약 페이지 (강의 간단 설명) + 추후 캘린더 구현
+    """
+    lec = Lec.objects.get(pk=pk)
+    serializer = LecSerializer(lec, many=False)
+    return Response(serializer.data)
 
 
 @api_view(['PUT'])
 def lec_count_plus(request, pk):
+    """
+    강의 예약 숫자 늘리기
+    """
     lec = Lec.objects.get(pk=pk)
-    print(request.data)
-    if lec.number > lec.lec_count:
-        lec.lec_count += 1
-        print(lec)
-        serializer = InstructorLecSerializer(instance=lec, data=lec)
+    serializer = LecSerializer(instance=lec, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.errors)
+
+
+@api_view(['POST'])
+def membership_count_minus(request, pk):
+    """
+    멤버십 잔여횟수 빼기
+    """
+    exist = Membership.objects.filter(email_id=request.data['email'], status=1).count()
+    if exist == 0:
+        membership = Membership.objects.get(membership_id=pk)
+        serializer = MembershipSerializer(instance=membership, data=request.data)
+    else:
+        return Response({"message": "멤버십 결제 후 예약해 주세요."})
+
+
+@api_view(['POST'])
+def book_create(request, pk):
+    """
+    예약 신청
+    """
+    exist = Book.objects.filter(email_id=request.data['email'], lec_id=request.data['lec_id'], status=1).count()
+    if exist == 0:
+        serializer = BookSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            print(11)
-
-
-
-
-
-@api_view(['POST'])            #예약 신청
-def book_create(request, pk):
-    print(request.data)
-    serializerBook = BookSerializer(data=request.data)
-    if serializerBook.is_valid():
-        serializerBook.save()
-        print(22)
-        return Response(serializerBook.data)
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
     else:
-        return Response(serializerBook.errors)
-
-
-
-    # lec_id = pk
-    # serializerBook = BookSerializer(data=request.data)
-    # lec = Lec.objects.get(pk=pk)
-    # if lec.lec_count < lec.number:
-    #     print(lec.lec_count)
-    #     lec.lec_count += 1
-    #     print(lec.lec_count)
-    #     serializerLec = LecSerializer(instance=lec, data=lec)
-    #     if serializerLec.is_valid():
-    #         serializerLec.save()
-    # else:
-    #     return Response({"message": "정원이 모두 찼습니다."})
-    # if serializerBook.is_valid():
-    #     serializerBook.save()
-    #     return Response(serializerBook.data)
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return Response({"message": "이미 예약된 강의입니다."})
