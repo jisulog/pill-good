@@ -135,7 +135,7 @@ class UserJoinContainer extends Component {
                     로그인
                 </Button>
                 <hr/>
-                <img alt="favicon" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/favicon.png"/>
+                <img alt="favicon" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/logo/favicon.png"/>
             </div>
         );
     }

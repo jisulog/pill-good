@@ -89,7 +89,7 @@ class UserLoginContainer extends Component {
                     회원가입
                 </Button>
                 <hr/>
-                <img alt="favicon" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/favicon.png"/>
+                <img alt="favicon" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/logo/favicon.png"/>
             </div>
         );
     }
