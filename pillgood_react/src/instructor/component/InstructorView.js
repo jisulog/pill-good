@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InstructorContainer from '../container/InstructorContainer';
+import moment from 'moment';
 
 class InstructorView extends Component {
     render() {

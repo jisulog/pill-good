@@ -9,9 +9,11 @@ class BookCreateView extends Component {
 
       return (
           <div>
-              {lec.date} {lec.time}에 "{lec.title}" 예약을 진행하시겠습니까?
+              {lec.date} {lec.time}에 "{lec.title}" 예약을 진행하시겠습니까?<br />
+              현재 인원 {lec.lec_count} / 정원 {lec.number}<br />
+
               <br />
-              <button onClick={() => createBook(user_id)}>예약 확정</button>
+              <button onClick={() => createBook(user_id)}>예약 신청</button>
               &nbsp;&nbsp;
               <Link to="/lec">
                   <button>강의 목록</button>

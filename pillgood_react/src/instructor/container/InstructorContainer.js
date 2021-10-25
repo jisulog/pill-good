@@ -2,82 +2,130 @@ import React, { Component } from 'react';
 import InstructorStore from '../store/InstructorStore';
 import {observer} from 'mobx-react';
 import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import {MenuItem, Typography } from "@material-ui/core";
+import TimePicker from '@mui/lab/TimePicker';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import moment from 'moment';
 
 class InstructorContainer extends Component {
   instructorStore = InstructorStore;
   render() {
-    const { lec, createLec, handlerSetFile,  handlerSetProps} = this.instructorStore;
+    const { lec, createLec, handlerSetFile, changeDate, handlerSetProps} = this.instructorStore;
     return (
       <div>
           <h1>강의 등록</h1>
-          
+
               <div>
-                강의명 : <input type="text"
-                                id="title"
-                                name="title" 
-                                value={lec.title}
-                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
-                                placeholder="강의명 " />
+              <Typography component="h2" variant="body1" gutterBottom>
+                  강의명
+              </Typography>
+                 <TextField type="text"
+                            id="title"
+                            variant="outlined"
+                            name="title"
+                            value={lec.title}
+                            onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
+                 />
               </div>
               <div>
-                강의내용 : <textarea 
+                <Typography component="h2" variant="body1" gutterBottom>
+                  강의 내용
+              </Typography>
+                <TextField
                                 name="content" 
                                 id ="content"
+                                variant="outlined"
+                                multiline
+                                rows={3}
+                                style ={{width: '30ch'}}
                                 value={lec.content} 
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                                 placeholder="강의내용 " />
               </div>
-                이미지 : <input type="file" name = "image" onChange={(e)=>{
-                        handlerSetProps(e.target.name, e.target.files[0].name);
-                        handlerSetFile(e)}} />
               <div>
-                장소 : <select name="room" id="room" value={lec.room||""}
+                <Typography component="h2" variant="body1" gutterBottom>
+                  파일첨부
+                </Typography>
+                <input accept="image/*"  type="file" name ="lec_image" onChange={(e)=>
+                handlerSetFile(e)} />
+              </div>
+              <div>
+              <Typography component="h2" variant="body1" gutterBottom>
+                  장소
+               </Typography>
+                  <TextField select style ={{width: '15ch'}} name="room" id="room" value={lec.room||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
-                          <option value="">--강의실--</option>
-                          <option value="301호">301호</option>
-                          <option value="302호">302호</option>
-                          <option value="303호">303호</option>
-                          <option value="201호">201호</option>
-                          <option value="202호">202호</option>
-                          <option value="101호">101호</option>
-                        </select><br />
+                          <MenuItem value="">--강의실--</MenuItem>
+                          <MenuItem value="301호">301호</MenuItem>
+                          <MenuItem value="302호">302호</MenuItem>
+                          <MenuItem value="303호">303호</MenuItem>
+                          <MenuItem value="201호">201호</MenuItem>
+                          <MenuItem value="202호">202호</MenuItem>
+                          <MenuItem value="101호">101호</MenuItem>
+                        </TextField><br />
+              </div>
+              <div>
+                 날짜 : <input   type="date" id="date"name="date" value={lec.date}
+                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
+              </div>
 
+
+              <div>
+                <Typography component="h2" variant="body1" gutterBottom>
+                  시간
+                </Typography>
+                <TextField
+                          type="time"
+                          value={lec.time}
+                          name="time"
+                          onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
+                          />
               </div>
               <div>
-                날짜 : <input   type="date" id="date"name="date" value={lec.date}
-                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
-              </div>
-              <div>
-                시간 : <input   type="time" id="time" name="time" value={lec.time}
-                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
-              </div>
-              <div>
-                난이도 : <select name="level" id="level" value={lec.level||""}
+              <Typography component="h2" variant="body1" gutterBottom>
+                  난이도
+               </Typography>
+                  <TextField select style ={{width: '10%'}} name="level" id="level" value={lec.level||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
-                          <option value="">--난이도--</option>
-                          <option value="1">level-1</option>
-                          <option value="2">level-2</option>
-                          <option value="3">level-3</option>
-                        </select><br />
+                          <MenuItem value="">--난이도--</MenuItem>
+                          <MenuItem value="1">level-1 </MenuItem>
+                          <MenuItem value="2">level-2 </MenuItem>
+                          <MenuItem value="3">level-3 </MenuItem>
+                        </TextField><br />
               </div> 
               <div>
-                강사명 : <input  type="number" id="email" name="email" value={lec.email||''}
-                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
-                                /><br/>
+                <Typography component="h2" variant="body1" gutterBottom>
+                  강사번호 (*본인의 강사 번호를 입력하세요)
+                </Typography>
+                 <TextField
+                            type="number"
+                            id="email"
+                            name="email"
+                            style ={{width: '10%'}}
+                            value={lec.email||''}
+                            onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
+                            /><br/>
               </div>
-                인원 :<div name="number" value={lec.number||''} onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
-                      <input type="radio" id="1" name="number" value="1" />
-                      <label htmlFor="1">1인</label>
-                      <input type="radio" id="2" name="number" value="2"/>
-                      <label htmlFor="2">2인</label>
-                      <input type="radio" id="3" name="number" value="3"/>
-                      <label htmlFor="8">8인</label>
-                      </div>
-
+              <div>
+                 <Typography component="h2" variant="body1" gutterBottom>
+                  인원
+                </Typography>
+                       <TextField select style ={{width: '10%'}} name="number" id="number" value={lec.number||""}
+                        onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
+                          <MenuItem value="">--인원--</MenuItem>
+                          <MenuItem value="1">1인 </MenuItem>
+                          <MenuItem value="2">2인 </MenuItem>
+                          <MenuItem value="8">8인</MenuItem>
+                        </TextField><br />
 
                       <button onClick={()=>createLec()}>등록</button>&nbsp;&nbsp;
 
-
+            </div>
       </div>
     );
   }
