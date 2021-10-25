@@ -94,12 +94,11 @@ const ManagerMembershipCreateContainer = () => {
       가격: <input type="number" id="price" name="price" value={membership.price || ""}
         {...register("price", {
           required: true, validate: {
-            positiveNumber: (value) => parseFloat(value) > 0,
-            lessThanHundred: (value) => parseFloat(value) < 1000000
+            positiveNumber: (value) => parseFloat(value) > 9999,
+            lessThanHundred: (value) => parseFloat(value) < 1000001
           }
         })}
-        onChange={(e) => setMembershipProps(e.target.name, e.target.value)} placeholder="1~999999" />원<br />
-      {errors.number && <p>입력하세요!</p>}
+        onChange={(e) => setMembershipProps(e.target.name, e.target.value)} placeholder="10,000~999,999" />원<br />
       {errors.price && errors.price.type === "positiveNumber" && (<p>잘못된 가격을 입력하셨습니다 :(</p>)}
       {errors.price && errors.price.type === "lessThanHundred" && (<p>1,000,000원 미만의 가격을 입력하세요 :(</p>)}
 

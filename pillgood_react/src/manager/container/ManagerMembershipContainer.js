@@ -11,7 +11,25 @@ class ManagerMembershipContainer extends Component {
   }
 
   render() {
+    const columns = [
+      { field: 'number', headerName: '횟수', width: 120 },
+      { field: 'period', headerName: '기간', width: 200 },
+      { field: 'price', headerName: '가격', width: 200 },
+      { field: 'type', headerName: '인원', width: 120 },
+      { field: 'status', headerName: '상태', width: 120 },
+      {
+        field: "change", headerName: '변경', width: 200,
+        renderCell: (cellValues) => {
+          return (
+            <button onClick={() => accessMembership(cellValues.row.membership_id,cellValues.row.status)}>
+              변경
+            </button>
+          );
+        }
+      }
+    ];
     const { memberships, membershipFilter, accessMembership, changeMembershipFilter } = this.managerStore;
+    const rows = [];
     // const membershipList = memberships && memberships.map((membership) => {
     //   return (
     //     <span key={membership.membership_id}><ManagerMembershipView key={membership.membership_id} membership={membership} />
@@ -20,24 +38,40 @@ class ManagerMembershipContainer extends Component {
     //             '변경불가'}</span>
     //   )
     // });
-
-    const rows = [];
+    // memberships.forEach((membership) => {
+    //   if (membershipFilter === '1') {
+    //     if (membership.status === 2) return;
+    //     rows.push(
+    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+    //     )
+    //   }
+    //   else if (membershipFilter === '2') {
+    //     if (membership.status === 1) return;
+    //     rows.push(
+    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+    //     )
+    //   }
+    //   else {
+    //     rows.push(
+    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+    //     )
+    //   }
     memberships.forEach((membership) => {
       if (membershipFilter === '1') {
         if (membership.status === 2) return;
         rows.push(
-          <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+          { id: membership.membership_id, number: membership.number, period:membership.period, price:membership.price, type:membership.type, status:membership.status }
         )
       }
       else if (membershipFilter === '2') {
         if (membership.status === 1) return;
         rows.push(
-          <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+          { id: membership.membership_id, number: membership.number, period:membership.period, price:membership.price, type:membership.type, status:membership.status }
         )
       }
       else {
         rows.push(
-          <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
+          { id: membership.membership_id, number: membership.number, period:membership.period, price:membership.price, type:membership.type, status:membership.status }
         )
       }
 
@@ -46,15 +80,14 @@ class ManagerMembershipContainer extends Component {
     return (
       <div>
         <h1>멤버쉽 목록</h1>
-        <form>
           <select name="status" id="status" value={membershipFilter}
             onChange={(e) => changeMembershipFilter(e.target.value)}>
             <option value="0">--활성 여부--</option>
             <option value="1">활성</option>
             <option value="2">비활성</option>
           </select><br />
-        </form>
-        <table>
+          <ManagerMembershipView columns = {columns} rows = {rows} />
+        {/* <table>
           <thead>
             <tr>
               <th>횟수</th>
@@ -75,7 +108,8 @@ class ManagerMembershipContainer extends Component {
                 </tr>
               )}
           </tbody>
-        </table>
+        </table> */}
+
       </div>
     );
   }

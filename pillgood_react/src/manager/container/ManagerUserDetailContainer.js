@@ -6,6 +6,7 @@ import BookStore from '../../member/store/BookStore';
 import PayStore from '../../member/store/PayStore';
 import ManagerUserPayDetailView from '../component/ManagerUserPayDetailView';
 import moment from 'moment';
+import {S3_BUCKET, REGION} from '../../image/S3bucket';
 
 class ManagerUserDetailContainer extends Component {
   managerStore = ManagerStore;
@@ -22,6 +23,7 @@ class ManagerUserDetailContainer extends Component {
   render() {
     const today = moment().format("YY.MM.DD")
     const { user } = this.managerStore;
+    const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${user.image}`;
     const bookrow = [];
     const exbookrow = [];
     const { books } = this.bookStore;
@@ -55,7 +57,7 @@ class ManagerUserDetailContainer extends Component {
 return (
   <div>
     <h1>기본정보</h1>
-    이미지:{user.image === "" ? "이미지가 없습니다 :(" : user.image}<br />
+    이미지:<img src={imgUrl} alt="프로필사진" width="200"/>
     이름: {user.name}<br />
     소개: {user.intro === "" ? "소개가 없습니다 :(" : user.intro}<br />
     ID: {user.email}<br />

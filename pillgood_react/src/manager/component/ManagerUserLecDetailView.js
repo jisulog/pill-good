@@ -11,7 +11,7 @@ class ManagerUserDetailView extends Component {
                 <td>{moment(book.lec_id.time,"HH:mm:ss").format("HH:mm")}</td>
                 <td>{book.lec_id.room}</td>
                 <td>
-                    {book.lec_id.number} / {book.lec_id.number}
+                {book.lec_id.lec_count} / {book.lec_id.number}
                 </td>
                 <td>
                     {book.status === 1
