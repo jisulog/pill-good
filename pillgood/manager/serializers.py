@@ -24,4 +24,4 @@ class LecSerializer(serializers.ModelSerializer):
     email = UserSerializer(read_only=True)
     class Meta:
         model = Lec
-        fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'number', 'status']
+        fields = ['lec_id', 'title', 'content', 'room', 'date', 'time', 'level', 'email', 'number', 'status', 'lec_image', 'lec_count']
