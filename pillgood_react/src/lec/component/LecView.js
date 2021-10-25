@@ -10,7 +10,8 @@ class LecView extends Component {
       return(
         <div>
           <p>
-            강좌 이미지: {lec.image}<br />
+
+            강좌 이미지: {lec.lec_image}<br />
             강좌명 : {lec.title}<br />
 
          <Link to = {`/lec/${lec.lec_id}`}><button>상세보기</button></Link>

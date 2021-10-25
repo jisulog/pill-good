@@ -10,8 +10,8 @@ class InstructorLecDetailView extends Component {
       강좌명 : {lec.title}<br />
       강좌 내용 : {lec.content}<br />
       장소: {lec.room}<br />
-      날짜: {lec.date}<br />
-      시간: {lec.time}<br />
+      날짜: {moment(lec.date).format("YY.MM.DD")}}
+      시간: {moment(lec.time,"HH:mm:ss").format("HH:mm")}<br />
       난이도: {lec.level}<br />
       강사명:{lec.email}<br />
       인원:{lec.number}<br />

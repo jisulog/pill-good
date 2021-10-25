@@ -1,14 +1,9 @@
 import axios from "axios";
 import { uploadFile } from 'react-s3';
-import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from "../../image/S3bucket";
+
 // backend api 호출, 연결
 
-const config= {
-    bucketName : S3_BUCKET,
-    region: REGION,
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY
-   }
+
 
 class InstructorApi {
     URL = '/instructor/';
@@ -29,28 +24,25 @@ class InstructorApi {
             .then((response)=> response.data);
     }
 
-    // 'lec/create'
-    lecCreate(title, content, image, room, date, time, level, email, number, status) {
+    // 'create'
+    lecCreate(title, content, room, date, time, level, email, lec_count, number, status, lec_image) {
         return axios.post(this.URL+ `create/`,{
             title:`${title}`,
             content:`${content}`,
-            image:`${image}`,
             room:`${room}`,
             date:`${date}`,
             time:`${time}`,
             level:`${level}`,
             email:`${email}`,
+            lec_count:`${lec_count}`,
             number:`${number}`,
-            status:`${status}`
+            status:`${status}`,
+            lec_image:`${lec_image}`
             })
         .then((response)=> response.data).catch((error)=>console.log(error));
     };
     
-   imageUpdate(file){
-        uploadFile(file, config)
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-        }
+
 
     // 'lec/update/<int:pk>'
       lecUpdate(lec_id, title, content, room, date, time, level, email, number, status){

@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { Component }  from "react";
 import {observer} from 'mobx-react';
 import LecStore from "../store/LecStore";
 import LecView from "../component/LecView";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 // import Pagination from "react-js-pagination";
 
 
@@ -26,6 +29,7 @@ class LecListContainer extends Component {
             return (<LecView key={element.lec_id} lec = {element}/>
                      );
         });
+
 
 
 
