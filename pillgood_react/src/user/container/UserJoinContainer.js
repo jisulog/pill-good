@@ -10,7 +10,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/styles';
 import Button from '@mui/material/Button';
-import favicon from '../image/favicon.png';
 
 
 
@@ -136,7 +135,7 @@ class UserJoinContainer extends Component {
                     로그인
                 </Button>
                 <hr/>
-                <img alt="favicon" src={favicon}/>
+                <img alt="favicon" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/favicon.png"/>
             </div>
         );
     }
