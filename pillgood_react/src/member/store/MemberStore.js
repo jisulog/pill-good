@@ -6,7 +6,6 @@ import {S3_BUCKET, REGION, ACCESS_KEY, SECRET_ACCESS_KEY} from '../../image/S3bu
 const config = {
     bucketName: S3_BUCKET,
     region: REGION,
-    accessKeyId: ACCESS_KEY,
     secretAccessKey: SECRET_ACCESS_KEY
 }
 
