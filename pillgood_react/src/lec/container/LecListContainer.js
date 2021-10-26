@@ -34,14 +34,13 @@ class LecListContainer extends Component {
 
 
         return(
+
             <div>
-
                {lecList}
-
             </div>
           );
         }
       }
-      
+
 
 export default observer(LecListContainer);

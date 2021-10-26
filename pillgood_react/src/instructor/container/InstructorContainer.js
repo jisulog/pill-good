@@ -10,7 +10,11 @@ import TimePicker from '@mui/lab/TimePicker';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
 import moment from 'moment';
+
 
 class InstructorContainer extends Component {
   instructorStore = InstructorStore;
@@ -70,8 +74,13 @@ class InstructorContainer extends Component {
                         </TextField><br />
               </div>
               <div>
-                 날짜 : <input   type="date" id="date"name="date" value={lec.date}
+                 <Typography component="h2" variant="body1" gutterBottom>
+                  날짜
+               </Typography>
+
+                  <input   type="date" id="date"name="date" value={lec.date}
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
+
               </div>
 
 
