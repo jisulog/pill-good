@@ -7,7 +7,7 @@ class PayView extends Component {
             <div>
                 그룹 유형 : {membership.type}
                 <br />
-                기간 : {membership.period}({moment().format("YYYY-MM-DD")}~{moment().format("YYYY-MM-DD").add(membership.period,'days')}
+                기간 : {membership.period}({moment().format("YYYY-MM-DD")}~{moment().add(membership.period,'days').format("YYYY-MM-DD")}
                 <br />
                 결제 금액 : {membership.price}
                 <br />
