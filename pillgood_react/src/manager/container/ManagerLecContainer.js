@@ -37,7 +37,7 @@ class ManagerLecContainer extends Component {
             renderCell: (cellValues) => {
           return (
             <div>
-          <Button onClick={()=>this.handleOpen(cellValues.row.id)} >{cellValues.row.email}</Button>
+          <Button onClick={()=>this.handleOpen(cellValues.row.id)} >{cellValues.row.title}</Button>
           </div>
           );
         }} ,
@@ -50,33 +50,6 @@ class ManagerLecContainer extends Component {
     ];
     const { lecs, lecFilter, changeLecFilter } = this.managerStore;
     const rows = [];
-    // lecs.forEach((lec)=>{
-    //   if (lecFilter === '1'){
-    //     if (lec.status === 2) return;
-    //     if (lec.status === 3) return;
-    //     rows.push(
-    //         <ManagerLecView key={lec.lec_id} lec={lec} onClick={() => selectLec(lec.lec_id)}/>
-    //     )
-    //   }
-    //   else if (lecFilter === '2'){
-    //     if (lec.status === 1) return;
-    //     if (lec.status === 3) return;
-    //     rows.push(
-    //         <ManagerLecView key={lec.lec_id} lec={lec} onClick={() => selectLec(lec.lec_id)} />
-    //     )
-    //   }
-    //   else if (lecFilter === '3'){
-    //     if (lec.status === 1) return;
-    //     if (lec.status === 2) return;
-    //     rows.push(
-    //         <ManagerLecView key={lec.lec_id} lec={lec} onClick={() => selectLec(lec.lec_id)}/>
-    //     )
-    //   }else{
-    //     rows.push(
-    //         <ManagerLecView key={lec.lec_id} lec={lec} onClick={() => selectLec(lec.lec_id)}/>
-    //     )
-    //   }
-    // })
     lecs.forEach((lec) => {
       if (lecFilter === '1') {
         if (lec.status === 2) return;
@@ -109,21 +82,12 @@ class ManagerLecContainer extends Component {
             access:(lec.status === 1 ? "대기": lec.status === 2 ? "승인": lec.status === 3 ? "거부" : "")}
         );
       }
-
-
     });
 
     return (
       <div style={{width: '90%', margin: '30px auto'}}>
-        <h2 style={{textAlign:'center', color:'#574934'}} >강의목록</h2>
-        {/* <select name="status" id="status" value={lecFilter}
-          onChange={(e) => changeLecFilter(e.target.value)}>
-          <option value="0">--승인여부--</option>
-          <option value="1">대기</option>
-          <option value="2">승인</option>
-          <option value="3">거부</option>
-        </select> */}
-        <Box sx={{ minWidth: 120 } }>
+        <h2 style={{textAlign:'center', color:'#D5BA8C'}} >강의관리</h2>
+        <Box>
           <FormControl >
             <NativeSelect
               defaultValue={0}

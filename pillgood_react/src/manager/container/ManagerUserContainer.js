@@ -7,11 +7,8 @@ import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 
-import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
-import ManagerUserDetailPage from '../pages/ManagerUserDetailPage';
-import ManagerUserDetailContainer from './ManagerUserDetailContainer';
 
 class ManagerUserContainer extends Component {
   managerStore = ManagerStore;
@@ -34,66 +31,27 @@ class ManagerUserContainer extends Component {
   
 
   render() {
-    // const style = {
-    //   background: '#8a8a8ab3',
-    //   overflow: false
-    // };
     const columns = [
       {
         field: 'email', headerName: 'Email', width: 200,
-        // renderCell: (cellValues) => {
-        //   return (
-        //     <div>
-        //   <Button onClick={this.handleOpen} aria-controls="basic-menu" >{cellValues.row.email}</Button>
-        //   <Modal open={this.state.open} onClose={this.handleClose}>
-        //     <Box sx={style}>
-        //       <ManagerUserDetailContainer id={cellValues.row.id}/>
-        //     </Box>
-        //   </Modal>
-        //   </div>
-        //   );
-        // }
         renderCell: (cellValues) => {
-          return <Link href={`#${cellValues.row.url}`}>Link</Link>;
+          return <Link href={`/manager/user/${cellValues.row.id}`} style={{textDecorationLine:'none', color:'black'}}>{cellValues.row.email}</Link>;
         }
       },
-      { field: 'name', headerName: '이름', width: 150 },
-      { field: 'type', headerName: '분류', width: 150 },
+      { field: 'name', headerName: '이름', width: 200 },
+      { field: 'type', headerName: '분류', width: 200 },
       {
-        field: "change", headerName: '변경', width: 150,
+        field: "change", headerName: '변경', width: 200,
         renderCell: (cellValues) => {
           return (
-            <button onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경</button>
+            <Button onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경</Button>
           );
         }
       }
     ];
 
-    const { users, userFilter, selectUser, accessUser, changeUserFilter } = this.managerStore;
+    const { users, userFilter, accessUser, changeUserFilter } = this.managerStore;
     const rows = [];
-    // users.forEach((user) => {
-    //     if (user.type === 1) return;
-
-    //     if (userFilter === '2') {
-    //         if (user.type === 3) return;
-    //         if (user.type === 8) return;
-    //         rows.push(
-    //                 <ManagerUserView key={user.email} user={user} columns = {columns} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
-    //         );
-    //     }
-    //     else if (userFilter === '3') {
-    //         if (user.type === 2) return;
-    //         if (user.type === 8) return;
-    //         rows.push(
-    //                 <ManagerUserView key={user.email} user={user} columns = {columns} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
-    //         );
-    //     }
-    //     else {
-    //         rows.push(
-    //                 <ManagerUserView key={user.email} user={user} columns = {columns} onClick={() => selectUser(user.id)} accessUser={accessUser}/>
-    //         );
-    //     }
-    // });
     users.forEach((user) => {
       if (user.type === 1) return;
 
@@ -116,15 +74,9 @@ class ManagerUserContainer extends Component {
       }
     });
     return (
-      <div style={{ width: '75%', margin: '30px auto' }}>
-        <h2 style={{ textAlign: 'center', color: '#574934' }} >회원목록</h2>
-        {/* <select name="type" id="type" value={userFilter}
-                        onChange={(e) => changeUserFilter(e.target.value)}>
-                        <option value="0">--회원분류--</option>
-                        <option value="2">강사</option>
-                        <option value="3">일반</option>
-                    </select><br /> */}
-        <Box sx={{ minWidth: 120 }}>
+      <div style={{ width: '90%', margin: '30px auto' }}>
+        <h2 style={{ textAlign: 'center', color:'#D5BA8C' }} >회원관리</h2>
+        <Box>
           <FormControl >
             <NativeSelect
               Value={userFilter}
@@ -141,25 +93,6 @@ class ManagerUserContainer extends Component {
           </FormControl>
         </Box>
         {<ManagerUserView columns={columns} rows={rows} />}
-        {/* <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>이름</th>
-              <th>구분</th>
-              <th>변경</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.length ? (
-              rows)        
-            : (
-              <tr>
-                <td colSpan='3'>회원 목록이 없습니다 :(</td>
-              </tr>
-            )}
-          </tbody>
-        </table> */}
       </div>
     );
   }
