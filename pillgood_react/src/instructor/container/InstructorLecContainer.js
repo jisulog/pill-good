@@ -20,13 +20,21 @@ class InstructorLecContainer extends Component {
         const mylecList = lecs && lecs.map((lec)=>{
             return (<InstructorLecView key = {lec.lec_id} lec={lec}/>)
         });
-        return(
+        return (
             <div>
-            <h1> 나(강사)의 강의  목록</h1>
-            <Link to= "/instructor/create"><button >강의 등록 </button></Link>&nbsp;&nbsp;
-             {mylecList}
+                {mylecList.length ? (
+                    mylecList
+                ) : (
+                    <tr>
+                        <td colSpan="7">강의 내역이 존재하지 않습니다.</td>
+                    </tr>
+                )}
+                <Link to="/instructor/create">
+                    <button>새 강의 등록 </button>
+                </Link>
+                &nbsp;&nbsp;
             </div>
-          );
+        );
         }
       }
          

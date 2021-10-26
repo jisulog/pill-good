@@ -41,9 +41,11 @@ class UserStore {
       window.localStorage.setItem('email', result.email);
       window.localStorage.setItem('id', result.id);
       window.localStorage.setItem('is_admin', result.is_admin);
+      window.localStorage.setItem('type', result.type);
       window.sessionStorage.setItem('email', result.email);
       window.sessionStorage.setItem('id', result.id);
       window.sessionStorage.setItem('is_admin', result.is_admin);
+      window.localStorage.setItem('type', result.type);
       window.location.replace("/");
       }
     }

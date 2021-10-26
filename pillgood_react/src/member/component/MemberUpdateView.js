@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 
 class MemberUpdateView extends Component {
     render() {
@@ -58,11 +59,14 @@ class MemberUpdateView extends Component {
                 <input
                     type="button"
                     value="저장하기"
-                    onClick={() => onUpdate()}
+                    onClick={() => {
+                        onUpdate();
+                        this.props.history.push("/member");
+                    }}
                 />
             </div>
         );
     }
 }
 
-export default MemberUpdateView;
+export default withRouter(MemberUpdateView);
