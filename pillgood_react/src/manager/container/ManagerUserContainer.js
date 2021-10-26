@@ -2,20 +2,61 @@ import React, { Component } from 'react';
 import ManagerStore from '../store/ManagerStore';
 import { observer } from 'mobx-react'
 import ManagerUserView from '../component/ManagerUserView'
+
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import ManagerUserDetailPage from '../pages/ManagerUserDetailPage';
+import ManagerUserDetailContainer from './ManagerUserDetailContainer';
 
 class ManagerUserContainer extends Component {
   managerStore = ManagerStore;
+
+  state = {
+    open: false
+  };
+
+  handleOpen = e => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   componentDidMount() {
     this.managerStore.selectUserAll();
   }
+  
 
   render() {
+    // const style = {
+    //   background: '#8a8a8ab3',
+    //   overflow: false
+    // };
     const columns = [
-      { field: 'email', headerName: 'Email', width: 200 },
+      {
+        field: 'email', headerName: 'Email', width: 200,
+        // renderCell: (cellValues) => {
+        //   return (
+        //     <div>
+        //   <Button onClick={this.handleOpen} aria-controls="basic-menu" >{cellValues.row.email}</Button>
+        //   <Modal open={this.state.open} onClose={this.handleClose}>
+        //     <Box sx={style}>
+        //       <ManagerUserDetailContainer id={cellValues.row.id}/>
+        //     </Box>
+        //   </Modal>
+        //   </div>
+        //   );
+        // }
+        renderCell: (cellValues) => {
+          return <Link href={`#${cellValues.row.url}`}>Link</Link>;
+        }
+      },
       { field: 'name', headerName: '이름', width: 150 },
       { field: 'type', headerName: '분류', width: 150 },
       {
@@ -58,27 +99,25 @@ class ManagerUserContainer extends Component {
 
       if (userFilter === '2') {
         if (user.type === 3) return;
-        if (user.type === 8) return;
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: (user.type?"강사":"") }
+          { id: user.id, email: user.email, name: user.name, type: "강사" }
         );
       }
       else if (userFilter === '3') {
         if (user.type === 2) return;
-        if (user.type === 8) return;
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: (user.type?"일반":"") }
+          { id: user.id, email: user.email, name: user.name, type: "일반" }
         );
       }
       else {
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: (user.type===3?"일반":"강사") }
+          { id: user.id, email: user.email, name: user.name, type: (user.type === 2 ? "강사" : "일반")}
         );
       }
     });
     return (
-      <div style={{width: '50%', margin: '30px auto'}}>
-        <h2 style={{textAlign:'center', color:'#574934'}} >회원목록</h2>
+      <div style={{ width: '75%', margin: '30px auto' }}>
+        <h2 style={{ textAlign: 'center', color: '#574934' }} >회원목록</h2>
         {/* <select name="type" id="type" value={userFilter}
                         onChange={(e) => changeUserFilter(e.target.value)}>
                         <option value="0">--회원분류--</option>
@@ -88,7 +127,7 @@ class ManagerUserContainer extends Component {
         <Box sx={{ minWidth: 120 }}>
           <FormControl >
             <NativeSelect
-              defaultValue={0}
+              Value={userFilter}
               onChange={(e) => changeUserFilter(e.target.value)}
               inputProps={{
                 name: 'type',

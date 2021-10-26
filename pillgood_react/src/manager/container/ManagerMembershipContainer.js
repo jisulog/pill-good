@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import ManagerStore from '../store/ManagerStore';
 import ManagerMembershipView from '../component/ManagerMembershipView';
+
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
+import ManagerMembershipCreateContainer from './ManagerMembershipCreateContainer';
+
 class ManagerMembershipContainer extends Component {
   managerStore = ManagerStore;
+
+  state = {
+    open: false
+  };
+
+  handleOpen = e => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   componentDidMount() {
     this.managerStore.selectMembershipAll();
@@ -17,7 +34,7 @@ class ManagerMembershipContainer extends Component {
     const columns = [
       { field: 'number', headerName: '횟수', width: 120 },
       { field: 'period', headerName: '기간', width: 120 },
-      { field: 'price', headerName: '가격', width: 200 },
+      { field: 'price', headerName: '가격', width: 150 },
       { field: 'type', headerName: '인원', width: 120 },
       { field: 'status', headerName: '상태', width: 120 },
       {
@@ -68,7 +85,7 @@ class ManagerMembershipContainer extends Component {
           period:(membership.period?membership.period+"일":""), 
           price:(membership.price?(formatter.format(membership.price)): ""), 
           type:(membership.type?membership.type+"인" : ""), 
-          status:(membership.status?"활성":"") }
+          status: "활성" }
         );
       }
       else if (membershipFilter === '2') {
@@ -78,7 +95,7 @@ class ManagerMembershipContainer extends Component {
           period:(membership.period?membership.period+"일":""), 
           price:(membership.price?(formatter.format(membership.price)): ""), 
           type:(membership.type?membership.type+"인" : ""), 
-          status:(membership.status?"비활성":"")  }
+          status:"비활성"  }
         );
       }
       else {
@@ -94,7 +111,7 @@ class ManagerMembershipContainer extends Component {
 
     });
     return (
-      <div style={{width: '60%', margin: '30px auto'}}>
+      <div style={{width: '87%', margin: '30px auto'}}>
         <h2 style={{textAlign:'center', color:'#574934'}} >멤버쉽 목록</h2>
           {/* <select name="status" id="status" value={membershipFilter}
             onChange={(e) => changeMembershipFilter(e.target.value)}>
@@ -117,30 +134,14 @@ class ManagerMembershipContainer extends Component {
               <option value={2}>비활성</option>
             </NativeSelect>
           </FormControl>
+          <Button style={{float: 'right'}} onClick={this.handleOpen} >생성</Button>
+          <Modal open={this.state.open} onClose={this.handleClose} >
+            <Box style={{background:'white', margin: '30px 30px'}}>
+              <ManagerMembershipCreateContainer/>
+            </Box>
+          </Modal>
         </Box>
           <ManagerMembershipView columns = {columns} rows = {rows} />
-        {/* <table>
-          <thead>
-            <tr>
-              <th>횟수</th>
-              <th>기간</th>
-              <th>가격</th>
-              <th>인원</th>
-              <th>상태</th>
-              <th>변경</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.length ? (
-              rows)
-              : (
-                <tr>
-                  <td colSpan='6'>멤버쉽 목록이 없습니다 :(</td>
-                </tr>
-              )}
-          </tbody>
-        </table> */}
       </div>
     );
   }
