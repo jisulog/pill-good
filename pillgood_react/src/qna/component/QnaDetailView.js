@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -14,7 +13,8 @@ class QnaDetailView extends Component {
             <div>
                 <Card sx={{ maxWidth: 1000, maxHeight:2000 }} className="margin-center">
                 <CardContent>
-                <Typography  gutterBottom component="div">
+                
+                <Typography gutterBottom component="div">
                 제목 : {qna.title}<br />
                 </Typography>
                 <Typography  gutterBottom component="div">
@@ -26,28 +26,27 @@ class QnaDetailView extends Component {
                 <Typography  gutterBottom component="div">
                 등록일 : {moment(qna.date).format("YYYY-MM-DD")}<br />
                 </Typography>
-                
-                {qna.question}<br />
-                
-                {qna.answer !== "null" && qna.answer 
-                            ? `답변 : ${qna.answer}`
-                            :""}
+                내용 : <p className="groove">
+                {qna.question}
+                 </p>
                 <br />
-                
+                답변 : <p className="groove">
+                 {qna.answer !== "null" && qna.answer 
+                            ? `${qna.answer}`
+                            :""}
+                            </p>
+
                 </CardContent>
                 
                 <div className="button-align">
-                <Button variant="outlined" ><Link to={{pathname: `/qna/update/${qna.qna_id}`,
+                <Button variant="contained" ><Link to={{pathname: `/qna/update/${qna.qna_id}`,
                                 state: {qna_id: qna.qna_id,},}}>수정</Link></Button>
-                <Button variant="outlined" onClick={()=>ondelete()}>삭제</Button>
-                <Button variant="outlined"><Link to={`/qna/`}>목록</Link></Button>
+                <Button variant="contained" onClick={()=>ondelete()}>삭제</Button>
+                <Button variant="contained"><Link to={`/qna/`}>목록</Link></Button>
                 {admin !== true
-                            ? <Button variant="outlined"> <Link to={`/qna/answer/${qna.qna_id}`}>답변</Link></Button>:""}
+                            ? <Button variant="contained"> <Link to={`/qna/answer/${qna.qna_id}`}>답변</Link></Button>:""}
                 </div>
                 </Card>
-               
-                
-                
             </div>
         );
     }
