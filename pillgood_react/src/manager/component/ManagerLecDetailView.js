@@ -26,8 +26,8 @@ class ManagerLecDetailView extends Component {
         title={lec.email?.name}
         subheader={lec.email?.intro? lec.email?.intro : "자기소개가 없습니다:("}
       />
-      <CardActions style={{float: 'right'}}>
-      <Link href={`/manager/lec/update/${lec.lec_id}`} style={{textDecorationLine:'none'}}>수정</Link>
+      <CardActions style={{float: 'left'}}>
+      <Link href={`/manager/lec/update/${lec.lec_id}`} style={{textDecorationLine:'none', color:'#D5BA8C'}}>수정</Link>
       </CardActions>
       <CardMedia
         component="img"
@@ -35,12 +35,14 @@ class ManagerLecDetailView extends Component {
         image= {lecImg}
         alt="lec image"
       />
+
+      <br/>
+      <hr />
+      <br/>
       <CardContent style={{textAlign:'center'}}>
       <Typography variant="h5" component="div">
         {lec.title}
       </Typography>
-      <br/>
-      <hr />
       <br/>
       <Typography variant="body2" gutterBottom>
       일시: {moment(lec.date).format("MM.DD, dddd")}<br/>
@@ -57,8 +59,8 @@ class ManagerLecDetailView extends Component {
       </Typography>
       </CardContent>
       <CardActions style={{float: 'right'}}>
-        {lec.status === 2 ? "" : <Button  size="small" onClick={()=>accessLec(lec.lec_id, lec.status, 'access')}>승인</Button >}
-        {lec.status === 3 ? "" : <Button  size="small" onClick={()=>accessLec(lec.lec_id, lec.status, 'reject')}>미승인</Button >}
+      <Link href={`/manager/lec`} style={{textDecorationLine:'none' }} >{lec.status === 2 ? "" : <Button  size="small" onClick={()=>accessLec(lec.lec_id, lec.status, 'access')} style={{color:'#D5BA8C'}}>승인</Button >}</Link>
+      <Link href={`/manager/lec`} style={{textDecorationLine:'none' }} >{lec.status === 3 ? "" : <Button  size="small" onClick={()=>accessLec(lec.lec_id, lec.status, 'reject')} style={{color:'#D5BA8C'}}>미승인</Button >}</Link>
         </CardActions>
     </Card>
     );
