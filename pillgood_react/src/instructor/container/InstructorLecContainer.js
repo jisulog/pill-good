@@ -37,10 +37,10 @@ class InstructorLecContainer extends Component {
             <TableHead>
             <TableRow>
                 <TableCell>강의명</TableCell>
-                <TableCell align="left">날짜</TableCell>
-                <TableCell align="center">시간</TableCell>
-                <TableCell align="center">장소</TableCell>
-                <TableCell align="center">회원</TableCell>
+                <TableCell align="justify">날짜</TableCell>
+                <TableCell align="justify">시간</TableCell>
+                <TableCell align="justify">장소</TableCell>
+                <TableCell align="justify">회원</TableCell>
             </TableRow>
             </TableHead>
             </Table>
