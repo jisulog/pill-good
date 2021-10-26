@@ -66,7 +66,6 @@ class QnaStore {
     //qna 수정하기
     async handlerModify() {
         try {
-
             await qnaApi.qnaUpdate(
                 this.qna.qna_id,
                 this.qna.title, 
