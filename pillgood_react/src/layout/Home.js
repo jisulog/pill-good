@@ -9,7 +9,7 @@ class Home extends Component {
         return (
             <div id="home">
                 
-                <p>
+                <p id="article">
                 "in 10 session you will feel the difference,<br/>
                 in 20 session you will see the difference,<br/>
                 in 30 session you will have a whole new body."<br/>
