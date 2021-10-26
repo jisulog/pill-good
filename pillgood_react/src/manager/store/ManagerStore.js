@@ -122,11 +122,11 @@ class ManagerStore {
 
   async updateLec() {
     try {
-      console.log(this.selectedFile.name)
       if (this.selectedFile != null) {
           uploadFile(this.selectedFile, config)
               .then(data => {
-                  this.lec.image = data.key;
+                  this.lec.lec_image = data.key;
+                  console.log(this.lec.lec_image)
                   ManagerApi.lecUpdate(
             this.lec.lec_id,
             this.lec.title,

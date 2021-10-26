@@ -31,7 +31,7 @@ class ManagerApi{
 
     lecUpdate(id, title, content, room, date, time, level, email, count, number, status, image){
         return axios.put(this.URL+`lec/update/${id}/`, {title:`${title}`, content:`${content}`,
-        room:`${room}`, date:`${date}`, time:`${time}`, level:`${level}`, email:`${email}`, count:`${count}`, number:`${number}`, status:`${status}`, image:`${image}`}).then((response)=>response.data).catch((error)=>console.log(error));
+        room:`${room}`, date:`${date}`, time:`${time}`, level:`${level}`, email:`${email}`, count:`${count}`, number:`${number}`, status:`${status}`, image:`${image}`}).then((response)=>response.data, console.log(id, title, content, room, date, time, level, email, count, number, status, image)).catch((error)=>console.log(error));
     }
 
     lecDelete(id){

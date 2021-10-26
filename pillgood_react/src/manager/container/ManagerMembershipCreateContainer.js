@@ -13,6 +13,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
 
 
 class ManagerMembershipCreateContainer extends Component {
@@ -64,7 +65,7 @@ class ManagerMembershipCreateContainer extends Component {
             </FormControl>
           </CardContent>
           <CardActions style={{ float: 'right' }}>
-          <Button onClick={()=>createMembership()} style={{color:'#D5BA8C'}}>추가</Button>
+          <Link href={`/manager/membership`} style={{textDecorationLine:'none'}}> <Button onClick={()=>createMembership()} style={{color:'#D5BA8C'}}>추가</Button></Link>
           </CardActions>
         </CardContent>
       </Card>
