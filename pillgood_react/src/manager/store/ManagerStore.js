@@ -61,7 +61,7 @@ class ManagerStore {
   async accessUser(id, type) {
     try {
       // await ManagerApi.userAccess(this.user.id, this.user.type);
-      if (type === 2) {
+      if (type === 2 || type === "강사") {
         type = 3
         await ManagerApi.userAccess(id, type);
       } else {
@@ -196,7 +196,7 @@ changeMembershipFilter(membershipFilter){
 
   async accessMembership(id, status){
   try {
-    if (status === 1) {
+    if (status === 1 || status === "활성") {
       status = 2
       await ManagerApi.membershipAccess(id, status);
     } else {

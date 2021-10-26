@@ -6,10 +6,11 @@ class ManagerLecDetailContainer extends Component {
 
   managerStore = ManagerStore;
 
-  componentDidMount() {
-    const {id} = this.props;
-    this.managerStore.selectLec(id);
-  }
+  // componentDidMount() {
+  //   const {id} = this.props;
+  //   console.log(id)
+  //   this.managerStore.selectLec(id);
+  // }
   
   render() {
     const {lec, accessLec} = this.managerStore;
