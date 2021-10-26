@@ -21,19 +21,13 @@ class LecListContainer extends Component {
     render() {
         const {lecs, page, handlePageChange, activePage} = this.lecStore;
         const {id} = this.props;
-      ;
 
-
-        const    lecList = lecs && lecs.map((element)=>{
+        const lecList = lecs && lecs.map((element)=>{
             return (<LecView key={element.lec_id} lec = {element}/>
                      );
         });
 
-
-
-
         return(
-
             <div>
                {lecList}
             </div>

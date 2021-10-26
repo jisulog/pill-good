@@ -14,7 +14,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import moment from 'moment';
-
+import '../instructor.css';
 
 class InstructorContainer extends Component {
 
@@ -31,8 +31,6 @@ class InstructorContainer extends Component {
     return (
       <div>
           <h1>강의 등록</h1>
-
-              <div>
               <Typography component="h2" variant="body1" gutterBottom>
                   강의명
               </Typography>
@@ -41,9 +39,8 @@ class InstructorContainer extends Component {
                             variant="outlined"
                             name="title"
                             value={lec.title}
-                            onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
-                 />
-              </div>
+                            onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
+
               <div>
                 <Typography component="h2" variant="body1" gutterBottom>
                   강의 내용
@@ -85,7 +82,7 @@ class InstructorContainer extends Component {
                  <Typography component="h2" variant="body1" gutterBottom>
                   날짜
                </Typography>
-                  <input type="date" id="date"name="date" value={lec.date}
+                  <TextField type="date" id="date"name="date" value={lec.date}
                     onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
               </div>
               <div>
@@ -140,7 +137,8 @@ class InstructorContainer extends Component {
                       <button onClick={()=>createLec()}>등록</button>&nbsp;&nbsp;
 
             </div>
-      </div>
+
+        </div>
     );
   }
 }

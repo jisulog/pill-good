@@ -25,9 +25,9 @@ class UserListContainer extends Component {
         });
         const columns = [
           { field: 'id', headerName: 'No.', headerClassName: 'super-app-theme--header', width: 120 },
-          { field: 'email', headerName: 'Email', headerClassName: 'super-app-theme--header', width: 200 },
-          { field: 'name', headerName: 'name', headerClassName: 'super-app-theme--header', width: 150 },
-          { field: 'intro', headerName: 'note', headerClassName: 'super-app-theme--header', width: 150 }]
+          { field: 'email', headerName: '메일', headerClassName: 'super-app-theme--header', width: 200 },
+          { field: 'name', headerName: '이름', headerClassName: 'super-app-theme--header', width: 150 },
+          { field: 'intro', headerName: '특이사항', headerClassName: 'super-app-theme--header', width: 150 }]
 
         const {users} = this.instructorStore;
         const rows = [];
@@ -39,7 +39,7 @@ class UserListContainer extends Component {
 
         });
         return (
-      <div style={{width: '50%', margin: '30px auto'}}>
+      <div style={{width: '80%', margin: '30px auto'}}>
         <h2 style={{textAlign:'center', color:'#574934'}} >강의 신청 회원목록</h2>
          {<UserListView columns={columns} rows={rows} useStyles={useStyles} />}
        </div>
