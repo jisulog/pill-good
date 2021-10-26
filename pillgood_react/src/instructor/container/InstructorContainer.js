@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import {MenuItem, Typography } from "@material-ui/core";
 import { styled } from '@mui/styles';
 import Button from '@mui/material/Button';
-import '../instructor.css';
 
 class InstructorContainer extends Component {
     instructorStore = InstructorStore;
