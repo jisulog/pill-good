@@ -17,6 +17,7 @@ import BookCreateView from '../component/BookCreateView';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 class LecDetailView extends Component {
 
@@ -42,10 +43,12 @@ class LecDetailView extends Component {
             background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
             border: 0,
             borderRadius: 10,
-            width: '150px',
+            width: '250px',
             color: 'white',
             height: 48,
             padding: '0 30px',
+            marginLeft: '30px',
+            margin: '20px'
           });
 
     const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
@@ -68,7 +71,8 @@ class LecDetailView extends Component {
                   강사명: {lec.email}<br />
              </Typography>
              </CardContent>
-            <MyButton  onClick={() => createBook(user_id)}>예약 신청</MyButton><Link to="/lec" style={{ textDecoration: 'none' }}><MyButton variant="contained"> 강의 목록</MyButton></Link>
+            <MyButton  onClick={() => createBook(user_id)}>예약 신청</MyButton>
+
 
 
         </Card>

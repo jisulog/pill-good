@@ -25,9 +25,9 @@ class UserListContainer extends Component {
         });
         const columns = [
           { field: 'id', headerName: 'No.', headerClassName: 'super-app-theme--header', width: 120 },
-          { field: 'email', headerName: '메일', headerClassName: 'super-app-theme--header', width: 200 },
-          { field: 'name', headerName: '이름', headerClassName: 'super-app-theme--header', width: 150 },
-          { field: 'intro', headerName: '특이사항', headerClassName: 'super-app-theme--header', width: 150 }]
+          { field: 'email', headerName: '메일', headerClassName: 'super-app-theme--header', width: 180 },
+          { field: 'name', headerName: '이름', headerClassName: 'super-app-theme--header', width: 180 },
+          { field: 'intro', headerName: '특이사항', headerClassName: 'super-app-theme--header', width: 180 }]
 
         const {users} = this.instructorStore;
         const rows = [];

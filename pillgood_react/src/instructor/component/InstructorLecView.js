@@ -21,7 +21,7 @@ class InstructorLecView extends Component {
             background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
             border: 0,
             borderRadius: 10,
-            width: '300px',
+            width: '130px',
             color: 'white',
             height: 48,
             padding: '0 30px',
@@ -32,7 +32,7 @@ class InstructorLecView extends Component {
       return(
 
         <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 600 }} aria-label="simple table">
         <TableBody>
             <TableRow
               key={lec.lec_id}
@@ -45,7 +45,7 @@ class InstructorLecView extends Component {
               <TableCell align="left">{moment(lec.date).format("YYYY-MM-DD")}</TableCell>
               <TableCell align="left">{moment(lec.time,"HH:mm:ss").format("HH:mm")}</TableCell>
               <TableCell align="center">{lec.room}</TableCell>
-              <TableCell align="center"><Link to= {`/instructor/user/${lec.lec_id}`} style={{ textDecoration: 'none' }}>회원목록</Link>&nbsp;&nbsp;</TableCell>
+              <TableCell align="center"><MyButton><Link to= {`/instructor/user/${lec.lec_id}`} style={{ textDecoration: 'none' }}>회원목록</Link>&nbsp;&nbsp;</MyButton></TableCell>
                </TableRow>
 
             </TableBody>

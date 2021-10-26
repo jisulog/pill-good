@@ -3,23 +3,30 @@ import InstructorStore from '../store/InstructorStore';
 import {observer} from 'mobx-react';
 import TextField from '@mui/material/TextField';
 import {MenuItem, Typography } from "@material-ui/core";
+import { styled } from '@mui/styles';
+import Button from '@mui/material/Button';
+import '../instructor.css';
 
 class InstructorContainer extends Component {
-
-      constructor(){
-        super();
-        this.state = {
-            value: null,
-      }
-    }
     instructorStore = InstructorStore;
 
   render() {
     const { lec, createLec, handlerSetFile, handlerSetProps} = this.instructorStore;
+    const MyButton = styled(Button)({
+            background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
+            border: 0,
+            borderRadius: 10,
+            width: '150px',
+            color: 'white',
+            height: 48,
+            padding: '0 30px',
+            margin: '20px'
+          });
     return (
-      <div>
-          <h1>강의 등록</h1>
-              <Typography component="h2" variant="body1" gutterBottom>
+        <div>
+          <h2 style={{textAlign:'center', color:'#574934'}} >강의 등록</h2>
+          <div id="lec-name">
+              <Typography  component="h2" variant="body1" gutterBottom>
                   강의명
               </Typography>
                  <TextField type="text"
@@ -28,8 +35,8 @@ class InstructorContainer extends Component {
                             name="title"
                             value={lec.title}
                             onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
-
-              <div>
+          </div>
+          <div id="lec-content">
                 <Typography component="h2" variant="body1" gutterBottom>
                   강의 내용
               </Typography>
@@ -44,14 +51,14 @@ class InstructorContainer extends Component {
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                                 placeholder="강의내용 " />
               </div>
-              <div>
-                <Typography component="h2" variant="body1" gutterBottom>
+              <div id="lec-image">
+               <Typography component="h2" variant="body1" gutterBottom>
                   파일첨부
-                </Typography>
+               </Typography>
                 <input accept="image/*"  type="file" name ="lec_image" onChange={(e)=>
                 handlerSetFile(e)} />
-              </div>
-              <div>
+                </div>
+                <div id="lec-room">
               <Typography component="h2" variant="body1" gutterBottom>
                   장소
                </Typography>
@@ -65,19 +72,19 @@ class InstructorContainer extends Component {
                           <MenuItem value="202호">202호</MenuItem>
                           <MenuItem value="101호">101호</MenuItem>
                         </TextField><br />
-              </div>
-              <div>
+               </div>
+               <div id="lec-date">
                  <Typography component="h2" variant="body1" gutterBottom>
                   날짜
-               </Typography>
+              </Typography>
                   <TextField type="date" id="date"name="date" value={lec.date}
                     onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
-              </div>
-              <div>
-                <Typography component="h2" variant="body1" gutterBottom>
+                </div>
+                <div id="lec-time">
+              <Typography component="h2" variant="body1" gutterBottom>
                   시간
-                </Typography>
-                <TextField
+              </Typography>
+              <TextField
                           type="time"
                           value={lec.time}
                           style ={{width: '20%'}}
@@ -85,10 +92,10 @@ class InstructorContainer extends Component {
                           onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                           />
               </div>
-              <div>
+              <div id="lec-level">
               <Typography component="h2" variant="body1" gutterBottom>
                   난이도
-               </Typography>
+              </Typography>
                   <TextField select style ={{width: '20%'}} name="level" id="level" value={lec.level||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--난이도--</MenuItem>
@@ -96,12 +103,12 @@ class InstructorContainer extends Component {
                           <MenuItem value="2">level-2 </MenuItem>
                           <MenuItem value="3">level-3 </MenuItem>
                         </TextField><br />
-              </div> 
-              <div>
-                <Typography component="h2" variant="body1" gutterBottom>
+              </div>
+              <div id="lec-email">
+              <Typography component="h2" variant="body1" gutterBottom>
                   강사번호 (*본인의 강사 번호를 입력하세요)
-                </Typography>
-                 <TextField
+              </Typography>
+              <TextField
                             type="number"
                             id="email"
                             name="email"
@@ -110,23 +117,22 @@ class InstructorContainer extends Component {
                             onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                             /><br/>
               </div>
-              <div>
-                 <Typography component="h2" variant="body1" gutterBottom>
+              <div id="lec-number">
+              <Typography component="h2" variant="body1" gutterBottom>
                   인원
-                </Typography>
-                       <TextField select style ={{width: '20%'}} name="number" id="number" value={lec.number||""}
+              </Typography>
+                <TextField select style ={{width: '20%'}} name="number" id="number" value={lec.number||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
-                          <MenuItem value="">--인원--</MenuItem>
-                          <MenuItem value="1">1인 </MenuItem>
-                          <MenuItem value="2">2인 </MenuItem>
-                          <MenuItem value="8">8인</MenuItem>
-                        </TextField><br />
-
-                      <button onClick={()=>createLec()}>등록</button>&nbsp;&nbsp;
-
+                        <MenuItem value="">--인원--</MenuItem>
+                        <MenuItem value="1">1인 </MenuItem>
+                        <MenuItem value="2">2인 </MenuItem>
+                        <MenuItem value="8">8인</MenuItem>
+                </TextField><br />
+                </div>
+            <div id="lec-button">
+                 <MyButton onClick={()=>createLec()}>등록</MyButton>&nbsp;&nbsp;
             </div>
-
-        </div>
+          </div>
     );
   }
 }
