@@ -33,7 +33,7 @@ class NavBar extends Component {
         const theme = createTheme();
 
         theme.typography.Nav = {
-        fontSize: '1.2rem'
+        fontSize: '1.1rem'
         }
                        
 
@@ -46,7 +46,7 @@ class NavBar extends Component {
             </div>
             <div id="button-align">
                     <Button
-                        style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                        style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px'}}
                         id="basic-button"
                         aria-controls="basic-menu">
                         <Link href="/membership" underline="none" color="black">
@@ -56,7 +56,7 @@ class NavBar extends Component {
                         </Link>
                     </Button>
                     <Button
-                        style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                        style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px'}}
                         id="basic-button"
                         aria-controls="basic-menu">
                         <Link href="/lec" underline="none" color="black">
@@ -66,7 +66,7 @@ class NavBar extends Component {
                         </Link>
                     </Button>
                 <Button
-                    style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                    style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px'}}
                     id="basic-button"
                     aria-controls="basic-menu">
                     <Link href="/qna" underline="none" color="black">
@@ -79,7 +79,7 @@ class NavBar extends Component {
                 {window.localStorage.getItem('type') === "1"
                 ?
                 <Button
-                    style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                    style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px'}}
                     id="basic-button"
                     aria-controls="basic-menu">
                     <Link href="/manager" underline="none" color="black">   
@@ -89,23 +89,10 @@ class NavBar extends Component {
                     </Link>
                 </Button>
                 :
-                window.localStorage.getItem('type') === "2"
+                window.localStorage.getItem('type') === "2" | window.localStorage.getItem('type') === "3"
                 ?
                 <Button
-                style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
-                id="basic-button"
-                aria-controls="basic-menu">
-                <Link href="/instructor" underline="none" color="black">   
-                    <ThemeProvider theme={theme}>
-                        <Typography variant="Nav">강사페이지</Typography>
-                    </ThemeProvider>   
-                </Link>
-                </Button>  
-                :
-                window.localStorage.getItem('type') === "3"
-                ?
-                <Button
-                style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px'}}
                 id="basic-button"
                 aria-controls="basic-menu">
                 <Link href="/member" underline="none" color="black">   
@@ -120,7 +107,7 @@ class NavBar extends Component {
                 {window.localStorage.getItem('email') !== null
                 ?
                 <Button
-                style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px', color:"black" }}
+                style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px', color:"black" }}
                 id="basic-button"
                 aria-controls="basic-menu"
                 onClick={()=>handlerLogout()}>
@@ -130,7 +117,7 @@ class NavBar extends Component {
                 </Button>
                 :    
                 <Button
-                    style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px', color:"black" }}
+                    style={{maxWidth: '150px', maxHeight: '150px', minWidth: '150px', minHeight: '150px', color:"black" }}
                     id="basic-button"
                     aria-controls="basic-menu"
                     onClick={this.handleOpen}>
