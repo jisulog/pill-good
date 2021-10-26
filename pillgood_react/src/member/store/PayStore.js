@@ -40,7 +40,8 @@ class PayStore {
 
             runInAction(() => {
                 this.pays = result;
-                this.pay = result[0];
+                if (result.length > 0)
+                    this.pay = result[0];
                 // this.todayPayUpdate();
             });
         } catch (error) {

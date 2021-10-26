@@ -7,12 +7,14 @@ from rest_framework.response import Response
 from member.serializers import QnaSerializer as MQnaSerializer
 from .models import Qna
 from qna.serializers import QnaSerializer
+from .pagination import PostPageNumberPagination
 
 
 @api_view(['GET'])
 def qna_index(request):
     qnas = Qna.objects.all()
     serializer = MQnaSerializer(qnas, many=True)
+    pagination_class=PostPageNumberPagination
     return Response(serializer.data)
 
 

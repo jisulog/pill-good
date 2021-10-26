@@ -12,7 +12,9 @@ class MemberView extends Component {
         return (
             <div id="memberUpdate">
                 <div id="profileImg">
+                    <span class="img-span">
                     <img src={imgUrl} alt="프로필사진" />
+                    </span>
                     <div class="profile-name">
                         {member.name === "" ? "이름이 들어가요" : member.name}
                     </div>

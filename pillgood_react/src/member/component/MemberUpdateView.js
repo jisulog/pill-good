@@ -1,4 +1,4 @@
-import { Button, Input, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { Component } from "react";
 
 import { styled } from "@mui/material/styles";
@@ -20,7 +20,9 @@ class MemberUpdateView extends Component {
         return (
             <div id="memberUpdate">
                 <div id="profileImg">
-                    <img src={imgUrl} alt="프로필사진" />
+                    <span class="img-span">
+                        <img src={imgUrl} alt="프로필사진" />
+                    </span>
                     <br />
                     <label htmlFor="contained-button-file">
                         <Input

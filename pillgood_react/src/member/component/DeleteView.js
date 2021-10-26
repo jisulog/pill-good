@@ -8,7 +8,7 @@ class DeleteView extends Component {
         const { pay, onDelete } = this.props;
         let html;
 
-        if (pay.remain === undefined || pay.remain == 0 || pay.end_date < moment().format("YYYY-MM-DD")) {
+        if (pay.remain === undefined || pay.remain === 0 || pay.end_date < moment().format("YYYY-MM-DD")) {
             html = (
                 <div id="memberDelete">
                     <p className="card-none">

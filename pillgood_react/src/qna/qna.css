@@ -1,4 +1,4 @@
-.margin-center{
+/* .margin-center{
     margin:10px auto;
     }
 .button-align{
@@ -21,4 +21,59 @@ p.groove {
     width: 100%;
     height: 10em;
     resize: none;
+} */
+
+#qnaList {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#qnaList h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#qnaList>div {
+    box-shadow: none;
+}
+
+#qnaList>div thead {
+    background: #E2CEAE;
+}
+
+#qnaList>div tbody td {
+    border-bottom: 1px solid #E2CEAE;
+}
+
+#qnaList>div tbody td a {
+    text-decoration: none;
+    color: #000;
+}
+
+#qnaList .button-align {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#qnaList .button-align a {
+    display: block;
+    width: 150px;
+    height: 30px;
+    line-height: 1.5em;
+    text-align: center;
+    color: white;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: none;
+    border: none;    
+}
+
+#qnaList .button-align a:hover {
+    background: linear-gradient(-90deg, #D5BA8C, #E2CEAE);
 }

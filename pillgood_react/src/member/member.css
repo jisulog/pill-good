@@ -45,12 +45,14 @@ member 사이드바
 #memberUpdate #profileImg {
     text-align: center;
     margin: 30px;
+
 }
 
-#memberUpdate #profileImg img {
+#memberUpdate #profileImg .img-span {
     width: 200px;
     height: 200px;
-    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto 10px;
     border: 1px solid #ddd;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -58,6 +60,10 @@ member 사이드바
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     overflow: hidden;
+}
+
+#memberUpdate #profileImg .img-span img {
+    width: 100%;
 }
 
 #memberUpdate #profileImg div {
