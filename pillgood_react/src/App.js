@@ -7,25 +7,15 @@ import NavBar from "./NavBar";
 import UserJoinPage from "./user/pages/UserJoinPage";
 import UserLoginPage from "./user/pages/UserLoginPage";
 
-import MemberMainPage from "./pages/MemberMainPage";
-import MemberUpdatePage from "./member/pages/MemberUpdatePage";
-import MemberPasswordUpdatePage from "./member/pages/MemberPasswordUpdatePage";
-import MemberDeletePage from "./member/pages/MemberDeletePage";
-import MemberPayListPage from "./member/pages/MemberPayListPage";
-import MemberPayRefundPage from "./member/pages/MemberPayRefundPage";
-import MemberBookListPage from "./member/pages/MemberBookListPage";
+import MemberMainPage from "./member/pages/MemberMainPage";
 
-import InstructorLecPage from "./instructor/pages/InstructorLecPage";
-import LecCreatePage from "./instructor/pages/LecCreatePage";
 import UserListPage from "./instructor/pages/UserListPage";
 
+import ManagerMainPage from "./manager/pages/ManagerMainPage";
 import ManagerLecDetailPage from "./manager/pages/ManagerLecDetailPage";
-import ManagerLecPage from "./manager/pages/ManagerLecPage";
 import ManagerLecUpdatePage from "./manager/pages/ManagerLecUpdatePage";
 import ManagerMemberShipCreatePage from "./manager/pages/ManagerMemberShipCreatePage";
-import ManagerMembershipPage from "./manager/pages/ManagerMembershipPage";
 import ManagerUserDetailPage from "./manager/pages/ManagerUserDetailPage";
-import ManagerUserPage from "./manager/pages/ManagerUserPage";
 
 import MembershipMainPage from "./membership/pages/MembershipMainPage";
 import PayPage from "./membership/pages/PayPage";
@@ -54,7 +44,8 @@ class App extends Component {
                         <Route exact path="/user/login" component={UserLoginPage} />
 
                         {/* member */}
-                        <Route exact path="/member" component={MemberMainPage} />
+                        <Route path="/member" component={MemberMainPage} />
+                        {/* <Route exact path="/member/info" component={MemberInfoPage} />
                         <Route
                             exact
                             path="/member/update"
@@ -84,10 +75,14 @@ class App extends Component {
                             exact
                             path="/member/book"
                             component={MemberBookListPage}
-                        />
+                        /> */}
 
                         {/* instructor */}
                         <Route
+                            path="/instructor/"
+                            component={MemberMainPage}
+                        />
+                        {/* <Route
                             exact
                             path="/instructor/lec/:id"
                             component={InstructorLecPage}
@@ -96,7 +91,7 @@ class App extends Component {
                             exact
                             path="/instructor/create"
                             component={LecCreatePage}
-                        />
+                        /> */}
                         <Route
                             exact
                             path="/instructor/user/:id"
@@ -105,20 +100,24 @@ class App extends Component {
 
                         {/* manager */}
                         <Route
+                            path="/manager"
+                            component={ManagerMainPage}
+                        />
+                        {/* <Route
                             exact
                             path="/manager/user/"
                             component={ManagerUserPage}
-                        />
+                        /> */}
                         <Route
                             exact
                             path="/manager/user/:id"
                             component={ManagerUserDetailPage}
                         />
-                        <Route
+                        {/* <Route
                             exact
                             path="/manager/lec/"
                             component={ManagerLecPage}
-                        />
+                        /> */}
                         <Route
                             exact
                             path="/manager/lec/:id"
@@ -129,11 +128,11 @@ class App extends Component {
                             path="/manager/lec/update/:id"
                             component={ManagerLecUpdatePage}
                         />
-                        <Route
+                        {/* <Route
                             exact
                             path="/manager/membership/"
                             component={ManagerMembershipPage}
-                        />
+                        /> */}
                         <Route
                             exact
                             path="/manager/membership/create/"

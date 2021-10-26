@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 import MemberStore from "../store/MemberStore";
 import MemberView from "../component/MemberView";
+import '../member.css';
 
 class MemberContainer extends Component {
     memberStore = MemberStore;

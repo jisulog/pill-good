@@ -1,6 +1,8 @@
+import { Button } from "@mui/material";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {S3_BUCKET, REGION} from '../../image/S3bucket';
+import '../member.css';
 
 class MemberView extends Component {
     render() {
@@ -10,27 +12,14 @@ class MemberView extends Component {
 
         return (
             <div>
-                <div>
-                    <img src={imgUrl} alt="프로필사진" width="200"/>
+                <div className="profile-img">
+                    <img src={imgUrl} alt="프로필사진" />
+                    <div>
+                        {member.name === "" ? "이름이 들어가요" : member.name}
+                    </div>
                 </div>
                 <div>
-                    <dl>
-                        <dt>
-                            {member.type === 1
-                                ? "관리자"
-                                : member.type === 2
-                                ? "강사"
-                                : member.type === 3
-                                ? "회원"
-                                : "비회원"}
-                        </dt>
-                        <dd>
-                            {member.name === ""
-                                ? "이름이 들어가요"
-                                : member.name}
-                        </dd>
-                    </dl>
-                    <dl>
+                    <dl className="dl-dt-dd">
                         <dt>연락처</dt>
                         <dd id="phoneDefalut">
                             {member.phone === ""
@@ -38,18 +27,29 @@ class MemberView extends Component {
                                 : member.phone}
                         </dd>
                     </dl>
-                    <dl>
+                    <dl className="dl-dt-dd">
                         <dt>소개글</dt>
                         <dd>
-                            {member.intro === ""
-                                ? "소개글이 들어가요"
-                                : member.intro}
+                            {member.intro === "" ? (
+                                <p>
+                                    소개글이 들어가요
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    ssdd
+                                </p>
+                            ) : (
+                                member.intro
+                            )}
                         </dd>
                     </dl>
 
-                    <Link to="/member/update">회원정보 수정</Link>
-                    <Link to="/member/passwordupdate">비밀번호 변경</Link>
-                    <Link to="/member/delete">회원 탈퇴</Link>
+                    <div className="content-center">
+                        <Button variant="outlined" href="/member/update" className="button">
+                            회원정보 수정
+                        </Button>
+                    </div>
                 </div>
             </div>
         );

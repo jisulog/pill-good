@@ -13,6 +13,8 @@ class PayStore {
         membership_id: 0,
         status: 0,
     };
+
+    tempPay = {};
     message = "";
     period = 0;
 
@@ -45,20 +47,22 @@ class PayStore {
         }
     }
 
-    async todayPayUpdate(){
+    todayPayUpdate(){
         for(var i=0; i<this.pays.length;i++) {
-            this.pay = this.pays[i];
-            if (this.pay.end_date < moment().format("YYYY-MM-DD")) {
-                this.pay.status = 3;
-                await MemberApi.payRefund(
-                    this.pay.pay_id,
-                    this.pay.pay_type,
-                    this.pay.remain,
-                    this.pay.pay_date,
-                    this.pay.end_date,
-                    this.pay.membership_id,
-                    this.pay.status,
+            this.tempPay = this.pays[i];
+            if (this.tempPay.end_date < moment().format("YYYY-MM-DD")) {
+                this.tempPay.status = 3;
+                MemberApi.payRefund(
+                    this.tempPay.pay_id,
+                    this.tempPay.pay_type,
+                    this.tempPay.remain,
+                    this.tempPay.pay_date,
+                    this.tempPay.end_date,
+                    this.tempPay.membership_id,
+                    this.tempPay.status,
                 );
+            } else {
+                this.pay = this.tempPay;
             }
         }
 

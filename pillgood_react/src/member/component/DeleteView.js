@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { Component } from "react";
 
 
@@ -6,14 +7,15 @@ class DeleteView extends Component {
         const { pay, period, onDelete } = this.props;
         let html;
 
-        if (pay.remain > 0 && period > 0) {
+        if (pay.remain > 0 && pay.end_date > moment().format("YYYY-MM-DD")) {
             html = (
                 <div>
                     <p>소진되지 않은 멤버십이 존재합니다.</p>
                     <dl>
                         <dt>기간</dt>
                         <dd>
-                            {pay.pay_date} ~ {pay.end_date} (잔여 : {period}일)
+                            {moment(pay.pay_date).format("YYYY-MM-DD")} ~{" "}
+                            {pay.end_date} (잔여 : {moment(pay.end_date).diff(moment(), 'days')}일)
                         </dd>
                     </dl>
                     <dl>

@@ -38,7 +38,6 @@ def join(request):
         return Response({'message': '회원가입이 완료되었습니다!'})
 
 
-
 @api_view(['POST'])
 def login(request):
     """
@@ -55,8 +54,9 @@ def login(request):
         return Response({"message": "이메일과 비밀번호를 입력해주세요!"})
     if serializer.validated_data['email'] == "None":
         return Response({'message': '이메일 또는 비밀번호가 정확하지않습니다.'})
-    return Response({"message": '방문을 환영합니다!', "email": serializer.validated_data['email'], "id": serializer.validated_data['id'], "is_admin": serializer.validated_data['is_admin']})
-
+    return Response(
+        {"message": '방문을 환영합니다!', "email": serializer.validated_data['email'], "id": serializer.validated_data['id'],
+         "is_admin": serializer.validated_data['is_admin'], "type": serializer.validated_data['type']})
 
 
 @api_view(['POST'])
@@ -78,7 +78,6 @@ def user_help(request):
         return Response({"message": "해당 정보와 일치하는 이메일이 존재하지 않습니다."})
 
 
-
 @api_view(['POST'])
 def user_update(request):
     """
@@ -95,5 +94,3 @@ def user_update(request):
         'Temporary password': 'my_new_password'
     }
     return Response(response)
-
-

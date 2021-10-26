@@ -22,7 +22,7 @@ class PayActiveItemView extends Component {
                 <dl>
                     <dt>기간</dt>
                     <dd>
-                        {moment(pay.pay_date).format("YYYY-MM-DD")} ~ {pay.end_date}
+                        {moment(pay.pay_date).format("YYYY-MM-DD")} ~ {pay.end_date} (잔여 {moment(pay.end_date).diff(moment(), 'days')}일)
                     </dd>
                 </dl>
                 <dl>
