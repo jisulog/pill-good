@@ -2,10 +2,15 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
 }
 
 /*
-member main layout
+member 메인
 */
 .white-round-top {
     border-radius: 15px 15px 0 0;
@@ -35,20 +40,22 @@ member main layout
     padding: 20px;
 }
 
-
+.hidden {
+    display: none;
+}
 
 
 
 /*
-member info detail
+내 정보, 정보 수정
 */
 
-.profile-img {
+#profile-img {
     text-align: center;
     margin: 30px;
 }
 
-.profile-img img {
+#profile-img img {
     width: 200px;
     height: 200px;
     margin-bottom: 10px;
@@ -61,7 +68,7 @@ member info detail
     overflow: hidden;
 }
 
-.profile-img div {
+#profile-img div {
     font-size: 1.5em;
 }
 
@@ -70,23 +77,45 @@ member info detail
     text-align: center;
 }
 
-.content-center .button {
+.content-center .button, #profile-img .button {
     width: 150px;
     margin: 0 10px;
     color: #777;
     border-color: #ddd;
-    transition: background-color 0.5s ease;
-    -webkit-transition: background-color 0.5s ease;
-    -moz-transition: background-color 0.5s ease;
-    -ms-transition: background-color 0.5s ease;
-    -o-transition: background-color 0.5s ease;
-}
+    }
 
-.content-center .button:hover {
+.content-center .button:hover, #profile-img .button:hover {
     background-color: #eee;
     border-color: #ddd;
 }
 
+.content-center .button-submit {    
+    width: 150px;
+    margin: 0 10px;
+    box-shadow: none;
+}
+
+.content-center .button-submit:hover {
+    box-shadow: none;
+}
+
+#profile-info {
+    width: 450px;
+    margin: 0 auto 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-info>* {
+    margin: 10px 0;
+}
+
+#profile-info input[type=text],#profile-info textarea  {
+    width: 100%;
+    padding: 15px;
+}
+
+/* 내 정보 list */
 .dl-dt-dd {
     width: 100%;
     max-width: 400px;

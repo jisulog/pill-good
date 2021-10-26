@@ -45,53 +45,12 @@ class App extends Component {
 
                         {/* member */}
                         <Route path="/member" component={MemberMainPage} />
-                        {/* <Route exact path="/member/info" component={MemberInfoPage} />
-                        <Route
-                            exact
-                            path="/member/update"
-                            component={MemberUpdatePage}
-                        />
-                        <Route
-                            exact
-                            path="/member/passwordupdate"
-                            component={MemberPasswordUpdatePage}
-                        />
-                        <Route
-                            exact
-                            path="/member/delete"
-                            component={MemberDeletePage}
-                        />
-                        <Route
-                            exact
-                            path="/member/paylist"
-                            component={MemberPayListPage}
-                        />
-                        <Route
-                            exact
-                            path="/member/refund/:id"
-                            component={MemberPayRefundPage}
-                        />
-                        <Route
-                            exact
-                            path="/member/book"
-                            component={MemberBookListPage}
-                        /> */}
 
                         {/* instructor */}
                         <Route
                             path="/instructor/"
                             component={MemberMainPage}
                         />
-                        {/* <Route
-                            exact
-                            path="/instructor/lec/:id"
-                            component={InstructorLecPage}
-                        />
-                        <Route
-                            exact
-                            path="/instructor/create"
-                            component={LecCreatePage}
-                        /> */}
                         <Route
                             exact
                             path="/instructor/user/:id"
@@ -102,41 +61,6 @@ class App extends Component {
                         <Route
                             path="/manager"
                             component={ManagerMainPage}
-                        />
-                        {/* <Route
-                            exact
-                            path="/manager/user/"
-                            component={ManagerUserPage}
-                        /> */}
-                        <Route
-                            exact
-                            path="/manager/user/:id"
-                            component={ManagerUserDetailPage}
-                        />
-                        {/* <Route
-                            exact
-                            path="/manager/lec/"
-                            component={ManagerLecPage}
-                        /> */}
-                        <Route
-                            exact
-                            path="/manager/lec/:id"
-                            component={ManagerLecDetailPage}
-                        />
-                        <Route
-                            exact
-                            path="/manager/lec/update/:id"
-                            component={ManagerLecUpdatePage}
-                        />
-                        {/* <Route
-                            exact
-                            path="/manager/membership/"
-                            component={ManagerMembershipPage}
-                        /> */}
-                        <Route
-                            exact
-                            path="/manager/membership/create/"
-                            component={ManagerMemberShipCreatePage}
                         />
 
                         {/* membership */}

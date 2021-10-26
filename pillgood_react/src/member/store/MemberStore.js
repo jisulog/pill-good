@@ -105,7 +105,6 @@ class MemberStore {
 
             runInAction(() => {
                 this.selectMember(this.member.id);
-                // window.location.replace("/member");
             });
         } catch (error) {
             runInAction((this.message = error.message));
@@ -127,7 +126,6 @@ class MemberStore {
 
             runInAction(() => {
                 this.selectMember(this.member.id);
-                window.location.replace("/member");
             });
         } catch (error) {
             runInAction((this.message = error.message));

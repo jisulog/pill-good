@@ -14,8 +14,8 @@ import Typography from '@mui/material/Typography';
 class ManagerLecDetailView extends Component {
   render() {
     const {lec, accessLec} = this.props;
-    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
-    const lecImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.image}`;
+    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email.image}`;
+    const lecImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.lec_image}`;
     return (
       // <div>
       //   강의 명: {lec.title}<br/>
