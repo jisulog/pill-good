@@ -1,11 +1,24 @@
 import { Component } from 'react';
 import * as React from 'react';
 import './Home.css';
+import { styled } from '@mui/styles';
+import Button from '@mui/material/Button';
 
 
 class Home extends Component {
    
     render() {
+
+        const MyButton = styled(Button)({
+            background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
+            border: 0,
+            borderRadius: 10,
+            width: '300px',
+            color: 'white',
+            height: 48,
+            padding: '0 30px',
+          });
+
         return (
             <div id="home">
                 <span></span>
@@ -20,6 +33,11 @@ class Home extends Component {
                 <br/>
                 <br/>
                 - 필라테스 창시자, Joseph H.Pilates -
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <MyButton>멤버십</MyButton>
                 </p>
             </div>
         );
