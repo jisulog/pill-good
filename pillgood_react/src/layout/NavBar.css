@@ -1,0 +1,15 @@
+#background_color {
+    background-color: white;
+    position: relative;
+}
+
+#button-align {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.imageBox{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

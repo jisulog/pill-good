@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./layout/Home";
-import NavBar from "./NavBar";
+import NavBar from "./layout/NavBar";
+import Footer from "./layout/Footer";
 
 
 import UserJoinPage from "./user/pages/UserJoinPage";
@@ -187,6 +188,7 @@ class App extends Component {
                             component={QnaAnswerPage}
                         />
                     </Switch>
+                    <Footer/>
                 </Router>
             </div>    
         );
