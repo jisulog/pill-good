@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import { observer } from "mobx-react";
 import React, { Component } from "react";
 import PayActiveItemView from "../component/PayActiveItemView";
@@ -24,12 +25,18 @@ class PayItemContainer extends Component {
             });
 
         return (
-            <div>
+            <div id="myMembership">
                 <h3>이용중인 멤버십</h3>
                 {payList.length ? (
                     payList
                 ) : (
-                    <div>현재 이용중인 멤버십이 존재하지 않습니다.</div>
+                    <Card sx={{ width: 400 }}>
+                        <CardContent>
+                            <Typography  component="div">
+                                현재 이용중인 멤버십이 존재하지 않습니다.
+                            </Typography>
+                        </CardContent>
+                    </Card>
                 )}
             </div>
         );

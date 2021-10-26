@@ -2,8 +2,12 @@ import { Container, Grid, Link, List, ListItem, ListSubheader } from '@mui/mater
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 import '../../member/member.css';
+import ManagerLecDetailPage from './ManagerLecDetailPage';
 import ManagerLecPage from './ManagerLecPage';
+import ManagerLecUpdatePage from './ManagerLecUpdatePage';
+import ManagerMemberShipCreatePage from './ManagerMemberShipCreatePage';
 import ManagerMembershipPage from './ManagerMembershipPage';
+import ManagerUserDetailPage from './ManagerUserDetailPage';
 import ManagerUserPage from './ManagerUserPage';
 
 class ManagerMainPage extends Component {
@@ -81,6 +85,28 @@ class ManagerMainPage extends Component {
                                     path="/manager/membership/"
                                     component={ManagerMembershipPage}
                                 />
+
+                                
+                        <Route
+                            exact
+                            path="/manager/user/:id"
+                            component={ManagerUserDetailPage}
+                        />
+                        <Route
+                            exact
+                            path="/manager/lec/:id"
+                            component={ManagerLecDetailPage}
+                        />
+                        <Route
+                            exact
+                            path="/manager/lec/update/:id"
+                            component={ManagerLecUpdatePage}
+                        />
+                        <Route
+                            exact
+                            path="/manager/membership/create/"
+                            component={ManagerMemberShipCreatePage}
+                        />
                             </Switch>
                         </Grid>
                     </Grid>

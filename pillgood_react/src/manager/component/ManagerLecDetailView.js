@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import "moment/locale/ko"
 import {S3_BUCKET, REGION} from '../../image/S3bucket';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
@@ -15,7 +14,7 @@ import Typography from '@mui/material/Typography';
 class ManagerLecDetailView extends Component {
   render() {
     const {lec, accessLec} = this.props;
-    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
+    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email.image}`;
     const lecImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.lec_image}`;
     return (
       // <div>

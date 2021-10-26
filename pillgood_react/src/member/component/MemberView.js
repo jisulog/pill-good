@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import {S3_BUCKET, REGION} from '../../image/S3bucket';
 import '../member.css';
 
@@ -12,7 +11,7 @@ class MemberView extends Component {
 
         return (
             <div>
-                <div className="profile-img">
+                <div id="profile-img">
                     <img src={imgUrl} alt="프로필사진" />
                     <div>
                         {member.name === "" ? "이름이 들어가요" : member.name}
