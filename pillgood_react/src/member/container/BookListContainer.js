@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import BookListView from "../component/BookListView";
 import BookStore from "../store/BookStore";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 class BookListContainer extends Component {
     bookStore = BookStore;
@@ -21,31 +22,36 @@ class BookListContainer extends Component {
         });
 
         return (
-            <div>
-                {/* 달력표시 */}
+            <div id="memberPayList">
+                <h3>내 예약내역</h3>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>강의명</th>
-                            <th>날짜</th>
-                            <th>시간</th>
-                            <th>장소</th>
-                            <th>강사</th>
-                            <th>예약인원</th>
-                            <th>상태</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {bookList.length ? (
-                            bookList
-                        ) : (
-                            <tr>
-                                <td colSpan='7'>강의 예약 및 진행 내역이 존재하지 않습니다.</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <TableContainer component={Paper}>
+                    <Table sx={{ width: "100%" }}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">강의명</TableCell>
+                                <TableCell align="center">날짜</TableCell>
+                                <TableCell align="center">시간</TableCell>
+                                <TableCell align="center">장소</TableCell>
+                                <TableCell align="center">강사</TableCell>
+                                <TableCell align="center">예약인원</TableCell>
+                                <TableCell align="center">상태</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {bookList.length ? (
+                                bookList
+                            ) : (
+                                <tr>
+                                    <td colSpan="7">
+                                        강의 예약 및 진행 내역이 존재하지
+                                        않습니다.
+                                    </td>
+                                </tr>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
         );
     }

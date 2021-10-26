@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
 import moment from "moment";
 import MemberPayRefundPage from "../pages/MemberPayRefundPage";
+import { TableCell, TableRow } from "@mui/material";
 
 class PayListView extends Component {
     render() {
@@ -10,24 +11,30 @@ class PayListView extends Component {
         let end_date = `${pay.end_date}`;
         
         return (
-            <tr>
-                <td>{moment(pay.pay_date).format("YYYY-MM-DD")}</td>
-                <td>{pay.membership_id.type === 1
-                    ? "1대1"
-                    : pay.membership_id.type === 2
-                    ? "1대2"
-                    : pay.membership_id.type === 8
-                    ? "1대8"
-                    : "유형이 정확하지 않습니다."}</td>
-                <td>
+            <TableRow>
+                <TableCell align="center">
+                    {moment(pay.pay_date).format("YYYY-MM-DD")}
+                </TableCell>
+                <TableCell align="center">
+                    {pay.membership_id.type === 1
+                        ? "1대1"
+                        : pay.membership_id.type === 2
+                        ? "1대2"
+                        : pay.membership_id.type === 8
+                        ? "1대8"
+                        : "유형이 정확하지 않습니다."}
+                </TableCell>
+                <TableCell align="center">
                     {moment(pay.pay_date).format("YYYY-MM-DD")}~{pay.end_date}
-                </td>
-                <td>
+                </TableCell>
+                <TableCell align="center">
                     {pay.membership_id.number} / {pay.remain}
-                </td>
-                <td>{pay.pay_type === 1 ? "신용카드" : "현금결제"}</td>
-                <td>{pay.price}</td>
-                <td>
+                </TableCell>
+                <TableCell align="center">
+                    {pay.pay_type === 1 ? "신용카드" : "현금결제"}
+                </TableCell>
+                <TableCell align="right">{pay.membership_id.price}</TableCell>
+                <TableCell align="center">
                     {pay.status === 1
                         ? "정상결제"
                         : pay.status === 2
@@ -35,7 +42,7 @@ class PayListView extends Component {
                         : "에러"}
 
                     {pay.status === 1 &&
-                    pay.membership_id.number === pay.remain &&
+                    // pay.membership_id.number === pay.remain &&
                     pay.remain > 0 ? (
                         <Link
                             // to={`/member/refund/${pay.pay_id}`}
@@ -51,14 +58,14 @@ class PayListView extends Component {
                     ) : (
                         ""
                     )}
-                </td>
+                </TableCell>
 
                 <Route
                     exact
                     path="/member/refund/:id"
                     component={MemberPayRefundPage}
                 />
-            </tr>
+            </TableRow>
         );
     }
 }

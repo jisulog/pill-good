@@ -46,3 +46,12 @@
     height:50px;
     background: linear-gradient(90deg, #D5BA8C, #E2CEAE)
 }
+
+#footer .copyright {
+    font-size: 9px;
+    color: #D5BA8C;
+}
+
+#mainRouter {
+    min-height : calc(100vh - 335px);
+}

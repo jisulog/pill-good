@@ -40,7 +40,8 @@ class PayStore {
 
             runInAction(() => {
                 this.pays = result;
-                this.todayPayUpdate();
+                this.pay = result[0];
+                // this.todayPayUpdate();
             });
         } catch (error) {
             runInAction(() => (this.message = error.message));
@@ -50,7 +51,9 @@ class PayStore {
     todayPayUpdate(){
         for(var i=0; i<this.pays.length;i++) {
             this.tempPay = this.pays[i];
-            if (this.tempPay.end_date < moment().format("YYYY-MM-DD")) {
+            if (this.tempPay.end_date > moment().format("YYYY-MM-DD")) {
+                this.pay = this.tempPay;
+            } else {
                 this.tempPay.status = 3;
                 MemberApi.payRefund(
                     this.tempPay.pay_id,
@@ -61,8 +64,6 @@ class PayStore {
                     this.tempPay.membership_id,
                     this.tempPay.status,
                 );
-            } else {
-                this.pay = this.tempPay;
             }
         }
 

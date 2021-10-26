@@ -7,9 +7,9 @@ class PayActiveItemView extends Component {
         const { pay } = this.props;
 
         return (
-            <Card sx={{ width: 400 }}>
+            <Card>
                 <CardContent>
-                    <Typography variant="h5" component="div">
+                    <Typography variant="h5" component="div" className="card-title">
                         {pay.membership_id.type === 1
                             ? "1대1"
                             : pay.membership_id.type === 2
@@ -19,13 +19,12 @@ class PayActiveItemView extends Component {
                             : "유형이 정확하지 않습니다."}{" "}
                         수업 이용권
                     </Typography>
-                    <br/>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography className="card-content">
                         {moment(pay.pay_date).format("YYYY-MM-DD")} ~{" "}
                         {pay.end_date} (잔여{" "}
                         {moment(pay.end_date).diff(moment(), "days")}일)
                     </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography className="card-content">
                         {pay.membership_id.number}회 중 {pay.remain} 회 남음
                     </Typography>
                 </CardContent>

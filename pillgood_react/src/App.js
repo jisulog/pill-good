@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Home from "./layout/Home";
 import NavBar from "./layout/NavBar";
 import Footer from "./layout/Footer";
+import './layout/Home.css';
 
 
 import UserJoinPage from "./user/pages/UserJoinPage";
@@ -13,10 +14,6 @@ import MemberMainPage from "./member/pages/MemberMainPage";
 import UserListPage from "./instructor/pages/UserListPage";
 
 import ManagerMainPage from "./manager/pages/ManagerMainPage";
-import ManagerLecDetailPage from "./manager/pages/ManagerLecDetailPage";
-import ManagerLecUpdatePage from "./manager/pages/ManagerLecUpdatePage";
-import ManagerMemberShipCreatePage from "./manager/pages/ManagerMemberShipCreatePage";
-import ManagerUserDetailPage from "./manager/pages/ManagerUserDetailPage";
 
 import MembershipMainPage from "./membership/pages/MembershipMainPage";
 import PayPage from "./membership/pages/PayPage";
@@ -34,24 +31,29 @@ import QnaAnswerPage from "./qna/pages/QnaAnswerPage";
 class App extends Component {
     render() {
         return (
-            <div>
-                <Router>
-                    <NavBar/>
+            <Router>
+                <NavBar />
+                <div id="mainRouter">
                     <Switch>
                         <Route exact path="/" component={Home} />
 
                         {/* user */}
-                        <Route exact path="/user/join/" component={UserJoinPage} />
-                        <Route exact path="/user/login" component={UserLoginPage} />
+                        <Route
+                            exact
+                            path="/user/join/"
+                            component={UserJoinPage}
+                        />
+                        <Route
+                            exact
+                            path="/user/login"
+                            component={UserLoginPage}
+                        />
 
                         {/* member */}
                         <Route path="/member" component={MemberMainPage} />
 
                         {/* instructor */}
-                        <Route
-                            path="/instructor/"
-                            component={MemberMainPage}
-                        />
+                        <Route path="/instructor/" component={MemberMainPage} />
                         <Route
                             exact
                             path="/instructor/user/:id"
@@ -59,10 +61,7 @@ class App extends Component {
                         />
 
                         {/* manager */}
-                        <Route
-                            path="/manager"
-                            component={ManagerMainPage}
-                        />
+                        <Route path="/manager" component={ManagerMainPage} />
 
                         {/* membership */}
                         <Route
@@ -70,14 +69,14 @@ class App extends Component {
                             path="/membership"
                             component={MembershipMainPage}
                         />
-                        <Route exact path="/membership/pay" component={PayPage} />
-
-                        {/* lec */}
                         <Route
                             exact
-                            path="/lec"
-                            component={LecMainPage}
+                            path="/membership/pay"
+                            component={PayPage}
                         />
+
+                        {/* lec */}
+                        <Route exact path="/lec" component={LecMainPage} />
                         <Route
                             exact
                             path="/lec/:id"
@@ -112,9 +111,9 @@ class App extends Component {
                             component={QnaAnswerPage}
                         />
                     </Switch>
-                    <Footer/>
-                </Router>
-            </div>    
+                </div>
+                <Footer />
+            </Router>
         );
     }
 }

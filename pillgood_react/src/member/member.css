@@ -10,7 +10,7 @@
 }
 
 /*
-member 메인
+member 사이드바
 */
 .white-round-top {
     border-radius: 15px 15px 0 0;
@@ -36,26 +36,18 @@ member 메인
     -o-border-radius: 15px;
 }
 
+/* member layout */
+
 .main-content {
     padding: 20px;
 }
 
-.hidden {
-    display: none;
-}
-
-
-
-/*
-내 정보, 정보 수정
-*/
-
-#profile-img {
+#memberUpdate #profileImg {
     text-align: center;
     margin: 30px;
 }
 
-#profile-img img {
+#memberUpdate #profileImg img {
     width: 200px;
     height: 200px;
     margin-bottom: 10px;
@@ -68,55 +60,26 @@ member 메인
     overflow: hidden;
 }
 
-#profile-img div {
+#memberUpdate #profileImg div {
     font-size: 1.5em;
 }
 
-.content-center {
-    margin: 30px auto;
-    text-align: center;
+#memberUpdate #profileImg .profile-name {
+    font-weight: bold;
 }
 
-.content-center .button, #profile-img .button {
-    width: 150px;
-    margin: 0 10px;
-    color: #777;
-    border-color: #ddd;
-    }
-
-.content-center .button:hover, #profile-img .button:hover {
-    background-color: #eee;
-    border-color: #ddd;
-}
-
-.content-center .button-submit {    
-    width: 150px;
-    margin: 0 10px;
-    box-shadow: none;
-}
-
-.content-center .button-submit:hover {
-    box-shadow: none;
-}
-
-#profile-info {
+#memberUpdate #profileInfo {
     width: 450px;
     margin: 0 auto 10px;
     display: flex;
     flex-direction: column;
 }
 
-#profile-info>* {
+#memberUpdate #profileInfo > * {
     margin: 10px 0;
 }
 
-#profile-info input[type=text],#profile-info textarea  {
-    width: 100%;
-    padding: 15px;
-}
-
-/* 내 정보 list */
-.dl-dt-dd {
+#memberUpdate .dl-dt-dd {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
@@ -125,14 +88,175 @@ member 메인
     justify-content: flex-start;
 }
 
-.dl-dt-dd dt {
+#memberUpdate .dl-dt-dd dt {
     width: 100px;
     margin-right: 10px;
     font-weight: bold;
+    color: #D5BA8C;
     text-align: right;
 }
 
-.dl-dt-dd dd {
+#memberUpdate .dl-dt-dd dd {
     width: calc( 100% - 100px );
     margin-left: 10px;
+} 
+
+#memberUpdate #profileInfo input[type=text],
+#memberUpdate #profileInfo textarea {
+    width: 100%;
+    padding: 15px;
 }
+
+#memberUpdate .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+    padding: 0;
+}
+
+#memberUpdate .custom-button-line, #memberUpdate .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    color: #D5BA8C;
+    border:1px solid #D5BA8C;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+#memberUpdate .custom-button-line:hover {
+    color: white;
+    background: #D5BA8C;
+}
+
+#memberUpdate #contentCenter {
+    margin: 30px auto;
+    text-align: center;
+}
+
+#memberUpdate #contentCenter .custom-button-full {
+    width: 150px;
+    margin: 0 10px;
+    color: white;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: none;
+    border: none;
+}
+
+#memberUpdate #contentCenter .custom-button-full:hover {
+    background: linear-gradient(-90deg, #D5BA8C, #E2CEAE);
+}
+
+/* my membership */
+#myMembership {
+    margin-bottom: 40px;
+}
+#myMembership h3, #memberPayList h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#myMembership>div {
+    width: 350px;
+    height: 180px;
+    box-shadow: none;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#myMembership>div>div, #memberDelete>div>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#myMembership>div .card-title, #memberDelete>div .card-title {
+    width: 100%;
+    font-weight: bold;
+}
+
+#myMembership>div .card-none, #memberDelete>div .card-none, #memberDelete .card-none {
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#memberPayList>div {
+    box-shadow: none;
+}
+
+#memberPayList>div thead {
+    background: #E2CEAE;
+}
+
+#memberPayList>div tbody td {
+    border-bottom: 1px solid #E2CEAE;
+}
+
+#memberPayList>div tbody td a, #memberPayList>div tbody td span input {
+    width: 50px;
+    line-height: 1.8;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+#memberPayList>div tbody td a:hover, #memberPayList>div tbody td span input:hover {
+    background: linear-gradient(-90deg, #D5BA8C, #E2CEAE);
+}
+
+#memberDelete {
+    text-align: center;
+}
+
+#memberDelete h3 {
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#memberDelete>div {
+    width: 350px;
+    height: 180px;
+    box-shadow: none;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+#memberDelete input[type=button] {
+    width: 150px;
+    height: 30px;
+    margin: 30px 10px 0;
+    color: white;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: none;
+    border: none;
+}
+
+
+

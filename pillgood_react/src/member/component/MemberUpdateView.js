@@ -18,8 +18,8 @@ class MemberUpdateView extends Component {
           });
 
         return (
-            <div>
-                <div id="profile-img">
+            <div id="memberUpdate">
+                <div id="profileImg">
                     <img src={imgUrl} alt="프로필사진" />
                     <br />
                     <label htmlFor="contained-button-file">
@@ -32,22 +32,14 @@ class MemberUpdateView extends Component {
                         <Button
                             variant="outlined"
                             component="span"
-                            className="button"
+                            className="custom-button-line"
                         >
                             사진 변경
                         </Button>
                     </label>
-
-                    {/* <div>
-                        <input
-                            type="file"
-                            name="image"
-                            onChange={(e) => onFileInput(e)}
-                        />
-                    </div> */}
                 </div>
 
-                <div id="profile-info">
+                <div id="profileInfo">
                     <TextField
                         required
                         id="outlined-required"
@@ -72,11 +64,11 @@ class MemberUpdateView extends Component {
                     />
                 </div>
 
-                <div className="content-center">
+                <div id="contentCenter">
                     <Button
                         // variant="outlined"
                         variant="contained"
-                        className="button-submit"
+                        className="custom-button-full"
                         onClick={() => {
                             onUpdate();
                             this.props.history.push("/member");

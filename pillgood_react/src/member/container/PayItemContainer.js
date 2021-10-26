@@ -30,10 +30,10 @@ class PayItemContainer extends Component {
                 {payList.length ? (
                     payList
                 ) : (
-                    <Card sx={{ width: 400 }}>
+                    <Card>
                         <CardContent>
-                            <Typography  component="div">
-                                현재 이용중인 멤버십이 존재하지 않습니다.
+                            <Typography component="div" className="card-none">
+                                현재 이용중인 멤버십이<br/> 존재하지 않습니다.
                             </Typography>
                         </CardContent>
                     </Card>

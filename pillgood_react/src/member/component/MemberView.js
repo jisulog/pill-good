@@ -10,10 +10,10 @@ class MemberView extends Component {
         const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${member.image}`;
 
         return (
-            <div>
-                <div id="profile-img">
+            <div id="memberUpdate">
+                <div id="profileImg">
                     <img src={imgUrl} alt="프로필사진" />
-                    <div>
+                    <div class="profile-name">
                         {member.name === "" ? "이름이 들어가요" : member.name}
                     </div>
                 </div>
@@ -31,12 +31,7 @@ class MemberView extends Component {
                         <dd>
                             {member.intro === "" ? (
                                 <p>
-                                    소개글이 들어가요
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    ssdd
+                                    소개글이 없습니다.
                                 </p>
                             ) : (
                                 member.intro
@@ -44,8 +39,8 @@ class MemberView extends Component {
                         </dd>
                     </dl>
 
-                    <div className="content-center">
-                        <Button variant="outlined" href="/member/update" className="button">
+                    <div id="contentCenter">
+                        <Button variant="contained" href="/member/update" className="custom-button-full">
                             회원정보 수정
                         </Button>
                     </div>
