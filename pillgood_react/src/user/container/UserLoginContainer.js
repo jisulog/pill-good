@@ -32,10 +32,9 @@ class UserLoginContainer extends Component {
         const {handlerSet, handlerLogin} = this.userStore;  
 
         const MyButton = styled(Button)({
-            background: 'linear-gradient(45deg, #F9AF21 20%, #ECDB52 90%)',
+            background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
             border: 0,
             borderRadius: 10,
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
             width: '300px',
             color: 'white',
             height: 48,

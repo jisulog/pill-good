@@ -39,9 +39,9 @@ class NavBar extends Component {
 
       return (
         <div id="background_color">
-            <div className="imageBox">
+            <div id="imageBox">
                 <Link href="/">
-                    <img alt="logo" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/logo/logo_120px.png"/>
+                    <img alt="logo" src="https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/logo/logologo.png"/>
                 </Link>
             </div>
             <div id="button-align">
@@ -75,19 +75,46 @@ class NavBar extends Component {
                         </ThemeProvider>
                     </Link>
                 </Button>
-                {window.localStorage.getItem('email') !== null
+
+                {window.localStorage.getItem('type') === "1"
                 ?
                 <Button
                     style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
                     id="basic-button"
                     aria-controls="basic-menu">
-                    <Link href="/member" underline="none" color="black">   
+                    <Link href="/manager" underline="none" color="black">   
                         <ThemeProvider theme={theme}>
-                            <Typography variant="Nav">마이페이지</Typography>
+                            <Typography variant="Nav">관리자페이지</Typography>
                         </ThemeProvider>   
                     </Link>
                 </Button>
-                :    
+                :
+                window.localStorage.getItem('type') === "2"
+                ?
+                <Button
+                style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                id="basic-button"
+                aria-controls="basic-menu">
+                <Link href="/instructor" underline="none" color="black">   
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="Nav">강사페이지</Typography>
+                    </ThemeProvider>   
+                </Link>
+                </Button>  
+                :
+                window.localStorage.getItem('type') === "3"
+                ?
+                <Button
+                style={{maxWidth: '150px', maxHeight: '120px', minWidth: '150px', minHeight: '120px'}}
+                id="basic-button"
+                aria-controls="basic-menu">
+                <Link href="/member" underline="none" color="black">   
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="Nav">마이페이지</Typography>
+                    </ThemeProvider>   
+                </Link>
+                </Button> 
+                :  
                 null
                 }
                 {window.localStorage.getItem('email') !== null

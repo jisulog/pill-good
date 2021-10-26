@@ -48,6 +48,7 @@ class LoginSerializer(serializers.ModelSerializer):
             )
         return {
             'email': user.email,
+            'name': user.name,
             'id': user.id,
             'is_admin': user.is_admin,
             'type': user.type,

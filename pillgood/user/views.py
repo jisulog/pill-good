@@ -55,8 +55,12 @@ def login(request):
     if serializer.validated_data['email'] == "None":
         return Response({'message': '이메일 또는 비밀번호가 정확하지않습니다.'})
     return Response(
-        {"message": '방문을 환영합니다!', "email": serializer.validated_data['email'], "id": serializer.validated_data['id'],
-         "is_admin": serializer.validated_data['is_admin'], "type": serializer.validated_data['type']})
+        {"message": '방문을 환영합니다!',
+         "email": serializer.validated_data['email'],
+         "name": serializer.validated_data['name'],
+         "id": serializer.validated_data['id'],
+         "is_admin": serializer.validated_data['is_admin'],
+         "type": serializer.validated_data['type']})
 
 
 @api_view(['POST'])

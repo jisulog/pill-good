@@ -1,5 +1,5 @@
 #home{
-    height: 100vh;
+    height: 130vh;
     position: relative;
     display: block;
 }
@@ -38,7 +38,12 @@
 }
 
 #footer img {
-    width: 150px;
+    width: 80px;
+}
+
+#footer-font {
+    color: #E2CEAE;
+    font-size: xx-small;
 }
 
 #home .temp {
