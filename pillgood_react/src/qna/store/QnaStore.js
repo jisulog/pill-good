@@ -26,6 +26,7 @@ class QnaStore {
             const result = await qnaApi.qnaDetail(qna_id);
             runInAction(() => {
                 this.qna = result;
+                console.log(this.qna)
             });
         } catch (error) {
             console.log(error.message);
@@ -72,7 +73,7 @@ class QnaStore {
                 this.qna.category,
                 this.qna.question_user.id,
                 this.qna.question,
-                this.qna.answer_user,
+                this.qna.answer_user.id,
                 this.qna.answer
                 );
             this.selectQnaAll();

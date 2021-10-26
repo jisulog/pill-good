@@ -5,7 +5,8 @@ class QnaUpdatePage extends Component {
     
         return (
             <div>
-                <QnaUpdateContainer />
+                <QnaUpdateContainer qnaId={this.props.match.params["id"]}/>
+
             </div>
         );
     }
