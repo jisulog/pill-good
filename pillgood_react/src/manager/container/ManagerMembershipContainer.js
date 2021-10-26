@@ -34,54 +34,27 @@ class ManagerMembershipContainer extends Component {
     const columns = [
       { field: 'number', headerName: '횟수', width: 120 },
       { field: 'period', headerName: '기간', width: 120 },
-      { field: 'price', headerName: '가격', width: 150 },
+      { field: 'price', headerName: '가격', width: 180 },
       { field: 'type', headerName: '인원', width: 120 },
       { field: 'status', headerName: '상태', width: 120 },
       {
         field: "change", headerName: '변경', width: 150,
         renderCell: (cellValues) => {
           return (
-            <button onClick={(event) => {accessMembership(cellValues.row.id, cellValues.row.status)}}>변경</button>
+            <Button onClick={() => {accessMembership(cellValues.row.id, cellValues.row.status)}}>변경</Button>
           );
         }
       }
     ];
     const { memberships, membershipFilter, accessMembership, changeMembershipFilter } = this.managerStore;
     const rows = [];
-    const formatter = new Intl.NumberFormat('ja-JP', {
-      style: 'currency',
-      currency: 'KRW',});
-    // const membershipList = memberships && memberships.map((membership) => {
-    //   return (
-    //     <span key={membership.membership_id}><ManagerMembershipView key={membership.membership_id} membership={membership} />
-    //     {membership.status === 1 ? <button onClick={()=>accessMembership(membership.membership_id, membership.status)}>비활성</button>: 
-    //             membership.status === 2 ? <button onClick={()=>accessMembership(membership.membership_id, membership.status)}>활성</button> :
-    //             '변경불가'}</span>
-    //   )
-    // });
-    // memberships.forEach((membership) => {
-    //   if (membershipFilter === '1') {
-    //     if (membership.status === 2) return;
-    //     rows.push(
-    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
-    //     )
-    //   }
-    //   else if (membershipFilter === '2') {
-    //     if (membership.status === 1) return;
-    //     rows.push(
-    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
-    //     )
-    //   }
-    //   else {
-    //     rows.push(
-    //       <ManagerMembershipView key={membership.id} membership={membership} accessMembership={accessMembership} />
-    //     )
-    //   }
+    const formatter = new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'KRW'});
     memberships.forEach((membership) => {
       if (membershipFilter === '1') {
         if (membership.status === 2) return;
         rows.push(
-          { id: membership.membership_id, number: (membership.number?membership.number+"회":""), 
+          { 
+          id: membership.membership_id, number: (membership.number?membership.number+"회":""), 
           period:(membership.period?membership.period+"일":""), 
           price:(membership.price?(formatter.format(membership.price)): ""), 
           type:(membership.type?membership.type+"인" : ""), 
@@ -91,7 +64,8 @@ class ManagerMembershipContainer extends Component {
       else if (membershipFilter === '2') {
         if (membership.status === 1) return;
         rows.push(
-          { id: membership.membership_id, number: (membership.number?membership.number+"회":""), 
+          { 
+          id: membership.membership_id, number: (membership.number?membership.number+"회":""), 
           period:(membership.period?membership.period+"일":""), 
           price:(membership.price?(formatter.format(membership.price)): ""), 
           type:(membership.type?membership.type+"인" : ""), 
@@ -100,7 +74,8 @@ class ManagerMembershipContainer extends Component {
       }
       else {
         rows.push(
-          { id: membership.membership_id, number: (membership.number?membership.number+"회":""),
+          { 
+          id: membership.membership_id, number: (membership.number?membership.number+"회":""),
           period:(membership.period?membership.period+"일":""), 
           price:(membership.price?(formatter.format(membership.price)): ""),
           type:(membership.type?membership.type+"인" : ""), 
@@ -111,15 +86,9 @@ class ManagerMembershipContainer extends Component {
 
     });
     return (
-      <div style={{width: '87%', margin: '30px auto'}}>
-        <h2 style={{textAlign:'center', color:'#574934'}} >멤버쉽 목록</h2>
-          {/* <select name="status" id="status" value={membershipFilter}
-            onChange={(e) => changeMembershipFilter(e.target.value)}>
-            <option value="0">--활성 여부--</option>
-            <option value="1">활성</option>
-            <option value="2">비활성</option>
-          </select><br /> */}
-          <Box sx={{ minWidth: 120 }}>
+      <div style={{width: '90%', margin: '30px auto'}}>
+        <h2 style={{textAlign:'center', color:'#D5BA8C'}} >멤버쉽 목록</h2>
+          <Box>
           <FormControl >
             <NativeSelect
               defaultValue={0}
@@ -136,7 +105,7 @@ class ManagerMembershipContainer extends Component {
           </FormControl>
           <Button style={{float: 'right'}} onClick={this.handleOpen} >생성</Button>
           <Modal open={this.state.open} onClose={this.handleClose} >
-            <Box style={{background:'white', margin: '30px 30px'}}>
+            <Box>
               <ManagerMembershipCreateContainer/>
             </Box>
           </Modal>

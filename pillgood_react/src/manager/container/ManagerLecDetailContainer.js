@@ -5,12 +5,6 @@ import ManagerLecDetailView from '../component/ManagerLecDetailView';
 class ManagerLecDetailContainer extends Component {
 
   managerStore = ManagerStore;
-
-  // componentDidMount() {
-  //   const {id} = this.props;
-  //   console.log(id)
-  //   this.managerStore.selectLec(id);
-  // }
   
   render() {
     const {lec, accessLec} = this.managerStore;
