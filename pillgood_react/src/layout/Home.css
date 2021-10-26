@@ -1,19 +1,31 @@
 #home{
-    height: 110vh;
+    height: 100vh;
     position: relative;
-    display: block; 
-    background: url("https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/main.jpg") no-repeat;
+    display: block;
+}
+
+#home > span {
+    width: 100%;
+    height:100%;
+    background:url("https://pillgoodimagebucket.s3.ap-northeast-2.amazonaws.com/main.jpg") no-repeat;
     background-size: cover;
     filter:brightness(60%);
-}    
+    -webkit-filter:brightness(60%);
+    display: block;
+    margin-top: -10%;
+} 
 
 #article {
-    color: white;
+    color: #D5BA8C;
     font-style: italic;
     font-weight: normal;
     text-align: center;
     font-size: large;
-    padding-top: 150px;
+    top: 40%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    text-shadow: 0 0 2px #000;
 }
 
 #footer {
@@ -27,4 +39,10 @@
 
 #footer img {
     width: 150px;
+}
+
+#home .temp {
+    width: 100px;
+    height:50px;
+    background: linear-gradient(90deg, #D5BA8C, #E2CEAE)
 }

@@ -8,7 +8,7 @@ class Home extends Component {
     render() {
         return (
             <div id="home">
-                
+                <span></span>
                 <p id="article">
                 "in 10 session you will feel the difference,<br/>
                 in 20 session you will see the difference,<br/>

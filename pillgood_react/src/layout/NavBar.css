@@ -1,6 +1,7 @@
 #background_color {
     background-color: white;
     position: relative;
+    z-index:999;
 }
 
 #button-align {
