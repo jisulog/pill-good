@@ -20,7 +20,6 @@ class InstructorLecView extends Component {
             장소: {lec.room}<br />
             날짜: {moment(lec.date).format("YY.MM.DD")}}<br />
             시간: {moment(lec.time,"HH:mm:ss").format("HH:mm")}<br /><br />
-
               <Link to= {`/instructor/user/${lec.lec_id}`}><button >신청 회원 목록 </button></Link>&nbsp;&nbsp;
 
             <br />

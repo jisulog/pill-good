@@ -33,7 +33,7 @@ class InstructorStore{
     }   //file 업로드
 
     changeDate = (newValue) => {
-      this.selectedDate = {...this.selectedDate,newValue};
+      this.selectedDate = {newValue};
   }
     async selectAllUser(lec_id){
       try{
