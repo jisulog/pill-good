@@ -5,7 +5,8 @@ class MemberMainPage extends Component {
     render() {
         return (
             <div>
-                <MemberContainer />
+
+            <MemberContainer />
             </div>
         );
     }

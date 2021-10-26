@@ -12,10 +12,10 @@ const config = {
 
 class InstructorStore{
   lec = {lec_id :"", title:"",content:"",room :"", date: "", time:"", level:"", email:"", lec_count: 0 , number:"", status :1, lec_image:""};
-  selectedFile = null;
-  selectedDate= null;
-//lec={};
   lecs = [];
+
+  selectedFile = null;
+
   users =[];
 
 
@@ -39,9 +39,7 @@ class InstructorStore{
       try{
         const result = await InstructorApi.userList(lec_id);
         runInAction(()=> this.users = result);
-        console.log(result);
       }catch(error){
-        console.log(error);
         runInAction(()=> this.message = error.message);
       }
     }
@@ -50,10 +48,8 @@ class InstructorStore{
       try{
         const result = await InstructorApi.lecList();
         runInAction(()=> {this.lecs = result;
-            console.log(result)
       });
       }catch(error){
-        console.log(error);
         runInAction(()=> this.message = error.message);
       }
     }
@@ -62,9 +58,7 @@ class InstructorStore{
         try{
           const result = await InstructorApi.lecDetail(id);
           runInAction(() => this.lecs = result);
-           console.log(result)
            }catch(error){
-         console.log(error);
           }
       }
 
@@ -73,9 +67,7 @@ class InstructorStore{
         try{
           const result = await InstructorApi.lecList(id);
           runInAction(() => this.lecs = result);
-           console.log(result)
            }catch(error){
-         console.log(error);
           }
       }
 

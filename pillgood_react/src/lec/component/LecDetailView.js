@@ -25,9 +25,10 @@ class LecDetailView extends Component {
         open: false
     };
 
-    handleOpen = e => {
-        this.setState({open : true});
-    };
+   handleOpen = (lecId) => {
+    this.lecStore.selectLec(lecId);
+    this.setState({ open: true });
+  };
 
     handleClose = () => {
         this.setState({open : false});
@@ -38,38 +39,36 @@ class LecDetailView extends Component {
     const user_id = window.localStorage.getItem("id");
 
     const MyButton = styled(Button)({
-            background: 'linear-gradient(45deg, #F9AF21 20%, #ECDB52 90%)',
+            background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
             border: 0,
             borderRadius: 10,
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-            width: '500px',
+            width: '150px',
             color: 'white',
             height: 48,
             padding: '0 30px',
           });
+
     const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
     const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.lec_image}`;
     return (
-          <Card sx={{ maxWidth: 600 }} className="margin-center">
+          <Card sx={{ maxWidth: 450 }}  className="margin-center">
            <CardMedia
                 component="img"
-                height="450"
+                height="400"
                 img src={imgUrl}
                 alt="강의사진"
-              />
+           />
            <CardContent>
             <Typography gutterBottom variant="h4" component="div">
-              <h3>{lec.title}</h3>
+              <h4>{lec.title}</h4>
             </Typography>
             <Typography variant="body2" color="text.secondary">
              날짜: {moment(lec.date).format("YY.MM.DD")}  / 시간: {moment(lec.time,"HH:mm:ss").format("HH:mm")} <br />
                   난이도: {lec.level}<br />
                   강사명: {lec.email}<br />
-                  인원 : {lec.lec_count} / {lec.number}
-                  </Typography>
+             </Typography>
              </CardContent>
-            <Button  variant="contained"  onClick={() => createBook(user_id)}>예약 신청</Button>
-            <Link to="/lec"><Button  variant="contained"> 강의 목록</Button> </Link>
+            <MyButton  onClick={() => createBook(user_id)}>예약 신청</MyButton><Link to="/lec" style={{ textDecoration: 'none' }}><MyButton variant="contained"> 강의 목록</MyButton></Link>
 
 
         </Card>

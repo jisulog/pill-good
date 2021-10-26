@@ -90,7 +90,6 @@ class LecStore {
         this.count = e.target.count[1];
     }
 
-    //file 업로드
 
     //강의 예약
     async createBook(user_id) {

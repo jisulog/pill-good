@@ -10,7 +10,7 @@ import MemberPayListPage from './MemberPayListPage';
 import MemberPayRefundPage from './MemberPayRefundPage';
 import MemberUpdatePage from './MemberUpdatePage';
 import '../member.css';
-
+import UserListPage from '../../instructor/pages/UserListPage';
 
 class MemberMainPage extends Component {
 
@@ -175,6 +175,11 @@ class MemberMainPage extends Component {
                                     exact
                                     path="/instructor/lec/:id"
                                     component={InstructorLecPage}
+                                />
+                                <Route
+                                      exact
+                                      path="/instructor/user/:id"
+                                      component={UserListPage}
                                 />
                                 <Route
                                     exact
