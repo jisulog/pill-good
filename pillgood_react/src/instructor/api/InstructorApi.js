@@ -4,7 +4,6 @@ import { uploadFile } from 'react-s3';
 // backend api 호출, 연결
 
 
-
 class InstructorApi {
     URL = '/instructor/';
 

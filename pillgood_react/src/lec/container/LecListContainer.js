@@ -18,7 +18,6 @@ class LecListContainer extends Component {
         this.lecStore.selectAll(); //mount 되면 전체 강의
     }
 
-
     render() {
         const {lecs, page, handlePageChange, activePage} = this.lecStore;
         const {id} = this.props;

@@ -16,15 +16,26 @@ import { styled } from '@mui/styles';
 import BookCreateView from '../component/BookCreateView';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-
+import Stack from '@mui/material/Stack';
 
 class LecDetailView extends Component {
 
 
+    state = {
+        open: false
+    };
 
+    handleOpen = e => {
+        this.setState({open : true});
+    };
+
+    handleClose = () => {
+        this.setState({open : false});
+    };
 
   render() {
-    const {lec} = this.props;
+    const {lec, createBook } = this.props;
+    const user_id = window.localStorage.getItem("id");
 
     const MyButton = styled(Button)({
             background: 'linear-gradient(45deg, #F9AF21 20%, #ECDB52 90%)',
@@ -36,7 +47,7 @@ class LecDetailView extends Component {
             height: 48,
             padding: '0 30px',
           });
-
+    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
     const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.lec_image}`;
     return (
           <Card sx={{ maxWidth: 600 }} className="margin-center">
@@ -54,11 +65,12 @@ class LecDetailView extends Component {
              날짜: {moment(lec.date).format("YY.MM.DD")}  / 시간: {moment(lec.time,"HH:mm:ss").format("HH:mm")} <br />
                   난이도: {lec.level}<br />
                   강사명: {lec.email}<br />
+                  인원 : {lec.lec_count} / {lec.number}
                   </Typography>
              </CardContent>
+            <Button  variant="contained"  onClick={() => createBook(user_id)}>예약 신청</Button>
+            <Link to="/lec"><Button  variant="contained"> 강의 목록</Button> </Link>
 
-                  <Link to = {`/lec/create/book/${lec.lec_id}`}><button>예약 신청</button></Link>
-                <Link to= "/lec"><button >강의 목록 </button></Link>&nbsp;&nbsp;
 
         </Card>
 

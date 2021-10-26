@@ -17,7 +17,15 @@ import moment from 'moment';
 
 
 class InstructorContainer extends Component {
-  instructorStore = InstructorStore;
+
+      constructor(){
+        super();
+        this.state = {
+            value: null,
+      }
+    }
+    instructorStore = InstructorStore;
+
   render() {
     const { lec, createLec, handlerSetFile, changeDate, handlerSetProps} = this.instructorStore;
     return (
@@ -62,7 +70,7 @@ class InstructorContainer extends Component {
               <Typography component="h2" variant="body1" gutterBottom>
                   장소
                </Typography>
-                  <TextField select style ={{width: '15ch'}} name="room" id="room" value={lec.room||""}
+                  <TextField select style ={{width: '20%'}} name="room" id="room" value={lec.room||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--강의실--</MenuItem>
                           <MenuItem value="301호">301호</MenuItem>
@@ -77,13 +85,9 @@ class InstructorContainer extends Component {
                  <Typography component="h2" variant="body1" gutterBottom>
                   날짜
                </Typography>
-
-                  <input   type="date" id="date"name="date" value={lec.date}
-                                onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
-
+                  <input type="date" id="date"name="date" value={lec.date}
+                    onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
               </div>
-
-
               <div>
                 <Typography component="h2" variant="body1" gutterBottom>
                   시간
@@ -91,6 +95,7 @@ class InstructorContainer extends Component {
                 <TextField
                           type="time"
                           value={lec.time}
+                          style ={{width: '20%'}}
                           name="time"
                           onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                           />
@@ -99,7 +104,7 @@ class InstructorContainer extends Component {
               <Typography component="h2" variant="body1" gutterBottom>
                   난이도
                </Typography>
-                  <TextField select style ={{width: '10%'}} name="level" id="level" value={lec.level||""}
+                  <TextField select style ={{width: '20%'}} name="level" id="level" value={lec.level||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--난이도--</MenuItem>
                           <MenuItem value="1">level-1 </MenuItem>
@@ -115,7 +120,7 @@ class InstructorContainer extends Component {
                             type="number"
                             id="email"
                             name="email"
-                            style ={{width: '10%'}}
+                            style ={{width: '20%'}}
                             value={lec.email||''}
                             onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                             /><br/>
@@ -124,7 +129,7 @@ class InstructorContainer extends Component {
                  <Typography component="h2" variant="body1" gutterBottom>
                   인원
                 </Typography>
-                       <TextField select style ={{width: '10%'}} name="number" id="number" value={lec.number||""}
+                       <TextField select style ={{width: '20%'}} name="number" id="number" value={lec.number||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--인원--</MenuItem>
                           <MenuItem value="1">1인 </MenuItem>

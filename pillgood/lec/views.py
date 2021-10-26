@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from lec.models import Lec
-from lec.serializers import LecSerializer, BookSerializer
+from lec.serializers import LecSerializer, BookSerializer, LecDetailSerializer
 from manager.models import Book
 from manager.serializers import LecSerializer as MLecSerializer
 from member.serializers import PaySerializer
@@ -16,7 +16,7 @@ def lec_index(request):
     등록된 전체 강의 목록
     """
     lecs = Lec.objects.all()
-    serializer = LecSerializer(lecs, many=True)
+    serializer = LecDetailSerializer(lecs, many=True)
     return Response(serializer.data)
 
 
@@ -26,7 +26,7 @@ def lec_detail(request, pk):
     특정 강의 상세 페이지
     """
     lec = Lec.objects.get(pk=pk)
-    serializer = LecSerializer(lec, many=False)
+    serializer = LecDetailSerializer(lec, many=False)
     return Response(serializer.data)
 
 
