@@ -25,7 +25,6 @@ def qna_detail(request, pk):
 
 @api_view(['POST'])
 def qna_create(request):
-    print(request.data)
     serializer = QnaSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -37,7 +36,6 @@ def qna_create(request):
 @api_view(['PUT'])
 def qna_update(request, pk):
     qna = Qna.objects.get(qna_id=pk)
-    print(request.data)
     serializer = QnaSerializer(instance=qna, data=request.data)
     if serializer.is_valid():
         serializer.save()

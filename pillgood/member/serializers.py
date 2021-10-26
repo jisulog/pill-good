@@ -49,7 +49,7 @@ class PayViewSet(viewsets.ModelViewSet):
 
 class QnaSerializer(serializers.ModelSerializer):
     question_user = UserSerializer(read_only=True)
-    answer_user = serializers.CharField(allow_null=True, required=False, read_only=True)
+    answer_user = UserSerializer(allow_null=True, required=False, read_only=True)
     answer = serializers.CharField(required=False, allow_blank=True)
 
     class Meta:

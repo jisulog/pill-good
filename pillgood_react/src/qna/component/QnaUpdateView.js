@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import QnaStore from '../store/QnaStore';
-import {observer} from 'mobx-react';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 class QnaUpdateView extends Component {
@@ -31,7 +31,7 @@ class QnaUpdateView extends Component {
                         <input type="text" name="question" value={qna.question} 
                         onChange={(e)=>onsetprops(e.target.name, e.target.value)}/>
                     </div>
-                    <input type="submit" onClick={()=>onupdate()} value="수정"/>
+                    <input type="submit" onClick={()=>{onupdate(); this.props.history.push(`/qna/detail/${qna.qna_id}`)}} value="수정"/>
                     <Link to={`/qna/`}><button>목록</button></Link>
                 </form>  
             </div>
@@ -39,4 +39,4 @@ class QnaUpdateView extends Component {
     }
 }
 
-export default observer(QnaUpdateView);
+export default withRouter(QnaUpdateView);

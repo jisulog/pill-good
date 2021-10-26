@@ -17,6 +17,7 @@ class QnaAnswerContainer extends Component {
 
         return (
             <div>
+                <h2 style={{textAlign:'center', color:'#574934'}} >QnA Answer</h2>
                 <QnaAnswerView qna={qna} handlerSet={handlerSet} onAnswer={handlerAnswer} adminId={user}/>
             </div>
         );

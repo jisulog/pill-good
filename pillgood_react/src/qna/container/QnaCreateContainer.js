@@ -18,6 +18,7 @@ class QnaCreateContainer extends Component {
         const {member} = this.memberStore;
         return (
             <div>
+                <h2 style={{textAlign:'center', color:'#574934'}} >QnA Create</h2>
                 <QnaCreateView onsetprops = {handlerSet} oncreate = {createQna} member={member}/>
             </div>
         );
