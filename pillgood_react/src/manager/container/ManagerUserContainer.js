@@ -5,7 +5,6 @@ import ManagerUserView from '../component/ManagerUserView'
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
-import { makeStyles } from "@mui/styles";
 
 
 class ManagerUserContainer extends Component {
@@ -15,24 +14,15 @@ class ManagerUserContainer extends Component {
   }
 
   render() {
-    const useStyles = makeStyles({
-      root: {
-        "& .super-app-theme--header": {
-          backgroundColor: '#e6cda9'
-        }
-      }
-    });
     const columns = [
-      { field: 'email', headerName: 'Email', headerClassName: 'super-app-theme--header', width: 200 },
-      { field: 'name', headerName: '이름', headerClassName: 'super-app-theme--header', width: 150 },
-      { field: 'type', headerName: '분류', headerClassName: 'super-app-theme--header', width: 150 },
+      { field: 'email', headerName: 'Email', width: 200 },
+      { field: 'name', headerName: '이름', width: 150 },
+      { field: 'type', headerName: '분류', width: 150 },
       {
-        field: "change", headerName: '변경', headerClassName: 'super-app-theme--header', width: 150,
+        field: "change", headerName: '변경', width: 150,
         renderCell: (cellValues) => {
           return (
-            <button
-              onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경
-            </button>
+            <button onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경</button>
           );
         }
       }
@@ -70,19 +60,19 @@ class ManagerUserContainer extends Component {
         if (user.type === 3) return;
         if (user.type === 8) return;
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: user.type }
+          { id: user.id, email: user.email, name: user.name, type: (user.type?"강사":"") }
         );
       }
       else if (userFilter === '3') {
         if (user.type === 2) return;
         if (user.type === 8) return;
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: user.type }
+          { id: user.id, email: user.email, name: user.name, type: (user.type?"일반":"") }
         );
       }
       else {
         rows.push(
-          { id: user.id, email: user.email, name: user.name, type: user.type }
+          { id: user.id, email: user.email, name: user.name, type: (user.type===3?"일반":"강사") }
         );
       }
     });
@@ -111,7 +101,7 @@ class ManagerUserContainer extends Component {
             </NativeSelect>
           </FormControl>
         </Box>
-        {<ManagerUserView columns={columns} rows={rows} useStyles={useStyles} />}
+        {<ManagerUserView columns={columns} rows={rows} />}
         {/* <table>
           <thead>
             <tr>

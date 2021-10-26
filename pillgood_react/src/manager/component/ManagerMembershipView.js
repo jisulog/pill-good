@@ -16,10 +16,11 @@ class ManagerMembershipView extends Component {
       //   membership.status === 2 ?  <button onClick={() => accessMembership(membership.membership_id, membership.status)}>활성</button> : ""}
       //   </td>
       // </tr>
-      <DataGrid style={{ height: 500, width: '70%' }}
+      <DataGrid style={{ height: 500, width: '100%'}}
             rows={rows}
             columns={columns}
             pageSize={7}
+            hideFooterSelectedRowCount={true}
           />
     );
   }
