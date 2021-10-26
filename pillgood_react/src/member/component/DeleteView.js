@@ -8,7 +8,21 @@ class DeleteView extends Component {
         const { pay, onDelete } = this.props;
         let html;
 
-        if (pay.remain > 0 && pay.end_date > moment().format("YYYY-MM-DD")) {
+        if (pay.remain === undefined || pay.remain == 0 || pay.end_date < moment().format("YYYY-MM-DD")) {
+            html = (
+                <div id="memberDelete">
+                    <p className="card-none">
+                        소진되지 않은 멤버십이 존재하지 않습니다. <br />
+                        탈퇴하시려면 아래 버튼을 눌러주세요.
+                    </p>
+                    <input
+                        type="button"
+                        value="회원 탈퇴"
+                        onClick={(e) => onDelete()}
+                    />
+                </div>
+            );
+        }else {
             html = (
                 <div id="memberDelete">
                     <h3>! 소진되지 않은 멤버십이 존재합니다.</h3>
@@ -36,16 +50,6 @@ class DeleteView extends Component {
                     </Card>
 
                     <p>모두 소진 후 탈퇴가 가능합니다.</p>
-                </div>
-            );
-        } else {
-            html = (
-                <div id="memberDelete">
-                    <p className="card-none">
-                        소진되지 않은 멤버십이 존재하지 않습니다. <br/>
-                        탈퇴하시려면 아래 버튼을 눌러주세요.
-                    </p>
-                    <input type="button" value="회원 탈퇴" onClick={(e)=>onDelete()}/>
                 </div>
             );
         }

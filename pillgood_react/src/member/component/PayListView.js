@@ -7,8 +7,6 @@ import { TableCell, TableRow } from "@mui/material";
 class PayListView extends Component {
     render() {
         const { pay } = this.props;
-
-        let end_date = `${pay.end_date}`;
         
         return (
             <TableRow>

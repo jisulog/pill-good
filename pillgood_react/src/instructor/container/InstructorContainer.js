@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import InstructorStore from '../store/InstructorStore';
 import {observer} from 'mobx-react';
-import { Link } from 'react-router-dom';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import {MenuItem, Typography } from "@material-ui/core";
-import TimePicker from '@mui/lab/TimePicker';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
-import moment from 'moment';
-import '../instructor.css';
 
 class InstructorContainer extends Component {
 
@@ -27,7 +15,7 @@ class InstructorContainer extends Component {
     instructorStore = InstructorStore;
 
   render() {
-    const { lec, createLec, handlerSetFile, changeDate, handlerSetProps} = this.instructorStore;
+    const { lec, createLec, handlerSetFile, handlerSetProps} = this.instructorStore;
     return (
       <div>
           <h1>강의 등록</h1>
