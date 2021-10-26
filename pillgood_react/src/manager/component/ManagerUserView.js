@@ -3,8 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 class ManagerUserView extends Component {
   render() {
-    const { columns, rows, useStyles  } = this.props;
-    const classes = useStyles;
+    const { columns, rows } = this.props;
     
     return (
       // <tr>
@@ -25,7 +24,6 @@ class ManagerUserView extends Component {
             columns={columns}
             pageSize={7}
             hideFooterSelectedRowCount={true}
-            className={classes.root}
           />
     );
   }
