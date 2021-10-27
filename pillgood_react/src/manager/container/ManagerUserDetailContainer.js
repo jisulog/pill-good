@@ -121,7 +121,7 @@ class ManagerUserDetailContainer extends Component {
                 component="img"
                 height="140"
                 image={imgUrl}
-                alt="I"
+                alt="등록된 이미지가 없습니다 :("
               />
             </Card>
           </Grid>
@@ -148,7 +148,7 @@ class ManagerUserDetailContainer extends Component {
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant="subtitle1" component="div">
+              <Typography variant="subtitle1" component="div" style={{ color:'#D5BA8C' }}>
                 {user.type === 1 ? "관리자" : user.type === 2 ? "강사" : "회원"}
               </Typography>
             </Grid>

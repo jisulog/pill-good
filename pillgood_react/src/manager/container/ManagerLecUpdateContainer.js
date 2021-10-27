@@ -136,8 +136,10 @@ class ManagerLecUpdateContainer extends Component {
             </FormControl>
           </div>
           <div>
-            <Button onClick={() => updateLec()}>수정</Button>
-            <Link href={`/manager/lec`} style={{ textDecorationLine: 'none' }}><Button onClick={() => deleteLec()}>삭제</Button></Link>
+          <Link href={`/manager/lec`} style={{ textDecorationLine: 'none' }}>
+            <Button onClick={() => updateLec()} style={{ color:'#D5BA8C'}}>수정</Button>
+            <Button onClick={() => deleteLec()} style={{ color:'#D5BA8C'}}>삭제</Button>
+            </Link>
           </div>
         </div>
       </div>

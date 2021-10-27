@@ -22,29 +22,29 @@ class ManagerLecDetailView extends Component {
     return (
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
-        avatar={(<Avatar alt="Ted talk" src={userImg} />)}
+        avatar={(<Avatar alt="O" src={userImg} />)}
         title={lec.email?.name}
         subheader={lec.email?.intro? lec.email?.intro : "자기소개가 없습니다:("}
       />
-      <CardActions style={{float: 'left'}}>
-      <Link href={`/manager/lec/update/${lec.lec_id}`} style={{textDecorationLine:'none', color:'#D5BA8C'}}>수정</Link>
+      <CardActions style={{float: 'right'}}>
+      <Link href={`/manager/lec/update/${lec.lec_id}`} style={{textDecorationLine:'none', color:'#D5BA8C', fontSize:'small'}}>수정</Link>
       </CardActions>
       <CardMedia
         component="img"
         height="140"
         image= {lecImg}
-        alt="lec image"
+        alt="등록된 이미지가 없습니다 :("
       />
 
       <br/>
       <hr />
       <br/>
-      <CardContent style={{textAlign:'center'}}>
+      <CardContent style={{textAlign:'center', color:'#353535'}}>
       <Typography variant="h5" component="div">
         {lec.title}
       </Typography>
       <br/>
-      <Typography variant="body2" gutterBottom>
+      <Typography variant="subtitle2" gutterBottom>
       일시: {moment(lec.date).format("MM.DD, dddd")}<br/>
       시간: {moment(lec.time,"HH:mm:ss").format('LT')}<br/>
       장소: {lec.room}<br/>
