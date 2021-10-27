@@ -3,7 +3,7 @@ import * as React from 'react';
 import './Home.css';
 import { styled } from '@mui/styles';
 import Button from '@mui/material/Button';
-
+import Link from '@mui/material/Link';
 
 class Home extends Component {
    
@@ -37,7 +37,7 @@ class Home extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <MyButton>멤버십</MyButton>
+                <Link href={`/membership`} style={{ textDecorationLine: 'none' }}><MyButton>멤버십</MyButton></Link>
                 </p>
             </div>
         );
