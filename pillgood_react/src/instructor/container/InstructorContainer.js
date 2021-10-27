@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import {MenuItem, Typography } from "@material-ui/core";
 import { styled } from '@mui/styles';
 import Button from '@mui/material/Button';
+import '../instructorLec.css';
+
 
 class InstructorContainer extends Component {
     instructorStore = InstructorStore;
@@ -15,7 +17,7 @@ class InstructorContainer extends Component {
             background: 'linear-gradient(90deg, #D5BA8C, #E2CEAE)',
             border: 0,
             borderRadius: 10,
-            width: '150px',
+            width: '200px',
             color: 'white',
             height: 48,
             padding: '0 30px',
@@ -23,14 +25,15 @@ class InstructorContainer extends Component {
           });
     return (
         <div>
-          <h2 style={{textAlign:'center', color:'#574934'}} >강의 등록</h2>
+          <h2 style={{textAlign:'center', color:'#D5BA8C', padding:10}} >강의 등록</h2>
           <div id="lec-name">
               <Typography  component="h2" variant="body1" gutterBottom>
                   강의명
               </Typography>
-                 <TextField type="text"
+              <TextField type="text"
                             id="title"
                             variant="outlined"
+                            style ={{width: '50ch'}}
                             name="title"
                             value={lec.title}
                             onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
@@ -44,11 +47,11 @@ class InstructorContainer extends Component {
                                 id ="content"
                                 variant="outlined"
                                 multiline
-                                rows={3}
-                                style ={{width: '30ch'}}
+                                rows={4}
+                                style ={{width: '50ch'}}
                                 value={lec.content} 
                                 onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
-                                placeholder="강의내용 " />
+                />
               </div>
               <div id="lec-image">
                <Typography component="h2" variant="body1" gutterBottom>
@@ -61,7 +64,7 @@ class InstructorContainer extends Component {
               <Typography component="h2" variant="body1" gutterBottom>
                   장소
                </Typography>
-                  <TextField select style ={{width: '20%'}} name="room" id="room" value={lec.room||""}
+                  <TextField select style ={{width: '40%'}} name="room" id="room" value={lec.room||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--강의실--</MenuItem>
                           <MenuItem value="301호">301호</MenuItem>
@@ -70,13 +73,13 @@ class InstructorContainer extends Component {
                           <MenuItem value="201호">201호</MenuItem>
                           <MenuItem value="202호">202호</MenuItem>
                           <MenuItem value="101호">101호</MenuItem>
-                        </TextField><br />
+                        </TextField>
                </div>
                <div id="lec-date">
                  <Typography component="h2" variant="body1" gutterBottom>
                   날짜
               </Typography>
-                  <TextField type="date" id="date"name="date" value={lec.date}
+                  <TextField type="date" style ={{width: '40%'}} id="date"name="date" value={lec.date}
                     onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}/>
                 </div>
                 <div id="lec-time">
@@ -86,7 +89,7 @@ class InstructorContainer extends Component {
               <TextField
                           type="time"
                           value={lec.time}
-                          style ={{width: '20%'}}
+                          style ={{width: '40%'}}
                           name="time"
                           onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}
                           />
@@ -95,7 +98,7 @@ class InstructorContainer extends Component {
               <Typography component="h2" variant="body1" gutterBottom>
                   난이도
               </Typography>
-                  <TextField select style ={{width: '20%'}} name="level" id="level" value={lec.level||""}
+                  <TextField select style ={{width: '40%'}} name="level" id="level" value={lec.level||""}
                         onChange={(e)=>handlerSetProps(e.target.name, e.target.value)}>
                           <MenuItem value="">--난이도--</MenuItem>
                           <MenuItem value="1">level-1 </MenuItem>

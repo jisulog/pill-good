@@ -1,5 +1,4 @@
 import axios from "axios";
-import { uploadFile } from 'react-s3';
 
 // backend api 호출, 연결
 
@@ -40,24 +39,6 @@ class InstructorApi {
             })
         .then((response)=> response.data).catch((error)=>console.log(error));
     };
-    
-
-
-    // 'lec/update/<int:pk>'
-      lecUpdate(lec_id, title, content, room, date, time, level, email, number, status){
-        return axios.put(this.URL+`lec/update/${lec_id}/`,
-            {title:`${title}`,
-            content:`${content}`,
-            room:`${room}`,
-            date:`${date}`,
-            time:`${time}`,
-            level:`${level}`,
-            email:`${email}`,
-            number:`${number}`,
-            status:`${status}`})
-        .then((response)=>response.data).catch((error)=>console.log(error));
-    }
-
 }
 
 export default new InstructorApi();

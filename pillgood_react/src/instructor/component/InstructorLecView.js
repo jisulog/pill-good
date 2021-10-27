@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {S3_BUCKET, REGION} from '../../image/S3bucket';
 import moment from 'moment';
-import { DataGrid } from '@mui/x-data-grid';
 import { styled } from '@mui/styles';
 import Button from '@mui/material/Button';
 
@@ -10,7 +8,6 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
@@ -38,14 +35,14 @@ class InstructorLecView extends Component {
               key={lec.lec_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            <TableCell align="left" component="th" scope="row">
+            <TableCell  width = "180" align="">
                 {lec.title}
               </TableCell>
 
-              <TableCell align="left">{moment(lec.date).format("YYYY-MM-DD")}</TableCell>
-              <TableCell align="left">{moment(lec.time,"HH:mm:ss").format("HH:mm")}</TableCell>
-              <TableCell align="center">{lec.room}</TableCell>
-              <TableCell align="center"><MyButton><Link to= {`/instructor/user/${lec.lec_id}`} style={{ textDecoration: 'none' }}>회원목록</Link>&nbsp;&nbsp;</MyButton></TableCell>
+              <TableCell align="center">{moment(lec.date).format("YYYY-MM-DD")}</TableCell>
+              <TableCell align="center" width = "180">{moment(lec.time,"HH:mm:ss").format("HH:mm")}</TableCell>
+              <TableCell align="center" width = "180">{lec.room}</TableCell>
+              <TableCell align="center" width = "180"><MyButton><Link to= {`/instructor/user/${lec.lec_id}`} style={{ textDecoration: 'none' }}>회원목록</Link>&nbsp;&nbsp;</MyButton></TableCell>
                </TableRow>
 
             </TableBody>

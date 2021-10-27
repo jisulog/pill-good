@@ -2,8 +2,9 @@ import React, { Component }  from "react";
 import {observer} from 'mobx-react';
 import LecStore from "../store/LecStore";
 import LecView from "../component/LecView";
-
-// import Pagination from "react-js-pagination";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import '../lec.css';
 
 
 
@@ -17,8 +18,8 @@ class LecListContainer extends Component {
     }
 
     render() {
-        const {lecs, page, handlePageChange, activePage} = this.lecStore;
-        const {id} = this.props;
+        const {lecs} = this.lecStore;
+
 
         const lecList = lecs && lecs.map((element)=>{
             return (<LecView key={element.lec_id} lec = {element}/>
@@ -28,6 +29,9 @@ class LecListContainer extends Component {
         return(
             <div>
                {lecList}
+               <Stack  spacing={2}>
+                    <Pagination  sx={{marginLeft:70, padding:5 }} count={12} shape="rounded" />
+               </Stack>
             </div>
           );
         }
