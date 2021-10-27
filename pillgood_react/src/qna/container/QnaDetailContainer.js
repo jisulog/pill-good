@@ -14,8 +14,8 @@ class QnaDetailContainer extends Component {
         const {qna, handlerRemove} = this.qnaStore;
         const admin = window.localStorage.getItem("is_admin");
         return (
-            <div>
-                <h2 style={{textAlign:'center', color:'#574934'}} >QnA</h2>
+            <div id="qnaDetail">
+                <h2>문의사항</h2>
                 <QnaDetailView key={qna.id} qna={qna} ondelete={handlerRemove} admin={admin}/>
             </div>
         );

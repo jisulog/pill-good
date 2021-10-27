@@ -16,8 +16,8 @@ class QnaAnswerContainer extends Component {
         const user = window.localStorage.getItem("id");
 
         return (
-            <div>
-                <h2 style={{textAlign:'center', color:'#574934'}} >QnA Answer</h2>
+            <div id="qnaAnswer">
+                <h2>답변하기</h2>
                 <QnaAnswerView qna={qna} handlerSet={handlerSet} onAnswer={handlerAnswer} adminId={user}/>
             </div>
         );

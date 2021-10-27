@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import QnaUpdateView from '../component/QnaUpdateView';
 import QnaStore from '../store/QnaStore';
+import "../qna.css";
+
 class QnaUpdateContainer extends Component {
     qnaStore = QnaStore;
 
@@ -11,8 +13,8 @@ class QnaUpdateContainer extends Component {
     render() {
         const {qna, handlerSet, handlerModify} = this.qnaStore;
         return (
-            <div>
-                <h2 style={{textAlign:'center', color:'#574934'}} >QnA Update</h2>
+            <div id="qnaForm">
+                <h2>문의 수정</h2>
                 <QnaUpdateView qna = {qna} onsetprops = {handlerSet} onupdate = {handlerModify}/>
             </div>
         );

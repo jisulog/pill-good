@@ -4,7 +4,7 @@ import QnaStore from '../store/QnaStore';
 import QnaMainView from '../component/QnaMainView';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
-import {Paper, Table, TableBody, TableContainer, TableHead} from '@mui/material';
+import {Pagination, Paper, Stack, Table, TableBody, TableContainer, TableHead} from '@mui/material';
 import Button from '@mui/material/Button';
 import "../qna.css";
 //List
@@ -49,6 +49,10 @@ class QnaMainContainer extends Component {
                         글작성
                     </Button>
                 </div>
+
+                <Stack className="paging">
+                    <Pagination count={10}/>
+                </Stack>
             </div>
         );
 
