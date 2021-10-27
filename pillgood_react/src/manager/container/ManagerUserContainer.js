@@ -44,7 +44,7 @@ class ManagerUserContainer extends Component {
         field: "change", headerName: '변경', width: 200,
         renderCell: (cellValues) => {
           return (
-            <Button onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경</Button>
+            <Button style={{color: 'white', background: '#D5BA8C', borderRadius:'4px'}} onClick={(event) => { accessUser(cellValues.row.id, cellValues.row.type); }}>변경</Button>
           );
         }
       }

@@ -9,6 +9,7 @@ import NativeSelect from '@mui/material/NativeSelect';
 
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+
 import ManagerMembershipCreateContainer from './ManagerMembershipCreateContainer';
 
 class ManagerMembershipContainer extends Component {
@@ -32,7 +33,7 @@ class ManagerMembershipContainer extends Component {
 
   render() {
     const columns = [
-      { field: 'number', headerName: '횟수', width: 120 },
+      { field: 'number', headerName: '횟수', width: 120, headerClassName: 'super-app-theme--header' },
       { field: 'period', headerName: '기간', width: 120 },
       { field: 'price', headerName: '가격', width: 180 },
       { field: 'type', headerName: '인원', width: 120 },
@@ -41,7 +42,7 @@ class ManagerMembershipContainer extends Component {
         field: "change", headerName: '변경', width: 150,
         renderCell: (cellValues) => {
           return (
-            <Button onClick={() => {accessMembership(cellValues.row.id, cellValues.row.status)}}>변경</Button>
+            <Button style={{color: 'white', background: '#D5BA8C',  borderRadius:'4px'}} onClick={() => {accessMembership(cellValues.row.id, cellValues.row.status)}}>변경</Button>
           );
         }
       }
@@ -87,7 +88,7 @@ class ManagerMembershipContainer extends Component {
     });
     return (
       <div style={{width: '90%', margin: '30px auto'}}>
-        <h2 style={{textAlign:'center', color:'#D5BA8C'}} >멤버쉽 목록</h2>
+        <h2 style={{textAlign:'center', color:'#D5BA8C'}} >멤버십관리</h2>
           <Box>
           <FormControl >
             <NativeSelect
@@ -103,7 +104,7 @@ class ManagerMembershipContainer extends Component {
               <option value={2}>비활성</option>
             </NativeSelect>
           </FormControl>
-          <Button style={{float: 'right'}} onClick={this.handleOpen} >생성</Button>
+          <Button style={{float: 'right', color: 'white', background: '#D5BA8C',  borderRadius:'4px'}} onClick={this.handleOpen} >생성</Button>
           <Modal open={this.state.open} onClose={this.handleClose} >
             <Box>
               <ManagerMembershipCreateContainer/>
