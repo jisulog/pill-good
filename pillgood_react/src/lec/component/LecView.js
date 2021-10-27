@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {S3_BUCKET, REGION} from '../../image/S3bucket';
-import ImageList from '@mui/material/ImageList';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -89,7 +80,6 @@ class LecView extends Component {
         </Grid>
       </Grid>
     </Paper>
-
    );
   }
 }

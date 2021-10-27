@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-// import { Item } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import {S3_BUCKET, REGION} from '../../image/S3bucket';
 import moment from 'moment';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import PlaceIcon from '@mui/icons-material/Place';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import "../lec.css";
 import { styled } from '@mui/styles';
-import BookCreateView from '../component/BookCreateView';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+
+
 
 class LecDetailView extends Component {
 
@@ -51,7 +44,6 @@ class LecDetailView extends Component {
             margin: '20px'
           });
 
-    const userImg = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.email?.image}`;
     const imgUrl = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${lec.lec_image}`;
     return (
           <Card sx={{ maxWidth: 450 }}  className="margin-center">

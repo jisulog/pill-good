@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import {observer} from 'mobx-react';
 import InstructorStore from "../store/InstructorStore";
 import InstructorLecView from '../component/InstructorLecView';
-import { Link } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
 
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
@@ -31,16 +27,16 @@ class InstructorLecContainer extends Component {
         });
 
         return (
-              <div>
-              <h2 style={{textAlign:'center', color:'#574934'}} >내 강의 목록</h2>
+              <div id="lecTitle">
+              <h2  style={{textAlign:'center', color:'#574934', marginBottom: 20}} >내 강의 목록</h2>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
+            <TableHead id="lecList">
             <TableRow>
-                <TableCell>강의명</TableCell>
-                <TableCell align="justify">날짜</TableCell>
-                <TableCell align="justify">시간</TableCell>
-                <TableCell align="justify">장소</TableCell>
-                <TableCell align="justify">회원</TableCell>
+                <TableCell align="center" width = "180" >강의명</TableCell>
+                <TableCell align="center" width = "200" >날짜</TableCell>
+                <TableCell align="center" width = "180">시간</TableCell>
+                <TableCell align="center" width = "180">장소</TableCell>
+                <TableCell align="center" width = "180">회원</TableCell>
             </TableRow>
             </TableHead>
             </Table>

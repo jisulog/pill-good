@@ -1,13 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from lec.models import Lec
 from lec.serializers import LecSerializer, BookSerializer, LecDetailSerializer
 from manager.models import Book
-from manager.serializers import LecSerializer as MLecSerializer
 from member.serializers import PaySerializer
 from membership.models import Membership, Pay
-from membership.serializers import MembershipSerializer
+
 
 
 @api_view(['GET'])
